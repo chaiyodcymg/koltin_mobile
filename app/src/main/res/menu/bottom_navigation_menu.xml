@@ -3,11 +3,23 @@
     <item
         android:id="@+id/page_1"
         android:enabled="true"
+
         android:icon="@drawable/home"
-        android:title="home"/>
+        android:title="หน้าหลัก"/>
     <item
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/add"
-        android:title="plus"/>
+        android:title="โพสต์"/>
+    <item
+        android:id="@+id/page_3"
+        android:enabled="true"
+        android:icon="@drawable/check"
+        android:title="ตรวจสอบ"/>
+    <item
+        android:id="@+id/page_4"
+        android:enabled="true"
+        android:icon="@drawable/feed"
+        android:title="โพสต์ของฉัน"/>
+
 </menu>
