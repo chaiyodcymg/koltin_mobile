@@ -1,61 +1,287 @@
 package com.pac.kotlin_mobile
 
+
+
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
-import androidx.core.content.edit
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
+
+
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
+import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
+     var Select_Page : Int = R.id.page_1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        binding = ActivityMainBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
+        Log.i("Event","onCreate")
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 
-//        AUTH.edit { clear() }
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+//        val view: View = supportActionBar!!.customView
+//        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+//        var name =  AUTH.getString("id","")
+//        AUTH.edit{clear()}
+//        if(name != null && name.isNotEmpty()){
+//            val  intent = Intent(applicationContext, HomeActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent )
+//        }else{
+//            val intent = Intent(applicationContext, LoginActivity::class.java)
+//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
+//            startActivity(intent)
+//        }
 
-        var name =  AUTH.getString("id","")
-        Log.i("Event", "${name}" )
-        if(name != null && name.isNotEmpty()){
-            val  intent = Intent(applicationContext, HomeActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent )
-        }else{
-            val intent = Intent(applicationContext, LoginActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-            startActivity(intent)
+
+
+        Log.i("Events","")
+
+        supportFragmentManager.beginTransaction().add(
+            R.id.frameLayout,
+            HomeFragment()
+        ).commit()
+
+
+        binding.bottomNavigation.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.page_1-> {
+
+
+                    Select_Page = R.id.page_1
+
+
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        HomeFragment()
+                    ).commit()
+                    true
+                }
+                R.id.page_2 -> {
+
+                    Select_Page = R.id.page_2
+                    AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+                     var id =  AUTH.getString("id","")
+                    if(id != null && id.isNotEmpty()){
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            AddPostFragment()
+                        ).commit()
+                    }else{
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            NotLoggedInFragment()
+                        ).commit()
+
+                    }
+
+                    true
+                }
+                R.id.page_3 -> {
+
+                    Select_Page = R.id.page_3
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        NewsFragment()
+                    ).commit()
+                    true
+                }
+                R.id.page_4 -> {
+
+                    Select_Page = R.id.page_4
+                    supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        MyPostFragment()
+                    ).commit()
+                    true
+                }
+                else -> false
+            }
         }
 
+//        binding.btnImageSelect.setOnClickListener {
+//            openImageChooser()
+//        }
+//
+//        binding.btnImageUpload.setOnClickListener {
+//            uploadImage()
+//        }
+
+    }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.top_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu1 -> {
+                val  intent = Intent(applicationContext, SearchActivity::class.java)
+                intent.putExtra("Select_Page",Select_Page)
+                startActivityForResult(intent ,1)
+            }
+            R.id.menu2 -> {
+                val  intent = Intent(applicationContext, ProfileActivity::class.java)
+                intent.putExtra("Select_Page",Select_Page)
+
+                startActivityForResult(intent ,1)
+            }
 
 
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(requestCode == 1 && resultCode == RESULT_OK){
+            Log.i("Event","${data!!.getIntExtra("Select_Page",0)}")
+            Select_Page =  data!!.getIntExtra("Select_Page",0)
+        }
     }
 
     override fun onResume() {
         super.onResume()
-//        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        Log.i("Event","onResume")
+
+    binding.bottomNavigation.selectedItemId =  Select_Page
+//        if(select == R.id.page_2 ){
+//            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+//            var id =  AUTH.getString("id","")
+//            if(id != null && id.isNotEmpty()){
+//                supportFragmentManager.beginTransaction().replace(
+//                    R.id.frameLayout,
+//                    AddPostFragment()
+//                ).commit()
+//            }else{
+//                supportFragmentManager.beginTransaction().replace(
+//                    R.id.frameLayout,
+//                    NotLoggedInFragment()
+//                ).commit()
 //
-//        var name =  AUTH.getString("id","")
-//
-//        if(name != null && name.isNotEmpty()){
-//            val i = Intent(applicationContext, HomeActivity::class.java)
-//
-//            startActivity(i)
-//        }else{
-//            val i = Intent(applicationContext, LoginActivity::class.java)
-//            startActivity(i)
+//            }
 //        }
-        Log.i("Event", "Main ")
 
 
     }
+
+    override fun onPause() {
+        super.onPause()
+
+        Log.i("Event","onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        Log.i("Event","onStop")
+    }
+
+    override fun onDestroy() {
+
+
+        Log.i("Event","onDestroy")
+
+//
+//        Log.i("Event","${Select_Page.getInt("id",0)}")
+        super.onDestroy()
+
+
+    }
+
+
+
+//
+//    private fun openImageChooser() {
+//        Intent(Intent.ACTION_PICK).also {
+//            it.type = "image/*"
+//            val mimeTypes = arrayOf("image/jpeg", "image/png")
+//            it.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
+//            startActivityForResult(it, REQUEST_CODE_PICK_IMAGE  )
+//        }
+//    }
+//
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (resultCode == Activity.RESULT_OK) {
+//            when (requestCode) {
+//                REQUEST_CODE_PICK_IMAGE -> {
+//                    selectedImageUri = data?.data
+//                    binding.imageSelected.setImageURI(selectedImageUri)
+//                }
+//            }
+//        }
+//    }
+//
+//
+//    private fun uploadImage() {
+//
+//
+//        val parcelFileDescriptor =
+//            contentResolver.openFileDescriptor(selectedImageUri!!, "r", null) ?: return
+//
+//        val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
+//        val file = File(cacheDir, contentResolver.getFileName(selectedImageUri!!))
+//        val outputStream = FileOutputStream(file)
+//        inputStream.copyTo(outputStream)
+//
+//
+//        val body = UploadRequestBody(file, "image")
+//    var api : UserAPI =    Retrofit.Builder()
+//            .baseUrl("http://10.0.2.2:3000/")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//            .create(UserAPI::class.java)
+//
+//        api.uploadImage(
+//            MultipartBody.Part.createFormData(
+//                "image",
+//                file.name,
+//                body
+//            ),
+//            RequestBody.create(MediaType.parse("multipart/form-data"), "json")
+//        ).enqueue(object : Callback<UploadResponse> {
+//            override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
+//
+//            }
+//
+//            override fun onResponse(
+//                call: Call<UploadResponse>,
+//                response: Response<UploadResponse>
+//            ) {
+//
+//            }
+//        })
+//
+//    }
+//
+//
+//
+//    companion object {
+//        const val REQUEST_CODE_PICK_IMAGE = 101
+//    }
+
+//    override fun onBackPressed() {
+//        finishAffinity()
+//    }
+//    fun logout(v: View){
+//        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+//        AUTH.edit{clear()}
+//        val i = Intent(applicationContext, LoginActivity::class.java)
+//        startActivity(i)
+//    }
 
 }

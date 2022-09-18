@@ -13,13 +13,14 @@
         android:title="โพสต์"/>
     <item
         android:id="@+id/page_3"
-        android:enabled="true"
         android:icon="@drawable/check"
-        android:title="ตรวจสอบ"/>
+        android:enabled="true"
+
+        android:title="ข่าวสาร"/>
     <item
         android:id="@+id/page_4"
         android:enabled="true"
         android:icon="@drawable/feed"
-        android:title="โพสต์ของฉัน"/>
+        android:title="โพสต์"/>
 
 </menu>
