@@ -32,6 +32,7 @@ class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding
     lateinit var AUTH : SharedPreferences
     var URL_API = URL.URL_API
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -64,8 +65,6 @@ class LoginFragment : Fragment() {
                 override fun onResponse(call: Call<Login>, response: retrofit2.Response<Login>) {
                     if (response.isSuccessful()) {
                         Toast.makeText(activity?.applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
-
-
 
                         AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 

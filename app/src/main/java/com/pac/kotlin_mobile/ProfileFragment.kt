@@ -196,7 +196,9 @@ var REQUEST_CODE_PICK_IMAGE = 101
                 .enqueue(object : Callback<Update> {
 
                 override fun onResponse(call: Call<Update> , response: Response<Update>) {
-
+                    if (response.isSuccessful()){
+                        Toast.makeText(requireActivity().applicationContext,"แก้ไขสำเร็จ ", Toast.LENGTH_LONG).show()
+                    }
                 }
                     override fun onFailure(call: Call<Update> , t: Throwable) {
 

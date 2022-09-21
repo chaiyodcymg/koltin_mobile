@@ -31,6 +31,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
+
         supportActionBar!!.setDisplayShowTitleEnabled(false)
 //        val view: View = supportActionBar!!.customView
 //        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)

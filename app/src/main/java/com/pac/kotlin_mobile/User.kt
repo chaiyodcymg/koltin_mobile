@@ -55,6 +55,3 @@ data class Profile(
     @SerializedName("image_profile")val image_profile: String,
 )
 
-object URL {
-    val URL_API: String = "http://10.0.2.2:3000/"
-}

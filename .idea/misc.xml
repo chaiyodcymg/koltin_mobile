@@ -20,6 +20,8 @@
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.11727456940222898" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.11727456940222898" />
+        <entry key="app/src/main/res/layout/search_layout.xml" value="0.20833333333333334" />
+        <entry key="app/src/main/res/layout/style.xml" value="0.1" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.21908049406828697" />
         <entry key="app/src/main/res/menu/top_menu.xml" value="0.1" />
       </map>
