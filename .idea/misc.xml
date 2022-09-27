@@ -3,27 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.11727456940222898" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.11854103343465046" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.11727456940222898" />
-        <entry key="app/src/main/res/layout/custom_action_bar_layout.xml" value="0.1890625" />
-        <entry key="app/src/main/res/layout/fragment_add_post.xml" value="0.10555555555555556" />
-        <entry key="app/src/main/res/layout/fragment_check_post.xml" value="0.10555555555555556" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10555555555555556" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_my_post.xml" value="0.10555555555555556" />
-        <entry key="app/src/main/res/layout/fragment_news.xml" value="0.20416666666666666" />
-        <entry key="app/src/main/res/layout/fragment_not_logged_in.xml" value="0.10833333333333334" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18" />
-        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.11727456940222898" />
-        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.11727456940222898" />
-        <entry key="app/src/main/res/layout/search_layout.xml" value="0.20833333333333334" />
-        <entry key="app/src/main/res/layout/style.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.21908049406828697" />
-        <entry key="app/src/main/res/menu/top_menu.xml" value="0.1" />
+        <entry key="..\:/Mobile_proj/kotlin_mobile/app/src/main/res/layout/activity_profile.xml" value="0.1308876811594203" />
+        <entry key="..\:/Mobile_proj/kotlin_mobile/app/src/main/res/layout/dropdown_item.xml" value="0.14175724637681159" />
+        <entry key="..\:/Mobile_proj/kotlin_mobile/app/src/main/res/layout/fragment_add__cat_findhouse.xml" value="0.17300724637681159" />
+        <entry key="..\:/Mobile_proj/kotlin_mobile/app/src/main/res/layout/fragment_add_post.xml" value="0.20416666666666666" />
       </map>
     </option>
   </component>
