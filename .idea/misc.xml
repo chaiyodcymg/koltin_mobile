@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/radius_layout.xml" value="0.156" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_login.xml" value="0.16847826086956522" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_profile.xml" value="0.2341485507246377" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_register.xml" value="0.2" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/custom_action_bar_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_add_post.xml" value="0.25416666666666665" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_login.xml" value="0.1" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_not_logged_in.xml" value="0.4" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -32,5 +44,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
