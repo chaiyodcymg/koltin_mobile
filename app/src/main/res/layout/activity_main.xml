@@ -10,10 +10,19 @@
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent">
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/top_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="#df7861"
+            app:menu="@menu/top_menu"/>
 
-
-    </FrameLayout>
+    </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -21,10 +30,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#df7861"
-        app:itemTextColor="@color/white"
         app:itemIconTint="@color/white"
-        app:menu="@menu/bottom_navigation_menu"
-        />
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_menu" />
 
 
 </RelativeLayout>
