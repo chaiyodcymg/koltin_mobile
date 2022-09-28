@@ -10,7 +10,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Posttt" />
+        android:text="Add Post" />
 
     <TextView
         android:id="@+id/text_show"
@@ -29,18 +29,19 @@
             />
     </LinearLayout>
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_image_select"
+        android:id="@+id/btn_findhouse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="เลือกรูปภาพ"
-
-        />
+        android:text="เพิ่มโพสต์น้องแมวหาบ้าน" />
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_image_upload"
+        android:id="@+id/btn_catlost"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="อัปโหลดรูปภาพ"
-
-        />
+        android:text="เพิ่มโพสต์น้องแมวหาย" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="เพิ่มโพสต์ข่าวสาร" />
 
 </LinearLayout>
