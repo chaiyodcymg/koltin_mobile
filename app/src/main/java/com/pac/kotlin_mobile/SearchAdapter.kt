@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.pac.kotlin_mobile.databinding.SearchLayoutBinding
 
 
-class SearchAdapter(val items :List<Search>, val context: Context):
+class SearchAdapter(val items: ArrayList<Cat_search>, val context: Context):
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
 
     inner class ViewHolder(view: View, val binding: SearchLayoutBinding) : RecyclerView.ViewHolder(view) {init {} }
@@ -25,8 +25,9 @@ class SearchAdapter(val items :List<Search>, val context: Context):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding_holder = holder.binding
 
-      binding_holder.tvID.text =  items[position].firstname
-        binding_holder.tvName.text = items[position].lastname
+      binding_holder.id.text = "รหัสแมว ${items[position].id}"
+        binding_holder.color.text = "สี ${items[position].color}"
+        binding_holder.species.text = "สายพันธุ์ ${items[position].species}"
     }
 
     override fun getItemCount(): Int {

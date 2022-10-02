@@ -3,26 +3,28 @@ package com.pac.kotlin_mobile
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.adapters.SearchViewBindingAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
-import java.lang.reflect.Type
+
+
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class SearchActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchBinding
     lateinit var AUTH : SharedPreferences
     var Select_Page : Int = R.id.page_1
-    var data_search_List = arrayListOf<Search>()
-
+    var data_search_List = arrayListOf<Cat_search>()
+    var URL_API = URL.URL_API
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySearchBinding.inflate(layoutInflater)
@@ -45,49 +47,38 @@ class SearchActivity : AppCompatActivity() {
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
         binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL) )
 
-
-        SocketHandler.setSocket()
-        SocketHandler.establishConnection()
-        val mSocket = SocketHandler.getSocket()
-
-
-       binding.search.addTextChangedListener(object :TextWatcher{
-
-           override fun afterTextChanged(p0: Editable?) {
-               binding.recyclerView.adapter = SearchAdapter(data_search_List, applicationContext)
-           }
-           override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-           override  fun  onTextChanged(value: CharSequence?, p1: Int, p2: Int, p3: Int) {
-
-               if(value?.trim()?.length!! > 0 ){
+    }
+    fun btn_search(v:View){
+       val search =  binding.search.text.toString()
+        if(search.trim().isNotEmpty() && search.isNotEmpty()){
 
 
-               mSocket.emit("search",value)
-               mSocket.on("result") { args ->
-                   data_search_List.clear()
-                   val listType: Type = object : TypeToken<ArrayList<Search?>?>() {}.type
-                   val List: List<Search> = Gson().fromJson(args[0].toString(), listType)
-                   List.forEach{
-                       data_search_List.add(Search(it.email,it.firstname,it.id,it.image_profile, it.lastname , it.password , it.role))
+            val api: Cat_API = Retrofit.Builder()
+                .baseUrl(URL_API)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(Cat_API::class.java)
+            api.search(search)
+                .enqueue(object : Callback<List<Cat>> {
+                override fun onResponse(call: Call<List<Cat>>, response: Response<List<Cat>>) {
+                    if (response.isSuccessful()) {
 
-                   }
+                        Log.i("Events" ,"${response.body()}")
+                        response.body()?.forEach {
+                            Log.i("Events","${it.id}")
+                        data_search_List.add(Cat_search(it.id ,it.color , it.species))
+                        }
+                        binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext)
+                    }
+                }
 
-//                   data_search_List.add(Search("aa", "mn", 11,"Aeever", "kuyrai", "kuyy", 0))
-                   Log.i("Events","${ data_search_List}")
-
-               }
-                   binding.recyclerView.adapter = SearchAdapter(data_search_List, applicationContext)
-
-
-               }else{
-                   data_search_List.clear()
-                   binding.recyclerView.adapter = SearchAdapter(data_search_List, applicationContext)
-               }
-           }
-       })
-
-
+                override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
+                    Toast.makeText(applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                }
+            })
+        }
 
     }
 }
+
+

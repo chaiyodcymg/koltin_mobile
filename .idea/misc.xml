@@ -8,7 +8,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.11727456940222898" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11854103343465046" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.11727456940222898" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_action_bar_layout.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_add_post.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_check_post.xml" value="0.10555555555555556" />
