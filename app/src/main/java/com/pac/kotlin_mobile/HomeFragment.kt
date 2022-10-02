@@ -28,7 +28,20 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
-
+        binding.seemoreCat.setOnClickListener() {
+            var fragment: Fragment? = null
+            fragment = catfindhome_more()
+            replaceFragment(fragment)
+        }
         return binding.root
+    }
+
+    fun replaceFragment(someFragment:Fragment){
+        var binding: FragmentHomeBinding
+        binding = FragmentHomeBinding.inflate(layoutInflater)
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(binding.frameLayout.id, someFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
 }
