@@ -40,12 +40,7 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     lateinit var AUTH : SharedPreferences
     var URL_API = URL.URL_API
-var REQUEST_CODE_PICK_IMAGE = 101
-    var selectedImageUri : Uri? = null
-    var image_profile : String? = null
-    var email_Get : String? = null
-    var fname_Get : String? = null
-    var lname_Get : String? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -67,11 +62,14 @@ var REQUEST_CODE_PICK_IMAGE = 101
             transaction.addToBackStack(null)
             transaction.commit()
         }
-        binding.imageSelected.setOnClickListener {
-            openImageChooser()
-        }
-        binding.btnImageUpload.setOnClickListener {
-            uploadImage()
+
+        binding.btnChangeToEdit.setOnClickListener {
+            var binding: ActivityProfileBinding
+            binding = ActivityProfileBinding.inflate(layoutInflater)
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(binding.frameLayout.id, EditProfileFragment())
+            transaction.addToBackStack(null)
+            transaction.commit()
         }
         return binding.root
     }
@@ -88,9 +86,9 @@ var REQUEST_CODE_PICK_IMAGE = 101
                     if (response.isSuccessful()){
                         binding.imageSelected.setImageURI(null)
                         Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
-                        binding.email.setText( response.body()?.email.toString())
-                        binding.firstname.setText(response.body()?.firstname.toString())
-                        binding.lastname.setText( response.body()?.lastname.toString())
+                        binding.email.setText( "อีเมล : ${response.body()?.email.toString()}")
+                        binding.firstname.setText("ชื่อ : ${response.body()?.firstname.toString()}")
+                        binding.lastname.setText( "นามสกุล : ${response.body()?.lastname.toString()}")
 
 
 
@@ -106,106 +104,11 @@ var REQUEST_CODE_PICK_IMAGE = 101
 
             })
     }
-    private fun openImageChooser() {
-        Intent(Intent.ACTION_PICK).also {
-            it.type = "image/*"
-            val mimeTypes = arrayOf("image/jpeg", "image/png")
-            it.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes)
-            startActivityForResult(it, REQUEST_CODE_PICK_IMAGE  )
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (resultCode == Activity.RESULT_OK) {
-            when (requestCode) {
-                REQUEST_CODE_PICK_IMAGE -> {
-                    selectedImageUri = data?.data
-                    binding.imageSelected.setImageURI(null)
-                    binding.imageSelected.setImageURI(selectedImageUri)
-                }
-            }
-        }
-    }
 
 
-    private fun uploadImage() {
-
-        val email = binding.email.text.toString()
-        val fname = binding.firstname.text.toString()
-        val lname = binding.lastname.text.toString()
-
-        var api : UserAPI =   Retrofit.Builder()
-            .baseUrl(URL_API)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(UserAPI::class.java)
-
-    if (selectedImageUri != null){
 
 
-                val parcelFileDescriptor =  requireActivity()?.contentResolver?.openFileDescriptor(selectedImageUri!!, "r", null) ?: return
 
-                val inputStream = FileInputStream(parcelFileDescriptor.fileDescriptor)
-                var name = ""
-                val returnCursor = requireActivity()?.contentResolver?.query(selectedImageUri!!, null, null, null, null)
-                if (returnCursor != null) {
-                    val nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                    returnCursor.moveToFirst()
-                    name = returnCursor.getString(nameIndex)
-                    returnCursor.close()
-                }
-                val file = File(requireActivity().cacheDir,  name)
-
-                val outputStream = FileOutputStream(file)
-                inputStream.copyTo(outputStream)
-
-
-                val body = UploadRequestBody(file, "image")
-
-
-                api.updateprofile_withImage(
-                    MultipartBody.Part.createFormData(
-                        "image",
-                        file.name,
-                        body
-                    ),
-                    RequestBody.create(MediaType.parse("multipart/form-data"),AUTH.getString("id","")) ,
-                    RequestBody.create(MediaType.parse("multipart/form-data"), email ),
-                    RequestBody.create(MediaType.parse("multipart/form-data"), fname),
-                    RequestBody.create(MediaType.parse("multipart/form-data"), lname)
-
-                ).enqueue(object : Callback<UploadResponse> {
-
-                    override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
-                        if (response.isSuccessful()){
-                            Toast.makeText(requireActivity().applicationContext,"แก้ไขสำเร็จ ", Toast.LENGTH_LONG).show()
-                        }
-
-                    }
-
-                    override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
-
-                    }
-
-
-                })
-        }else{
-
-            api.updateprofile_noImage(AUTH.getString("id","")!! , email , fname, lname)
-                .enqueue(object : Callback<Update> {
-
-                override fun onResponse(call: Call<Update> , response: Response<Update>) {
-                    if (response.isSuccessful()){
-                        Toast.makeText(requireActivity().applicationContext,"แก้ไขสำเร็จ ", Toast.LENGTH_LONG).show()
-                    }
-                }
-                    override fun onFailure(call: Call<Update> , t: Throwable) {
-
-                    }
-                })
-         }
-    }
 }
 
 
