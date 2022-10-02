@@ -35,6 +35,7 @@ class SearchActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.custom_action_bar_layout)
         val view = supportActionBar!!.customView
+
         val imageButton = view.findViewById<View>(R.id.action_bar_back)
         imageButton.setOnClickListener {
             val intent = intent.putExtra("Select_Page",Select_Page)
@@ -49,6 +50,7 @@ class SearchActivity : AppCompatActivity() {
 
     }
     fun btn_search(v:View){
+        data_search_List.clear()
        val search =  binding.search.text.toString()
         if(search.trim().isNotEmpty() && search.isNotEmpty()){
 
@@ -66,7 +68,7 @@ class SearchActivity : AppCompatActivity() {
                         Log.i("Events" ,"${response.body()}")
                         response.body()?.forEach {
                             Log.i("Events","${it.id}")
-                        data_search_List.add(Cat_search(it.id ,it.color , it.species))
+                        data_search_List.add(Cat_search(it.id ,it.color , it.species, it.name))
                         }
                         binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext)
                     }
