@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#FFFFFF"
+    android:background="#FAAC9B"
     tools:context=".NotLoggedInFragment">
     <TextView
         android:src="@drawable/catno"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
-        android:textColor="#DF7861"
+        android:textColor="#F6F4F4"
         android:textSize="20dp"
         android:textStyle="bold"
         android:text="No No  การุณาเข้าสู่ระบบก่อนน้า" />
