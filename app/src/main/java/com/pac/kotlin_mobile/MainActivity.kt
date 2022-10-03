@@ -2,9 +2,14 @@ package com.pac.kotlin_mobile
 
 
 
+
+
+
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -12,28 +17,37 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toolbar
+
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-
-
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
-import java.io.File
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
      var Select_Page : Int = R.id.page_1
+    var URL_API = URL.URL_API
+    var image_profile  = "@drawable/user"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("Event","onCreate")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        getData()
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.elevation = 0.0F
+
 //        val view: View = supportActionBar!!.customView
 //        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 //        var name =  AUTH.getString("id","")
@@ -50,7 +64,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        Log.i("Events","")
 
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
@@ -114,18 +127,79 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.btnImageSelect.setOnClickListener {
-//            openImageChooser()
-//        }
-//
-//        binding.btnImageUpload.setOnClickListener {
-//            uploadImage()
-//        }
+
+//        Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
 
     }
+    fun getData(){
+        var api : UserAPI =   Retrofit.Builder()
+            .baseUrl(URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(UserAPI::class.java)
+        api.Profile(
+            AUTH.getString("id","")!!
+
+        ).enqueue(object : Callback<Profile> {
+
+            override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                if (response.isSuccessful()){
+
+                    image_profile =  URL_API +response.body()?.image_profile.toString()
+                    Log.i("Event","${image_profile }")
+                }
+
+            }
+
+            override fun onFailure(call: Call<Profile>, t: Throwable) {
+                Log.i("Events","${t.message}")
+            }
 
 
+        })
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        val settingsItem = menu?.findItem(R.id.menu2)
+
+        var api : UserAPI =   Retrofit.Builder()
+            .baseUrl(URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(UserAPI::class.java)
+        api.Profile(
+            AUTH.getString("id","")!!
+
+        ).enqueue(object : Callback<Profile> {
+
+            override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                if (response.isSuccessful()){
+                    Glide.with(this@MainActivity).asBitmap()
+                        .load(URL_API +response.body()?.image_profile.toString())
+                        .circleCrop()
+                        .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+
+                                settingsItem?.icon = BitmapDrawable(resources, resource)
+
+                            }
+
+                        })
+                }
+
+            }
+
+            override fun onFailure(call: Call<Profile>, t: Throwable) {
+                Log.i("Events","${t.message}")
+            }
+
+
+        })
+        return super.onPrepareOptionsMenu(menu)
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+
         menuInflater.inflate(R.menu.top_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
@@ -143,7 +217,6 @@ class MainActivity : AppCompatActivity() {
 
                 startActivityForResult(intent ,1)
             }
-
 
         }
         return super.onOptionsItemSelected(item)

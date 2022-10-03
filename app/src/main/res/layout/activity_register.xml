@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".RegisterActivity">
+    tools:context=".RegisterFragment">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -87,7 +87,6 @@
         android:layout_centerInParent="true"
         android:onClick="change_to_login"
         android:layout_marginTop="30dp"/>
-
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"

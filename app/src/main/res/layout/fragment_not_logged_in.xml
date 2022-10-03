@@ -15,7 +15,7 @@
         android:textColor="#F6F4F4"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:text="No No  การุณาเข้าสู่ระบบก่อนน้า" />
+        android:text="No No กรุณาเข้าสู่ระบบก่อนน้า" />
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/catno"
         android:layout_marginTop="20dp"
