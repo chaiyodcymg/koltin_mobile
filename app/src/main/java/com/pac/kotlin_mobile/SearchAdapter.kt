@@ -26,8 +26,9 @@ class SearchAdapter(val items: ArrayList<Cat_search>, val context: Context):
         val binding_holder = holder.binding
 
       binding_holder.id.text = "รหัสแมว ${items[position].id}"
-        binding_holder.color.text = "สี ${items[position].name}"
+        binding_holder.name.text = "ชื่อ ${items[position].name}"
         binding_holder.species.text = "สายพันธุ์ ${items[position].species}"
+        binding_holder.color.text = "สี${items[position].color}"
     }
 
     override fun getItemCount(): Int {

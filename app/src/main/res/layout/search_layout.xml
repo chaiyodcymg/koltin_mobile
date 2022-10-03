@@ -13,7 +13,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="103dp"
 
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp">
@@ -48,12 +48,13 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/color"
+                            android:id="@+id/name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="สี "
+                            android:text="ชื่อ "
                             android:textSize="15sp"
                             android:textStyle="bold" />
+
 
                         <TextView
                             android:id="@+id/species"
@@ -62,13 +63,21 @@
                             android:text="สายพันธ์ "
                             android:textSize="15sp"
                             android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/color"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="สี "
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
                 </TableRow>
             </TableLayout>
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="80dp"
-                android:layout_height="95dp"
+                android:layout_width="99dp"
+                android:layout_height="145dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="-12dp"
                 android:background="#DF7861"
@@ -78,8 +87,8 @@
                 android:layout_width="48dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginRight="12dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="18dp"
                 android:src="@drawable/shelter" />
         </androidx.cardview.widget.CardView>
 

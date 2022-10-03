@@ -20,7 +20,7 @@ data class Cat(
     val notice_ponit: String,
     val phone: String,
     val place_to_found: String,
-    val post_adress: String,
+    val post_address: String,
     val post_id: Int,
     val province: String,
     val species: String,
