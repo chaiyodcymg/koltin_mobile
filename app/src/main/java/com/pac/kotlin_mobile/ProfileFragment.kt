@@ -103,7 +103,10 @@ class ProfileFragment : Fragment() {
             })
     }
 
-
+    override fun onResume() {
+        super.onResume()
+        getData()
+    }
 
 
 
