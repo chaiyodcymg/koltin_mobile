@@ -14,6 +14,7 @@
       android:text="แก้ไขข้อมูลส่วนตัว"
       android:textSize="20sp"
       android:textStyle="bold"
+
       android:textColor="@color/black"/>
   <LinearLayout
       android:layout_width="match_parent"
@@ -23,16 +24,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="* เพิ่มรูปภาพ"
+        android:text="* แก้ไขรูปภาพ"
         android:textSize="13sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginRight="110dp"
         android:textColor="@color/black"/>
     <de.hdodenhof.circleimageview.CircleImageView
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/image_selected"
-        android:layout_width="100dp"
+        android:layout_width="120dp"
         android:layout_height="100dp"
         app:civ_border_color="#FF000000"
         android:src="@drawable/user_black"
@@ -59,6 +60,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:paddingLeft="20dp"
+        android:maxLength="30"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
         android:background="@drawable/radius_layout"
@@ -67,10 +69,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="* ชื่อ"
+        android:maxLength="30"
         android:textSize="13sp"
         android:textStyle="bold"
         android:layout_marginTop="20dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginRight="130dp"
         android:textColor="@color/black"/>
     <EditText
         android:hint="ชื่อ"
@@ -78,6 +81,7 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:paddingLeft="20dp"
+        android:maxLength="30"
         android:layout_marginTop="10dp"
         android:inputType="textPersonName"
         android:background="@drawable/radius_layout"
@@ -101,5 +105,26 @@
         android:inputType="textPersonName"
         android:background="@drawable/radius_layout"
         android:textSize="15sp"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="บันทึก"
+        android:textSize="18dp"
+        android:textColor="#423F3F"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/radius3_layout"/>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="ยกเลิก"
+        android:textSize="18dp"
+        android:textColor="#423F3F"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/radius_layout"/>
   </LinearLayout>
 </LinearLayout>

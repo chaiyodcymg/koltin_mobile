@@ -19,23 +19,31 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
      var Select_Page : Int = R.id.page_1
-
+    var URL_API = URL.URL_API
+    var image_profile  = "@drawable/user"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.i("Event","onCreate")
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
+        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        getData()
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
+
 //        val view: View = supportActionBar!!.customView
 //        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 //        var name =  AUTH.getString("id","")
@@ -52,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        Log.i("Events","")
 
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
@@ -120,21 +127,69 @@ class MainActivity : AppCompatActivity() {
 //        Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
 
     }
+    fun getData(){
+        var api : UserAPI =   Retrofit.Builder()
+            .baseUrl(URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(UserAPI::class.java)
+        api.Profile(
+            AUTH.getString("id","")!!
 
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
-        val settingsItem = menu?.findItem(R.id.menu2)
-        val url = "https://scontent.fkkc3-1.fna.fbcdn.net/v/t39.30808-6/265037037_4583606948423513_6845078172086085211_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=qSn7n1KyrkEAX_n6yOe&_nc_ht=scontent.fkkc3-1.fna&oh=00_AT-rBE3BXnwQJa0MI98UenOeWyLHa_Amyf4hklF_egP4Eg&oe=633F670E"
-        Glide.with(this).asBitmap()
-            .load(url)
-            .circleCrop()
-            .into(object : SimpleTarget<Bitmap?>(100, 100) {
-                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+        ).enqueue(object : Callback<Profile> {
 
-                    settingsItem?.icon = BitmapDrawable(resources, resource)
+            override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                if (response.isSuccessful()){
 
+                    image_profile =  URL_API +response.body()?.image_profile.toString()
+                    Log.i("Event","${image_profile }")
                 }
 
-            })
+            }
+
+            override fun onFailure(call: Call<Profile>, t: Throwable) {
+                Log.i("Events","${t.message}")
+            }
+
+
+        })
+    }
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val settingsItem = menu?.findItem(R.id.menu2)
+
+        var api : UserAPI =   Retrofit.Builder()
+            .baseUrl(URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(UserAPI::class.java)
+        api.Profile(
+            AUTH.getString("id","")!!
+
+        ).enqueue(object : Callback<Profile> {
+
+            override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
+                if (response.isSuccessful()){
+                    Glide.with(this@MainActivity).asBitmap()
+                        .load(URL_API +response.body()?.image_profile.toString())
+                        .circleCrop()
+                        .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                            override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+
+                                settingsItem?.icon = BitmapDrawable(resources, resource)
+
+                            }
+
+                        })
+                }
+
+            }
+
+            override fun onFailure(call: Call<Profile>, t: Throwable) {
+                Log.i("Events","${t.message}")
+            }
+
+
+        })
         return super.onPrepareOptionsMenu(menu)
     }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
