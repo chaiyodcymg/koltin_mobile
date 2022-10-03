@@ -194,6 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:inputType="text"
+                    android:gravity="top"
                     android:background="@drawable/round"
                     android:textSize="20sp"/>
             </com.google.android.material.textfield.TextInputLayout>

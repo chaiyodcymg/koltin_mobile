@@ -3,133 +3,182 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MyPostFragment">
-
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:id="@+id/myposttext"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="โพสต์ของฉัน"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"
-        android:layout_marginTop="20dp"
-        />
-
-    <androidx.cardview.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
+    tools:context=".MyPostFragment"
+    android:background="@color/grey">
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="280dp"
-        card_view:cardCornerRadius="30dp"
-        android:layout_below="@+id/myposttext"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
+        android:layout_height="match_parent">
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_mypost"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            card_view:cardCornerRadius="30dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginBottom="-60dp"
             >
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/image_cat"
-                android:layout_marginTop="35dp"
-                android:layout_marginLeft="15dp"
-                android:layout_width="120dp"
-                android:layout_height="120dp"
-                android:src="@drawable/cat"
-                app:civ_border_color="#FF000000"/>
-            <LinearLayout
-                android:layout_width="230dp"
+            <TextView
+                android:id="@+id/my_post_text"
+                android:gravity="center_horizontal"
+                android:layout_width="190dp"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:text="โพสต์ของฉัน"
+                android:textSize="20sp"
+                android:background="#DF7861"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_checkpost"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            card_view:cardCornerRadius="30dp"
+            android:layout_marginBottom="-60dp"
+            android:layout_toRightOf="@+id/card_mypost"
+            >
+            <TextView
+                android:id="@+id/check_post_text"
+                android:gravity="center_horizontal"
+                android:layout_width="190dp"
+                android:layout_height="100dp"
+                android:padding="10dp"
+                android:text="ตรวจสอบโพสต์"
+                android:textSize="20sp"
+                android:background="@color/white"/>
+        </androidx.cardview.widget.CardView>
+        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_mypost2"
+            android:layout_width="380dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/card_mypost"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="-50dp"
+            android:elevation="2dp"
+            card_view:cardCornerRadius="30dp"
+            >
+            <RelativeLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:id="@+id/card"
-               >
-                <TextView
-                    android:id="@+id/cat_name"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="ชื่อ :"/>
-                <TextView
-                    android:id="@+id/cat_color"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="สี :"/>
-                <TextView
-                    android:id="@+id/cat_species"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="สายพันธ์ :"/>
-                <TextView
-                    android:id="@+id/cat_vacine"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="วัคซีนที่เคยได้รับ :"/>
-                <TextView
-                    android:id="@+id/cat_info"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="ข้อมูลสัตว์ :"/>
-                <TextView
-                    android:id="@+id/cat_contact"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="ติดต่อ :"/>
-                <TextView
-                    android:id="@+id/cat_phone"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginLeft="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="เบอร์โทร :"/>
+                android:background="#DF7861">
+            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginBottom="10dp"
+                card_view:cardCornerRadius="30dp"
+                >
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/image_cat"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="35dp"
+                        android:src="@drawable/cat"
+                        app:civ_border_color="#FF000000" />
+
+                    <LinearLayout
+                        android:id="@+id/card"
+                        android:layout_width="230dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/cat_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="15dp"
+                            android:text="ชื่อ :" />
+
+                        <TextView
+                            android:id="@+id/cat_color"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="สี :" />
+
+                        <TextView
+                            android:id="@+id/cat_species"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="สายพันธ์ :" />
+
+                        <TextView
+                            android:id="@+id/cat_vacine"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="วัคซีนที่เคยได้รับ :" />
+
+                        <TextView
+                            android:id="@+id/cat_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="ข้อมูลสัตว์ :" />
+
+                        <TextView
+                            android:id="@+id/cat_contact"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="ติดต่อ :" />
+
+                        <TextView
+                            android:id="@+id/cat_phone"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:text="เบอร์โทร :" />
+
+                    </LinearLayout>
+                </LinearLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
                     >
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/delete_post"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
-                        android:textColor="@color/black"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/round_outline"
-                        android:text="ลบ">
-                    </androidx.appcompat.widget.AppCompatButton>
+                        android:text="ลบโพสต์"
+                        android:textColor="@color/white" />
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/edit_post"
                         android:layout_width="100dp"
                         android:layout_height="40dp"
-                        android:layout_marginLeft="15dp"
-                        android:textColor="@color/black"
+                        android:layout_marginLeft="30dp"
+                        android:layout_toRightOf="@+id/delete_post"
                         android:background="@drawable/round_green"
-                        android:text="แก้ไข">
-                    </androidx.appcompat.widget.AppCompatButton>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-</RelativeLayout>
-
-
-
+                        android:text="แก้ไข"
+                        android:textColor="@color/white" />
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
 </FrameLayout>
