@@ -34,4 +34,5 @@ data class Cat_search(
     val id: Int,
     val color: String,
     val species: String,
+    val name: String,
 )
