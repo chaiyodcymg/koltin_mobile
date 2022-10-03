@@ -5,18 +5,20 @@
       <map>
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/action_bar_search.xml" value="0.1923899102180419" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/activity_login.xml" value="0.20521590423257802" />
-        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/activity_profile.xml" value="0.20885416666666667" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/activity_register.xml" value="0.20521590423257802" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/activity_search.xml" value="0.2" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/custom_action_bar_layout.xml" value="0.20885416666666667" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/dropdown_item.xml" value="0.20521590423257802" />
+        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_activity_details.xml" value="0.536" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_add__cat_findhouse.xml" value="0.20521590423257802" />
+        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_add_cat_findhouse2.xml" value="0.20521590423257802" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_add_news.xml" value="0.20521590423257802" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_add_post.xml" value="0.20885416666666667" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_catfindhome_more.xml" value="0.20521590423257802" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_edit_profile.xml" value="0.20521590423257802" />
-        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_home.xml" value="0.24366041896361632" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_login.xml" value="0.20885416666666667" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_missing_cat.xml" value="0.20521590423257802" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_my_post.xml" value="0.20885416666666667" />
@@ -24,7 +26,7 @@
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_not_logged_in.xml" value="0.20885416666666667" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_profile.xml" value="0.20885416666666667" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/fragment_register.xml" value="0.20885416666666667" />
-        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.264" />
+        <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.176" />
         <entry key="..\:/MBPRO/kotlin_mobile/app/src/main/res/layout/sss.xml" value="0.17101325352714836" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
@@ -55,5 +57,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
