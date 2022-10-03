@@ -47,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL) )
+       
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
