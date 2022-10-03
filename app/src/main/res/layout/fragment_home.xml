@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginBottom="50dp">
+            android:layout_marginBottom="100dp">
             <!--      ข่าว      -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/news_box"
@@ -28,7 +28,7 @@
                 app:cardMaxElevation="12dp"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
-                android:layout_marginTop="50dp">
+                android:layout_marginTop="30dp">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -149,6 +149,7 @@
                     android:layout_gravity="right"
                     android:layout_marginRight="30dp"
                     android:drawableRight="@drawable/right_arrow"
+                    android:drawableTint="#DF7861"
                     />
             </LinearLayout>
             <LinearLayout
@@ -212,6 +213,7 @@
 
                 </LinearLayout>
                 <TextView
+                    android:id="@+id/missing_cat"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ดูเพิ่มเติม"
@@ -219,7 +221,7 @@
                     android:layout_gravity="right"
                     android:layout_marginRight="30dp"
                     android:drawableRight="@drawable/right_arrow"
-                    android:onClick="seemorehomeless"
+                    android:drawableTint="#DF7861"
                     />
             </LinearLayout>
 
