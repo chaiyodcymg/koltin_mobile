@@ -64,12 +64,8 @@ class ProfileFragment : Fragment() {
         }
 
         binding.btnChangeToEdit.setOnClickListener {
-            var binding: ActivityProfileBinding
-            binding = ActivityProfileBinding.inflate(layoutInflater)
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(binding.frameLayout.id, EditProfileFragment())
-            transaction.addToBackStack(null)
-            transaction.commit()
+            val  intent = Intent(requireActivity().applicationContext, EditProfileActivity::class.java)
+            startActivity(intent)
         }
         return binding.root
     }
@@ -79,8 +75,10 @@ class ProfileFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(UserAPI::class.java)
-        api.Profile(AUTH.getString("id","")!!)
-            .enqueue(object : Callback<Profile> {
+        api.Profile(
+            AUTH.getString("id","")!!
+
+        ).enqueue(object : Callback<Profile> {
 
                 override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
                     if (response.isSuccessful()){
