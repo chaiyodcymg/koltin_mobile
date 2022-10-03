@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
 import com.pac.kotlin_mobile.databinding.FragmentNewsBinding
 
@@ -29,8 +30,22 @@ class NewsFragment : Fragment() {
     ): View? {
 
         binding = FragmentNewsBinding.inflate(layoutInflater)
-        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-        var role =  AUTH.getString("role","")
+        binding.fab.setOnClickListener() {
+            var addnews: Fragment? = null
+            addnews = AddNewsFragment()
+            replaceFragment(addnews)
+        }
+
         return binding.root
     }
+
+    fun replaceFragment(someFragment:Fragment){
+        var binding: FragmentNewsBinding
+        binding = FragmentNewsBinding.inflate(layoutInflater)
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(binding.frameLayout.id, someFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
 }

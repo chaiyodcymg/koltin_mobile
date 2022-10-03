@@ -20,7 +20,6 @@
             android:text="หัวข้อเรื่อง"
             android:gravity="center|top"
             android:textSize="30dp"
-            android:fontFamily="@font/mipie"
             android:textStyle="bold"
             />
 
@@ -54,6 +53,7 @@
             android:layout_height="150dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="#f1f1f1"
             android:text="เพิ่มรูปภาพ"
             android:onClick=""
             >
@@ -90,8 +90,11 @@
                 android:id="@+id/newstext"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textLongMessage"
-                android:textSize="15sp"/>
+                android:inputType="textMultiLine"
+                android:textSize="15sp"
+                android:scrollbars="vertical"
+                android:gravity="top"
+                />
         </com.google.android.material.textfield.TextInputLayout>
 
         <androidx.appcompat.widget.AppCompatButton
@@ -104,6 +107,7 @@
             android:textColor="@color/white"
             android:textStyle="bold"
             android:textSize="18dp"
+            android:layout_marginBottom="100dp"
             />
     </LinearLayout>
 </ScrollView>

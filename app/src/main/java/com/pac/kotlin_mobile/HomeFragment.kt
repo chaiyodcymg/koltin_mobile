@@ -29,9 +29,15 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
         binding.seemoreCat.setOnClickListener() {
-            var fragment: Fragment? = null
-            fragment = catfindhome_more()
-            replaceFragment(fragment)
+            var seemorefragment: Fragment? = null
+            seemorefragment = catfindhome_more()
+            replaceFragment(seemorefragment)
+        }
+
+        binding.missingCat.setOnClickListener() {
+            var missingCatfragment: Fragment? = null
+            missingCatfragment = missing_cat()
+            replaceFragment(missingCatfragment)
         }
         return binding.root
     }
