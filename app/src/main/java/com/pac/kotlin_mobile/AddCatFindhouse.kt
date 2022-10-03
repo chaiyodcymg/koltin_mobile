@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.pac.kotlin_mobile.databinding.FragmentAddCatFindhouse2Binding
-import com.pac.kotlin_mobile.databinding.FragmentAddCatFindhouseBinding
 import com.pac.kotlin_mobile.databinding.FragmentAddPostBinding
 
 // TODO: Rename parameter arguments, choose names that match
