@@ -30,6 +30,7 @@ class ProfileActivity : AppCompatActivity() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.custom_action_bar_layout)
+        supportActionBar!!.elevation = 0.0F
         val view = supportActionBar!!.customView
         val imageButton = view.findViewById<View>(R.id.action_bar_back)
         imageButton.setOnClickListener {
@@ -69,3 +70,6 @@ class ProfileActivity : AppCompatActivity() {
 
 
 }
+
+
+

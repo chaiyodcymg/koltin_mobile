@@ -2,21 +2,23 @@ package com.pac.kotlin_mobile
 
 
 
+
+
+
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.Bitmap
+import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-
-
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
-import java.io.File
 
 
 class MainActivity : AppCompatActivity() {
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.elevation = 0.0F
 //        val view: View = supportActionBar!!.customView
 //        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 //        var name =  AUTH.getString("id","")
@@ -113,16 +116,30 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        binding.btnImageSelect.setOnClickListener {
-//            openImageChooser()
-//        }
-//
-//        binding.btnImageUpload.setOnClickListener {
-//            uploadImage()
-//        }
+
+//        Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
 
     }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        val settingsItem = menu?.findItem(R.id.menu2)
+        val url = "https://scontent.fkkc3-1.fna.fbcdn.net/v/t39.30808-6/265037037_4583606948423513_6845078172086085211_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=qSn7n1KyrkEAX_n6yOe&_nc_ht=scontent.fkkc3-1.fna&oh=00_AT-rBE3BXnwQJa0MI98UenOeWyLHa_Amyf4hklF_egP4Eg&oe=633F670E"
+        Glide.with(this).asBitmap()
+            .load(url)
+            .circleCrop()
+            .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+
+                    settingsItem?.icon = BitmapDrawable(resources, resource)
+
+                }
+
+            })
+        return super.onPrepareOptionsMenu(menu)
+    }
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
+
+
         menuInflater.inflate(R.menu.top_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
