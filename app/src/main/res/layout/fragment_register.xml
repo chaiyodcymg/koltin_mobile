@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#FAAC9B"
+    android:background="#df7861"
     android:gravity="center"
     tools:context=".RegisterFragment">
     <androidx.appcompat.widget.AppCompatImageView
@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:text="มีบัญชีแล้ว"
         android:layout_marginTop="60dp"
-        android:textColor="#545959"/>
+        android:textColor="#1D1E1E"/>
     <TextView
         android:layout_toRightOf="@+id/haveregis"
         android:id="@+id/change_to_login"

@@ -35,6 +35,7 @@ class SearchActivity : AppCompatActivity() {
         supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
         supportActionBar!!.setDisplayShowCustomEnabled(true)
         supportActionBar!!.setCustomView(R.layout.action_bar_search)
+        supportActionBar!!.elevation = 0.0F
         val view = supportActionBar!!.customView
 
         val imageButton = view.findViewById<View>(R.id.action_bar_back)
