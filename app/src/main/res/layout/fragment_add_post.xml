@@ -5,7 +5,6 @@
     android:layout_height="match_parent"
     android:background="#DCD9D9"
     tools:context=".AddPostFragment">
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -97,4 +96,7 @@
     </RelativeLayout>
 
     </LinearLayout>
+
 </ScrollView>
+
+

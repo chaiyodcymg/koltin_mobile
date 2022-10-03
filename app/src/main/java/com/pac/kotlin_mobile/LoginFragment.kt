@@ -54,7 +54,7 @@ class LoginFragment : Fragment() {
                 .build()
                 .create(UserAPI::class.java)
 
-            var email =  binding.email.text.toString()
+            var email = binding.email.text.toString()
             var pass = binding.password.text.toString()
 
             api.Login(
