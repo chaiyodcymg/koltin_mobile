@@ -56,20 +56,21 @@
         android:hint="อีเมล:"
         android:id="@+id/email"
         android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:textSize="22sp"/>
     <TextView
         android:textColor="@color/black"
         android:hint="ชื่อ:"
         android:id="@+id/firstname"
         android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:textSize="22sp"/>
     <TextView
+        android:textColor="@color/black"
         android:hint="นามสกุล:"
         android:id="@+id/lastname"
         android:layout_width="200dp"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:textSize="22sp"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_image_upload"
