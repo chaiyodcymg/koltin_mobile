@@ -29,7 +29,7 @@
                     android:textSize="20sp"
                     />
             </androidx.cardview.widget.CardView>
-            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            <androidx.cardview.widget.CardView
                 android:id="@+id/card_checkpost"
                 android:layout_width="190dp"
                 android:layout_height="100dp"
@@ -39,15 +39,16 @@
                 android:layout_marginBottom="-60dp"
                 android:layout_toRightOf="@+id/card_mypost"
                 >
+
                 <TextView
                     android:id="@+id/check_post_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:background="#DF7861"
                     android:gravity="center_horizontal"
-                    android:layout_width="190dp"
-                    android:layout_height="100dp"
                     android:padding="10dp"
                     android:text="ตรวจสอบโพสต์"
-                    android:textSize="20sp"
-                    android:background="#DF7861"/>
+                    android:textSize="20sp" />
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_mypost2"
