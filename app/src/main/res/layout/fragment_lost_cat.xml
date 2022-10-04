@@ -186,6 +186,7 @@ android:layout_height="wrap_content">
             android:background="@drawable/round"
             />
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/select_vaccine_date"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:src="@drawable/calendar"
@@ -193,7 +194,6 @@ android:layout_height="wrap_content">
             android:layout_toRightOf="@+id/card_view"
             android:layout_marginTop="35dp"
             android:layout_marginLeft="110dp"
-            android:onClick="datepicker"
             />
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
@@ -305,6 +305,7 @@ android:layout_height="wrap_content">
             android:background="@drawable/round"
             />
         <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/select_date"
             android:layout_width="28dp"
             android:layout_height="28dp"
             android:src="@drawable/calendar"
@@ -312,7 +313,7 @@ android:layout_height="wrap_content">
             android:layout_toRightOf="@+id/card_view_place"
             android:layout_marginTop="35dp"
             android:layout_marginLeft="140dp"
-            android:onClick="datepicker"
+
             />
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="300dp"
@@ -440,7 +441,7 @@ android:layout_height="wrap_content">
             android:hint="รหัสไปรษณีย์"
             android:layout_marginTop="12dp"
             android:id="@+id/postcode"
-            android:layout_below="@+id/district"
+            android:layout_below="@+id/province"
             android:layout_centerInParent="true">
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/edtPostcode"
@@ -578,6 +579,7 @@ android:layout_height="wrap_content">
             android:layout_alignParentEnd="true"
             >
             <TextView
+                android:id="@+id/submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="เสร็จสิ้น"

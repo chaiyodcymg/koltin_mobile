@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.pac.kotlin_mobile.databinding.*
-import com.pac.kotlin_mobile.databinding.ActivityMainBinding
-import com.pac.kotlin_mobile.databinding.FragmentAddPostBinding
-import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
+
 
 
 class AddPostFragment : Fragment() {

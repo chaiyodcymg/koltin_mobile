@@ -1,59 +1,142 @@
 package com.pac.kotlin_mobile
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RadioButton
+import android.widget.Toast
+import com.pac.kotlin_mobile.databinding.ActivityMainBinding
+import com.pac.kotlin_mobile.databinding.FragmentAddCatFindhouse2Binding
+import com.pac.kotlin_mobile.databinding.FragmentLostCatBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [LostCatFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class LostCatFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding: FragmentLostCatBinding
+    var URL_API = URL.URL_API
+    lateinit var AUTH : SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
+
+
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_lost_cat, container, false)
+
+        binding = FragmentLostCatBinding.inflate(layoutInflater)
+        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        binding.selectVaccineDate.setOnClickListener {
+
+            val newDateFragment = DatePickerFragment()
+            val supportFragmentManager = activity?.supportFragmentManager
+            if (supportFragmentManager != null) {
+                newDateFragment.show(supportFragmentManager, "Date Picker")
+            }
+        }
+        binding.selectDate.setOnClickListener {
+
+            val newDateFragment = DatePickerPlace()
+            val supportFragmentManager = activity?.supportFragmentManager
+            if (supportFragmentManager != null) {
+                newDateFragment.show(supportFragmentManager, "Date Picker")
+            }
+        }
+
+//        binding.cancel.setOnClickListener {
+//            var fragment_post: Fragment? = null
+//            fragment_post = AddPostFragment()
+//            replaceFragment(fragment_post)
+//        }
+
+        binding.submit.setOnClickListener {
+
+            var selectID: Int = binding.gender.checkedRadioButtonId
+            var radioButtonChecked: RadioButton = requireView().findViewById(selectID)
+            var selectID2: Int = binding.radiogroup.checkedRadioButtonId
+            var radioButtonChecked2: RadioButton = requireView().findViewById(selectID2)
+            var case: Int = 0;
+            if(radioButtonChecked2.text.toString() == "แจ้งน้องแมวหาย"){
+                case = 1
+            }else{
+                case = 2
+            }
+            var status: Int = 0
+            var id =  AUTH.getString("id","")
+            val api: LostcatAPI = Retrofit.Builder()
+                .baseUrl(URL_API)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(LostcatAPI::class.java)
+            api.insertpost(
+                binding.edtName.text.toString(),
+                radioButtonChecked.text.toString(),
+                binding.edtColor.text.toString(),
+                binding.edtVacine.text.toString(),
+                binding.date.text.toString(),
+                binding.edtSpecies.text.toString(),
+                binding.edtMore.text.toString(),
+                binding.imageSelected.toString(),
+                binding.edtPlace.text.toString(),
+                binding.edtStreet.text.toString(),
+                binding.edtTown.text.toString(),
+                binding.edtDistrict.text.toString(),
+                binding.edtProvince.text.toString(),
+                binding.edtPostcode.text.toString(),
+                binding.dateplace.text.toString(),
+                binding.edtSpot.text.toString(),
+                binding.edtLostplace.text.toString(),
+                binding.edtNameperson.text.toString(),
+                binding.edtLastnameperson.text.toString(),
+                binding.edtPhone.text.toString(),
+                binding.edtEmail.text.toString(),
+                binding.edtLineid.text.toString(),
+                binding.edtFacebook.text.toString(),
+                case,
+                status,
+                id.toString().toInt()
+            ).enqueue(object : Callback<Lostcat> {
+                override fun onResponse(call: Call<Lostcat>, response: Response<Lostcat>) {
+                    if (response.isSuccessful) {
+                        Toast.makeText( activity, "Seccessfully Inserted",
+                            Toast.LENGTH_LONG).show()
+                        var fragment: Fragment? = null
+                        fragment = AddPostFragment()
+                        replaceFragment(fragment)
+                    } else {
+                        Toast.makeText(activity, " Insert Failure",
+                            Toast.LENGTH_LONG)
+                            .show()
+                    }
+                }
+
+                override fun onFailure(call: Call<Lostcat>, t: Throwable) {
+                    Toast.makeText(activity,"Error onFailure " + t.message,
+                        Toast.LENGTH_LONG).show()
+                }
+            })
+        }
+
+
+
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment LostCatFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            LostCatFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+
+    fun replaceFragment(someFragment:Fragment){
+        var binding: ActivityMainBinding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(binding.frameLayout.id, someFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
     }
+
 }
