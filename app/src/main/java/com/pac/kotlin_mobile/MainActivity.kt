@@ -47,28 +47,13 @@ class MainActivity : AppCompatActivity() {
 
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var id =  AUTH.getString("id","")
-        if(id != null){
+        if(id?.isNotEmpty() == true){
             getData()
         }
 
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
-
-//        val view: View = supportActionBar!!.customView
-//        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-//        var name =  AUTH.getString("id","")
-//        AUTH.edit{clear()}
-//        if(name != null && name.isNotEmpty()){
-//            val  intent = Intent(applicationContext, HomeActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent )
-//        }else{
-//            val intent = Intent(applicationContext, LoginActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent)
-//        }
-
 
 
 
@@ -244,14 +229,14 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
+
         var id =  AUTH.getString("id","")
-        if(id != null){
+        if(id?.isNotEmpty() == true){
             getData()
         }
     binding.bottomNavigation.selectedItemId =  Select_Page
 
 
-        binding.bottomNavigation.selectedItemId =  Select_Page
 //        if(select == R.id.page_2 ){
 //            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 //            var id =  AUTH.getString("id","")
