@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Add_Cat_findhouse">
+    tools:context=".AddNewsFragment">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -14,7 +14,7 @@
         android:layout_marginLeft="40dp"
         android:layout_marginRight="40dp">
         <TextView
-            android:id="@+id/newsname"
+            android:id="@+id/news_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="หัวข้อเรื่อง"
@@ -55,7 +55,6 @@
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="#f1f1f1"
             android:text="เพิ่มรูปภาพ"
-            android:onClick=""
             >
             <TextView
                 android:layout_width="match_parent"
@@ -87,7 +86,7 @@
             app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Chip"
             >
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/newstext"
+                android:id="@+id/news_text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:inputType="textMultiLine"
