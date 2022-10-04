@@ -1,6 +1,5 @@
 package com.pac.kotlin_mobile
 
-
 import android.app.Activity
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -12,14 +11,13 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.pac.kotlin_mobile.databinding.ActionBarSearchBinding
-import com.pac.kotlin_mobile.databinding.ActivityProfileBinding
 import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 class SearchActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchBinding
@@ -50,11 +48,11 @@ class SearchActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL) )
+       
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
-         binding_actionbar .setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding_actionbar .setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(search: String): Boolean {
                 Log.i("Events",search)
                 if(search.trim().isNotEmpty() && search.isNotEmpty()){
@@ -101,6 +99,3 @@ class SearchActivity : AppCompatActivity() {
 
 
 }
-
-
-

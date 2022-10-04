@@ -1,46 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="#DCD9D9"
     tools:context=".AddPostFragment">
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Add Posttt" />
-
-    <TextView
-        android:id="@+id/text_show"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="25sp"/>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/image_selected"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <TextView
+            android:id="@+id/posttext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="เรื่องที่แจ้ง"
+            android:textSize="25sp"
+            android:layout_marginTop="40dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#090909"
             />
+        <RelativeLayout
+            android:id="@+id/relapost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/posttext"
+            android:background="@color/white"
+            android:layout_marginTop="30dp">
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="60dp"
+                android:layout_height="70dp"
+                android:src="@drawable/cathouse"
+                android:layout_toLeftOf="@+id/find_house"
+                android:layout_marginRight="-10dp"
+                android:paddingLeft="10dp"
+                />
+            <TextView
+                android:id="@+id/find_house"
+                android:layout_width="300dp"
+                android:layout_height="70dp"
+                android:text="หาบ้านให้น้องเหมียว"
+                android:gravity="center_vertical"
+                android:layout_centerHorizontal="true"
+                android:paddingLeft="15dp"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="35dp"
+                android:layout_height="70dp"
+                android:src="@drawable/next"
+                android:layout_toRightOf="@+id/find_house"
+                android:layout_marginRight="-10dp"
+                android:paddingLeft="10dp"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/relapost2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/relapost"
+            android:background="@color/white"
+            android:layout_marginTop="15dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="45dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="-8dp"
+                android:layout_toLeftOf="@+id/find_cat"
+                android:paddingLeft="5dp"
+                android:src="@drawable/caticon" />
+        <TextView
+            android:id="@+id/find_cat"
+            android:layout_width="300dp"
+            android:layout_height="70dp"
+            android:text="น้องเหมียวหาย/พบน้องเหมียว"
+            android:gravity="center_vertical"
+            android:layout_centerHorizontal="true"
+            android:paddingLeft="15dp"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="35dp"
+                android:layout_height="70dp"
+                android:src="@drawable/next"
+                android:layout_toRightOf="@+id/find_cat"
+                android:layout_marginRight="-10dp"
+                android:paddingLeft="10dp"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
     </LinearLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_image_select"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="เลือกรูปภาพ"
 
-        />
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_image_upload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="อัปโหลดรูปภาพ"
+</ScrollView>
 
-        />
 
-</LinearLayout>

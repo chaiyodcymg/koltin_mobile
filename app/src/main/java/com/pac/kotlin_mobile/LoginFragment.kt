@@ -64,7 +64,7 @@ class LoginFragment : Fragment() {
             ).enqueue(object : Callback<Login> {
                 override fun onResponse(call: Call<Login>, response: retrofit2.Response<Login>) {
                     if (response.isSuccessful()) {
-                        Toast.makeText(activity?.applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity?.applicationContext,"เข้าสู่ระบบสำเร็จ", Toast.LENGTH_SHORT).show()
 
                         AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 
@@ -77,7 +77,7 @@ class LoginFragment : Fragment() {
                         var binding: ActivityProfileBinding
                         binding = ActivityProfileBinding.inflate(layoutInflater)
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                        transaction.replace(binding.frameLayout.id, ProfileFragment())
+                        transaction.replace(binding.frameLayout.id,ProfileFragment())
                         transaction.addToBackStack(null)
                         transaction.commit()
                     } else {
