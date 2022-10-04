@@ -31,7 +31,6 @@ class NewsFragment : Fragment() {
         binding = FragmentNewsBinding.inflate(layoutInflater)
         AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var role =  AUTH.getString("role","")
-        binding.show.text = role.toString()
         return binding.root
     }
 }
