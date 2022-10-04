@@ -52,35 +52,36 @@
                 android:gravity="center"
                 android:layout_marginTop="12dp"
                 />
-            <RadioGroup
-                android:id="@+id/gender"
-                android:layout_marginTop="12dp"
-                android:layout_below="@+id/namecat"
-                android:layout_toRightOf="@+id/rela"
-                android:layout_width="250dp"
-                android:layout_height="55dp"
-                android:paddingLeft="20dp"
-                android:layout_marginLeft="5dp"
-                android:background="@drawable/round"
-                >
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ผู้"
-                        android:textSize="18sp"
-                        />
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="เมีย"
-                        android:textSize="18sp"
-                        />
-                </LinearLayout>
-            </RadioGroup>
+
+
+
+                    <RadioGroup
+                        android:id="@+id/gender"
+                        android:layout_below="@+id/namecat"
+                        android:layout_toRightOf="@+id/rela"
+                        android:layout_width="250dp"
+                        android:layout_height="55dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/round"
+                        android:orientation="horizontal"
+                        android:paddingLeft="20dp">
+
+                        <androidx.appcompat.widget.AppCompatRadioButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ผู้"
+                            android:textSize="18sp" />
+                        <androidx.appcompat.widget.AppCompatRadioButton
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="เมีย"
+                            android:textSize="18sp" />
+
+                    </RadioGroup>
+
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="60dp"
@@ -139,7 +140,7 @@
                     android:layout_marginLeft="5dp"
                     />
             </androidx.cardview.widget.CardView>
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/date"
                 android:layout_width="215dp"
                 android:layout_height="55dp"
@@ -154,6 +155,7 @@
                 android:background="@drawable/round"
                 />
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/select_vaccine_date"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:src="@drawable/calendar"
@@ -161,7 +163,6 @@
                 android:layout_toRightOf="@+id/card_view"
                 android:layout_marginTop="35dp"
                 android:layout_marginLeft="110dp"
-                android:onClick="datepicker"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
@@ -464,6 +465,7 @@
                 android:layout_alignParentEnd="true"
                 >
                 <TextView
+                    android:id="@+id/submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="เสร็จสิ้น"

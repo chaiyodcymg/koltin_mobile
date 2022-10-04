@@ -28,7 +28,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     }
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
 // Display the selected date in text view
-        var tv : TextView? = activity?.findViewById(R.id.text_time)
+        var tv : TextView? = activity?.findViewById(R.id.date)
         tv!!.text = formatDate(year,month,day)
     }
     override fun onCancel(dialog: DialogInterface) {

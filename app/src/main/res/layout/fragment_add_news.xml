@@ -55,7 +55,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginBottom="10dp"
             android:text="เพิ่มรูปภาพ"
-            android:onClick=""
+
             >
             <TextView
                 android:layout_width="match_parent"
