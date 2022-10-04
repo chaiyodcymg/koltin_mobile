@@ -33,6 +33,11 @@ class HomeFragment : Fragment() {
             seemorefragment = catfindhome_more()
             replaceFragment(seemorefragment)
         }
+        binding.postShort.setOnClickListener() {
+            var detailfragment: Fragment? = null
+            detailfragment = catfindhome_more()
+            replaceFragment(detailfragment)
+        }
 
         binding.missingCat.setOnClickListener() {
             var missingCatfragment: Fragment? = null

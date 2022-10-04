@@ -77,7 +77,7 @@ class LoginFragment : Fragment() {
                         var binding: ActivityProfileBinding
                         binding = ActivityProfileBinding.inflate(layoutInflater)
                         val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                        transaction.replace(binding.frameLayout.id, ProfileFragment())
+                        transaction.replace(binding.frameLayout.id,ProfileFragment())
                         transaction.addToBackStack(null)
                         transaction.commit()
                     } else {
