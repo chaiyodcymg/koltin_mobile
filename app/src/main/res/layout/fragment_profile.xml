@@ -2,104 +2,95 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:background="#DF7861"
-    android:gravity="center"
+    android:gravity="top"
     tools:context=".ProfileFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/top_bar"
+        style="@style/Widget.MaterialComponents.Toolbar.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        app:layout_anchorGravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:text="CAT \nCARE"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold" />
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="245dp"
+            android:layout_height="93dp"
+            android:layout_marginTop="50dp"
+            android:src="@drawable/catpaw"
+            android:translationX="70dp"
+            />
+    </androidx.appcompat.widget.Toolbar>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@drawable/grad">
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/image_selected"
+            android:layout_marginTop="50dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:src="@drawable/grad"
+            app:civ_border_color="#FF000000"/>
+        <!--            <androidx.appcompat.widget.AppCompatImageView-->
+        <!--                android:id="@+id/image_selected"-->
+        <!--                android:layout_width="200dp"-->
+        <!--                android:layout_height="200dp"-->
+        <!--                android:src="@drawable/user_black"-->
+        <!--                />-->
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:textAlignment="center"
-            android:text="โปรไฟล์" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="220dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/image_selected"
-                android:layout_marginTop="15dp"
-                android:layout_width="180dp"
-                android:layout_height="180dp"
-                android:src="@drawable/user_black"
-
-                app:civ_border_color="#FF000000"/>
-<!--            <androidx.appcompat.widget.AppCompatImageView-->
-<!--                android:id="@+id/image_selected"-->
-<!--                android:layout_width="200dp"-->
-<!--                android:layout_height="200dp"-->
-<!--                android:src="@drawable/user_black"-->
-<!--                />-->
-        </LinearLayout>
-    </LinearLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="อีเมล"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
+            android:layout_marginTop="30dp"
+            android:textColor="@color/black"
+            android:hint="อีเมล:"
             android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="ชื่อ"
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:textSize="22sp"/>
+        <TextView
+            android:textColor="@color/black"
+            android:hint="ชื่อ:"
             android:id="@+id/firstname"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:hint="นามสกุล"
-
-        android:layout_marginTop="12dp">
-        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:textSize="22sp"/>
+        <TextView
+            android:textColor="@color/black"
+            android:hint="นามสกุล:"
             android:id="@+id/lastname"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:textSize="22sp"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_change_to_edit"
+            android:layout_marginTop="10dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
-
-            android:textSize="20sp"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_image_upload"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="#2B2828"
             android:text="แก้ไขข้อมูลโปรไฟล์"
+            android:background="@drawable/radius_layout"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="60dp"
+            android:id="@+id/btnLogout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/radius3_layout"
+            android:text="ออกจากระบบ" />
+    </LinearLayout>
 
-        />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginTop="10dp"
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="ออกจากระบบ"
-
-        />
 </LinearLayout>

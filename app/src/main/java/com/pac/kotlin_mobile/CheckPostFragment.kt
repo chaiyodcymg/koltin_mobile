@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
-
+import com.pac.kotlin_mobile.databinding.FragmentCheckPostBinding
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
 
 // TODO: Rename parameter arguments, choose names that match
@@ -16,19 +16,19 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [MyPostFragment.newInstance] factory method to
+ * Use the [CheckPostFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class MyPostFragment : Fragment() {
-    private lateinit var binding: FragmentMyPostBinding
+class CheckPostFragment : Fragment() {
+    private lateinit var binding: FragmentCheckPostBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyPostBinding.inflate(layoutInflater)
-        binding.checkPostText.setOnClickListener {
+        binding = FragmentCheckPostBinding.inflate(layoutInflater)
+        binding.myPostText.setOnClickListener {
             var fragment: Fragment? = null
-            fragment = CheckPostFragment()
+            fragment = MyPostFragment()
             replaceFragment(fragment)
         }
         return binding.root

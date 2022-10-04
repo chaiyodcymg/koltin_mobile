@@ -42,8 +42,6 @@ data class Profile(
     @Expose
     @SerializedName("email") val email: String,
 
-    @Expose
-    @SerializedName("name")val name: String,
 
     @Expose
     @SerializedName("firstname")val firstname: String,

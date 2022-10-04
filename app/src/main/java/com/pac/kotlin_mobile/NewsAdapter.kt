@@ -23,8 +23,8 @@ class NewsAdapter(val items :List<Search>, val context: Context):
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding_holder = holder.binding
 
-//        binding_holder.tvID.text =  items[position].firstname
-//        binding_holder.tvName.text = items[position].lastname
+        binding_holder.tvID.text =  items[position].firstname
+        binding_holder.tvName.text = items[position].lastname
     }
 
     override fun getItemCount(): Int {

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".activity_details">
+
+    <LinearLayout
+        android:layout_width="436dp"
+        android:layout_height="638dp"
+        android:orientation="vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_selected"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cat"
+            app:civ_border_color="#FF000000" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:hint="รหัสแมว : 123 "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/color"
+            android:layout_width="323dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:hint="สี : ส้ม"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/species"
+            android:layout_width="327dp"
+            android:layout_height="45dp"
+            android:layout_marginLeft="30dp"
+            android:hint="สายพันธ์ุ : ไทย"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="332dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:hint="วัคซีนที่เคยได้รับ :"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:hint="ข้อมูล :"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+
+            android:layout_width="363dp"
+            android:layout_height="110dp"
+            android:layout_marginLeft="30dp"
+            android:hint="อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น) **เหมาะกับคนมีเวลา**
+             ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน มีปัญหาสุขภาพส่วนตัวนิดหน่อยอยากให้พี่ๆ เข้าใจแล้วรับหนูไปดูแล *** เป็นอาการเกี่ยวกับเส้นประสาทส่วนก้น อึ ฉี่ หลุดบ่อย มียาที่ต้องกินตลอดชีวิต ***"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+        <TextView
+
+            android:layout_width="200dp"
+            android:layout_height="35dp"
+            android:layout_marginLeft="30dp"
+            android:hint="สนใจอุปการะ ติดต่อ"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:hint="0943208792"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/radius_btnav"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:menu="@menu/bottom_navigation_menu" />
+
+</LinearLayout>
