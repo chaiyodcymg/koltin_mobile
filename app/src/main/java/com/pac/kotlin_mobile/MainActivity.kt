@@ -11,7 +11,6 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -31,10 +30,14 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
+
      var Select_Page : Int = R.id.page_1
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
+
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -93,7 +96,7 @@ class MainActivity : AppCompatActivity() {
 
                     Select_Page = R.id.page_2
                     AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-                     var id =  AUTH.getString("id","")
+                    var id =  AUTH.getString("id","")
                     if(id != null && id.isNotEmpty()){
                         supportFragmentManager.beginTransaction().replace(
                             R.id.frameLayout,
@@ -163,7 +166,9 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
-    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+
+
+    override fun onPrepareOptionsMenu(menu: Menu): Boolean {
         val settingsItem = menu?.findItem(R.id.menu2)
 
         var api : UserAPI =   Retrofit.Builder()
@@ -208,7 +213,6 @@ class MainActivity : AppCompatActivity() {
         menuInflater.inflate(R.menu.top_menu, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu1 -> {
@@ -245,6 +249,25 @@ class MainActivity : AppCompatActivity() {
             getData()
         }
     binding.bottomNavigation.selectedItemId =  Select_Page
+
+
+        binding.bottomNavigation.selectedItemId =  Select_Page
+//        if(select == R.id.page_2 ){
+//            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+//            var id =  AUTH.getString("id","")
+//            if(id != null && id.isNotEmpty()){
+//                supportFragmentManager.beginTransaction().replace(
+//                    R.id.frameLayout,
+//                    AddPostFragment()
+//                ).commit()
+//            }else{
+//                supportFragmentManager.beginTransaction().replace(
+//                    R.id.frameLayout,
+//                    NotLoggedInFragment()
+//                ).commit()
+//
+//            }
+//        }
 
 
 
