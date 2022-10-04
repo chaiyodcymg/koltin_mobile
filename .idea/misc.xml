@@ -3,48 +3,29 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/grad.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/radius2_layout.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/radius3_layout.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/radius_btnav.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/radius_layout.xml" value="0.156" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/action_bar_search.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_edit_profile.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_login.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_profile.xml" value="0.2341485507246377" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_register.xml" value="0.2" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/activity_search.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/custom_action_bar_layout.xml" value="0.25416666666666665" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_add_post.xml" value="0.25416666666666665" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_home.xml" value="0.12360688956433637" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_login.xml" value="0.10676974508984538" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_my_post.xml" value="0.12360688956433637" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_news.xml" value="0.20652173913043478" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_not_logged_in.xml" value="0.2" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_profile.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/fragment_register.xml" value="0.2" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/grad.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/radius2_layout.xml" value="0.12360688956433637" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/radius3_layout.xml" value="0.10648148148148148" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/radius_btnav.xml" value="0.1" />
-        <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/grad.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius2_layout.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius3_layout.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius_btnav.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius_layout.xml" value="0.2425" />
+        <entry key="app/src/main/res/layout/action_bar_search.xml" value="0.9" />
+        <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.16259057971014493" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.11727456940222898" />
+        <entry key="app/src/main/res/layout/activity_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11854103343465046" />
-        <entry key="app/src/main/res/layout/activity_search.xml" value="0.11727456940222898" />
+        <entry key="app/src/main/res/layout/activity_search.xml" value="0.25" />
         <entry key="app/src/main/res/layout/custom_action_bar_layout.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_add_post.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_check_post.xml" value="0.10555555555555556" />
+        <entry key="app/src/main/res/layout/fragment_edit_profile.xml" value="0.3177083333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_my_post.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/fragment_not_logged_in.xml" value="0.10833333333333334" />
-        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.11727456940222898" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.11727456940222898" />
         <entry key="app/src/main/res/layout/search_layout.xml" value="0.20833333333333334" />
@@ -59,12 +40,5 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
-  </component>
-  <component name="VisualizationToolProject">
-    <option name="state">
-      <ProjectState>
-        <option name="scale" value="0.264" />
-      </ProjectState>
-    </option>
   </component>
 </project>

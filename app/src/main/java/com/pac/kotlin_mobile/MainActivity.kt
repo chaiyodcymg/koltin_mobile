@@ -39,7 +39,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-        getData()
+        var id =  AUTH.getString("id","")
+        if(id != null){
+            getData()
+        }
+
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
@@ -229,51 +233,17 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
-
+        var id =  AUTH.getString("id","")
+        if(id != null){
+            getData()
+        }
     binding.bottomNavigation.selectedItemId =  Select_Page
-//        if(select == R.id.page_2 ){
-//            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-//            var id =  AUTH.getString("id","")
-//            if(id != null && id.isNotEmpty()){
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.frameLayout,
-//                    AddPostFragment()
-//                ).commit()
-//            }else{
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.frameLayout,
-//                    NotLoggedInFragment()
-//                ).commit()
-//
-//            }
-//        }
+
 
 
     }
 
-    override fun onPause() {
-        super.onPause()
 
-        Log.i("Event","onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        Log.i("Event","onStop")
-    }
-
-    override fun onDestroy() {
-
-
-        Log.i("Event","onDestroy")
-
-//
-//        Log.i("Event","${Select_Page.getInt("id",0)}")
-        super.onDestroy()
-
-
-    }
 
 
 
