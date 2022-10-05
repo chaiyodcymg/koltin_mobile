@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:gravity="top"
+    android:background="#DCD9D9"
     tools:context=".ProfileFragment">
 
     <androidx.appcompat.widget.Toolbar
@@ -35,8 +35,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="vertical"
-        android:background="@drawable/grad">
+        android:orientation="vertical">
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/image_selected"
@@ -75,22 +74,20 @@
             android:textSize="22sp"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_change_to_edit"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textColor="#2B2828"
             android:text="แก้ไขข้อมูลโปรไฟล์"
-            android:background="@drawable/radius_layout"/>
+            android:background="@drawable/radius3_layout"/>
         <androidx.appcompat.widget.AppCompatButton
             android:layout_marginTop="20dp"
             android:layout_marginBottom="60dp"
             android:id="@+id/btnLogout"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/radius3_layout"
+            android:background="@drawable/radius2_layout"
             android:text="ออกจากระบบ" />
     </LinearLayout>
-
-
 </LinearLayout>
