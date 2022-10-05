@@ -230,7 +230,6 @@ class MainActivity : AppCompatActivity() {
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
-
         }else{
             Log.i("Event","ข้อมูลว่างง")
             val settingsItem =  this.menu?.findItem(R.id.menu2)
