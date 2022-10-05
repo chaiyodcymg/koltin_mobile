@@ -5,24 +5,28 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RelativeLayout
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.pac.kotlin_mobile.URL.URL_API
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
+import com.pac.kotlin_mobile.databinding.MypostLayoutBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class MyPostFragment : Fragment() {
     private lateinit var binding: FragmentMyPostBinding
-    val postlist = arrayListOf<Post>()
-    val api: Mypost_API = Retrofit.Builder()
+    private lateinit var bindingRV: MypostLayoutBinding
+    val postlist = arrayListOf<Postlist>()
+    var URL_API = URL.URL_API
+    val api: Cat_API = Retrofit.Builder()
         .baseUrl(URL_API)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-        .create(Mypost_API::class.java)
+        .create(Cat_API::class.java)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,28 +34,42 @@ class MyPostFragment : Fragment() {
     ): View? {
 
         binding = FragmentMyPostBinding.inflate(layoutInflater)
+        bindingRV = MypostLayoutBinding.inflate(layoutInflater)
+        binding.recyclerView.adapter = MyPostAdapter(this.postlist,requireActivity().applicationContext)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
         binding.checkPostText.setOnClickListener {
             var fragment: Fragment? = null
             fragment = CheckPostFragment()
             replaceFragment(fragment)
         }
 
-        val context = requireActivity().applicationContext
-//        binding.recyclerView.adapter = MyPostAdapter()
+//        bindingRV.deletePost.setOnClickListener {
+//           val myBuilder = AlertDialog.Builder(requireActivity())
+//            myBuilder.apply {
+//                setMessage("ลบ")
+//                setNegativeButton("Yes") {dialog, which ->
+//                    api.deletePost(id)
+//                        .enqueue(object : Callback<Cat> {
+//                            override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
+//                                if(response.isSuccessful) {
+//                                    Toast.makeText(requireActivity().applicationContext, "Successfully Deleted", Toast.LENGTH_LONG).show()
+//                                }
+//                            }
+//
+//                            override fun onFailure(call: Call<Cat>, t: Throwable) {
+//                                Toast.makeText(requireActivity().applicationContext, "Faill Deleted", Toast.LENGTH_LONG).show()
+//                            }
+//                        })
+//                }
+//                setPositiveButton("No") {dialog, which -> dialog.cancel()}
+//                show()
+//            }
+//        }
+
+
         return binding.root
     }
 
-//    override fun onViewCreated(itemView: View, savedInstanceState: Bundle?) {
-//
-//        super.onViewCreated(itemView, savedInstanceState)
-//        binding.recyclerView.apply {
-//            // set a LinearLayoutManager to handle Android
-//            // RecyclerView behavior
-//            binding.recyclerView.layoutManager = LinearLayoutManager(activity)
-//            // set the custom adapter to the RecyclerView
-//            adapter = MyPostAdapter( postlist, requireActivity().applicationContext)
-//        }
-//    }
 
         fun replaceFragment(someFragment: Fragment) {
             var binding: ActivityMainBinding
@@ -63,28 +81,32 @@ class MyPostFragment : Fragment() {
         }
 
 
-//    fun delete(v: View){
-//        val myBuilder = AlertDialog.Builder(this)
-//        myBuilder.apply {
-//            setTitle("Warning")
-//            setMessage("ต้องการลบโพสต์ใช่ไหมคะ ?")
-//            setNegativeButton("Yes") { dialog, which ->
-//                api.delete(id).equals(id.toInt())
-//                    .enqueue(object : Callback<Post> {
-//                        override fun onResponse(call: Call<Post>, response: Response<Post>) {
-//                            if (response.isSuccessful) {
-//                                Toast.makeText(applicationContext, "Successfully Deleted", Toast.LENGTH_LONG).show()
-//                            }
-//                        }
-//                        override fun onFailure(call: Call<Post>, t: Throwable) {
-//                            Toast.makeText(applicationContext, t.message, Toast.LENGTH_LONG).show()
-//                        }
-//                    })
-//
-//            }
-//            setPositiveButton ("No"){ dialog, which ->dialog.cancel()}
-//            show()
-//        }
-//    }
+    override fun onResume() {
+        super.onResume()
+        callpostData()
     }
+
+    fun callpostData () {
+        api.getMypost()
+            .enqueue(object : Callback<List<Cat>> {
+                override fun onResponse(call: Call<List<Cat>>, response:
+                Response<List<Cat>>
+                ) {
+                    response.body()?.forEach {
+                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine)) }
+//// Set Data to RecyclerRecyclerView
+
+                    binding.recyclerView.adapter = MyPostAdapter(postlist,requireContext())
+                }
+
+                override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
+                    Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                }
+
+            })
+    }
+
+
+    }
+
 
