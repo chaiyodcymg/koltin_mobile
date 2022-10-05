@@ -2,9 +2,6 @@ package com.pac.kotlin_mobile
 
 
 
-
-
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -39,7 +36,6 @@ class MainActivity : AppCompatActivity() {
     private var menu: Menu? = null
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -52,11 +48,8 @@ class MainActivity : AppCompatActivity() {
             getData()
         }
 
-
-        supportActionBar!!.setDisplayShowTitleEnabled(false)
+//        supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
-
-
 
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
@@ -196,6 +189,8 @@ class MainActivity : AppCompatActivity() {
         return super.onPrepareOptionsMenu(menu)
     }
 
+
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Log.i("Event","onCreateOptionsMenu")
 
@@ -233,7 +228,6 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
-
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
@@ -244,6 +238,8 @@ class MainActivity : AppCompatActivity() {
             settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
+
+
 
 
     }

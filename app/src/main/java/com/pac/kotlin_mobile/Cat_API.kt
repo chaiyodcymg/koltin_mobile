@@ -9,5 +9,5 @@ interface Cat_API {
     fun search(
         @Query("data") data: String
 
-        ): Call<List<Cat>>
+        ): Call<List<Lostcat>>
 }
