@@ -60,7 +60,7 @@
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:background="@drawable/radius_layout"
             android:textSize="20sp"
             android:maxLength="30"

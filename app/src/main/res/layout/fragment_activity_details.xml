@@ -2,46 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".ProfileFragment">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/top_bar"
-        style="@style/Widget.MaterialComponents.Toolbar.Primary"
-        android:layout_width="match_parent"
-        android:layout_height="175dp"
-        app:layout_anchorGravity="center">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="60dp"
-            android:text="CAT \nCARE"
-            android:textColor="@color/white"
-            android:textSize="35dp"
-            android:textStyle="bold" />
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="245dp"
-            android:layout_height="93dp"
-            android:layout_marginTop="85dp"
-            android:src="@drawable/catpaw"
-            android:translationX="70dp"
-            />
-    </androidx.appcompat.widget.Toolbar>
+    tools:context=".activity_details">
 
     <LinearLayout
         android:layout_width="436dp"
         android:layout_height="638dp"
-        android:background="#DCD9D9"
         android:orientation="vertical">
-
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/image_selected"
             android:layout_width="180dp"
-            android:layout_height="185dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:src="@drawable/cat"
             app:civ_border_color="#FF000000" />
@@ -53,7 +28,8 @@
             android:layout_gravity="center"
             android:hint="รหัสแมว : 123 "
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"/>
 
         <TextView
             android:id="@+id/color"
@@ -61,7 +37,7 @@
             android:layout_height="45dp"
             android:layout_marginLeft="30dp"
             android:hint="สี : ส้ม"
-            android:textColor="@color/black"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <TextView
