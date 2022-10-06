@@ -87,7 +87,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
 
 
         binding.deletePost.setOnClickListener{
-            //pass the 'context' here
+
             var URL_API = URL.URL_API
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
@@ -103,12 +103,13 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
                         .enqueue(object : Callback<Cat> {
                             override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
                                 if(response.isSuccessful) {
-                                    Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_LONG).show()
+                                    Toast.makeText(context, "Successfully Updated", Toast.LENGTH_LONG).show()
+
                                 }
                             }
 
                             override fun onFailure(call: Call<Cat>, t: Throwable) {
-                                Toast.makeText(context.applicationContext, "Faill Deleted", Toast.LENGTH_LONG).show()
+                                Toast.makeText(context.applicationContext, "Faill Updated", Toast.LENGTH_LONG).show()
                             }
                         })
                 }
@@ -126,3 +127,6 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         return items.size
     }
 }
+
+
+

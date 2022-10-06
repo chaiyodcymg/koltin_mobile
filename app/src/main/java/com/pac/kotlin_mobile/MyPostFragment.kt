@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -29,7 +30,7 @@ class MyPostFragment : Fragment() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(Cat_API::class.java)
-
+    lateinit var AUTH : SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -73,14 +74,15 @@ class MyPostFragment : Fragment() {
     }
 
 
-    fun replaceFragment(someFragment: Fragment) {
-        var binding: ActivityMainBinding
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(binding.frameLayout.id, someFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+
+        fun replaceFragment(someFragment: Fragment) {
+            var binding: ActivityMainBinding
+            binding = ActivityMainBinding.inflate(layoutInflater)
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(binding.frameLayout.id, someFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
 
 
     override fun onResume() {
@@ -109,4 +111,10 @@ class MyPostFragment : Fragment() {
     }
 
 
+
 }
+
+
+
+
+

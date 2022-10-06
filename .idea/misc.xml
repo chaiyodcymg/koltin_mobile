@@ -3,14 +3,63 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/projMobileYear32/kotlin_mobile/app/src/main/res/layout/mypost_layout.xml" value="0.19010416666666666" />
+=======
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/corner_while.xml" value="0.175" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/radius_btnav.xml" value="0.172" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/radius_layout.xml" value="0.1635" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/round_green.xml" value="0.1" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/action_bar_search.xml" value="0.1671875" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/activity_edit_post.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/activity_login.xml" value="0.2" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/activity_profile.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/activity_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/activity_search.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/corner_white.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/custom_action_bar_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/custom_topbar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/dropdown_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_add__cat_findhouse.xml" value="0.2" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_add_news.xml" value="0.23580786026200873" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_add_post.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_catfindhome_more.xml" value="0.1" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_check_post.xml" value="0.1" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_homeless_more.xml" value="0.1" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_login.xml" value="0.11302083333333333" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_missing_cat.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_my_post.xml" value="0.2" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_news.xml" value="0.1" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_news_info.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_not_logged_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_profile.xml" value="0.2" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/fragment_register.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/mypost_layout.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/news_layout.xml" value="0.264" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/radius_btnav.xml" value="0.140625" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/menu/top_menu.xml" value="0.25416666666666665" />
+>>>>>>> 52774e7ef02882a785db3c0211d03831356d7709
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
+  </component>
+>>>>>>> 52774e7ef02882a785db3c0211d03831356d7709
 </project>

@@ -9,7 +9,6 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
 import retrofit2.Call

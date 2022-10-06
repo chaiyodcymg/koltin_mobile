@@ -39,6 +39,7 @@ data class Cat_search(
     val species: String,
     val name: String,
     val image: String,
+
 )
 
 data class Postlist(
