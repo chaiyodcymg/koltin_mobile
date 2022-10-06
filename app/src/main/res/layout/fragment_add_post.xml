@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCD9D9"
+    android:background="@color/grey"
     tools:context=".AddPostFragment">
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,13 +34,14 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/radius3_layout">
+
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="60dp"
+                    android:layout_width="65dp"
                     android:layout_height="70dp"
-                    android:src="@drawable/cathouse"
-                    android:layout_toLeftOf="@+id/find_house"
                     android:layout_marginRight="-10dp"
+                    android:layout_toLeftOf="@+id/find_house"
                     android:paddingLeft="10dp"
+                    android:src="@drawable/cathouse"
 
                     />
 
@@ -76,7 +77,7 @@
                 >
 
                 <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="45dp"
+                    android:layout_width="35dp"
                     android:layout_height="70dp"
                     android:layout_marginRight="-8dp"
                     android:layout_toLeftOf="@+id/find_cat"
