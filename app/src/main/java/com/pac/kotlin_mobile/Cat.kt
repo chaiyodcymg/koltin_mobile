@@ -1,5 +1,8 @@
 package com.pac.kotlin_mobile
 
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
 data class Cat(
     val color: String,
     val created_at: String,
@@ -37,3 +40,22 @@ data class Cat_search(
     val name: String,
     val image: String,
 )
+
+data class Postlist(
+    @Expose
+    @SerializedName("id") val id: Int,
+
+    @Expose
+    @SerializedName("name") val name: String,
+
+    @Expose
+    @SerializedName("color") val color: String,
+
+    @Expose
+    @SerializedName("species") val species: String,
+
+    @Expose
+    @SerializedName("vaccine") val vaccine: String,
+
+
+    )

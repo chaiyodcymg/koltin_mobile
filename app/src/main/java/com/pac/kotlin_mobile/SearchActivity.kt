@@ -48,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-       
+
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
@@ -64,21 +64,21 @@ class SearchActivity : AppCompatActivity() {
                         .build()
                         .create(Cat_API::class.java)
                     api.search(search)
-                        .enqueue(object : Callback<List<Lostcat>> {
-                            override fun onResponse(call: Call<List<Lostcat>>, response: Response<List<Lostcat>>) {
+                        .enqueue(object : Callback<List<Cat>> {
+                            override fun onResponse(call: Call<List<Cat>>, response: Response<List<Cat>>) {
                                 if (response.isSuccessful()) {
                                     data_search_List.clear()
                                     Log.i("Events" ,"${response.body()}")
                                     response.body()?.forEach {
                                         Log.i("Events","${it.id}")
-                                        data_search_List.add(Cat_search(it.id ,it.color , it.species, it.name,it.image))
+                                        data_search_List.add(Cat_search(it.id ,it.color , it.species, it.name ,it.image))
                                     }
                                     binding.recyclerView.adapter?.notifyDataSetChanged()
                                     binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext)
                                 }
                             }
 
-                            override fun onFailure(call: Call<List<Lostcat>>, t: Throwable) {
+                            override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
                                 Toast.makeText(applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
                             }
                         })
