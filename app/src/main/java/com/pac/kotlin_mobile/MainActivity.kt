@@ -39,7 +39,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-        getData()
+        var id =  AUTH.getString("id","")
+        if(id?.isNotEmpty()==true){
+            getData()
+        }
+
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
@@ -136,6 +140,7 @@ class MainActivity : AppCompatActivity() {
         api.Profile(
             AUTH.getString("id","")!!
 
+
         ).enqueue(object : Callback<Profile> {
 
             override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
@@ -231,7 +236,10 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
-
+        var id =  AUTH.getString("id","")
+        if(id?.isNotEmpty()==true){
+            getData()
+        }
         binding.bottomNavigation.selectedItemId =  Select_Page
 //        if(select == R.id.page_2 ){
 //            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)

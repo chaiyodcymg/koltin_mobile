@@ -1,103 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
 xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:orientation="vertical"
-tools:context=".news_info">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        >
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+    tools:context=".news_info">
 
-                <TextView
-                    android:id="@+id/newstext"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="20dp"
-                    android:text="ข่าวสาร"
-                    android:textSize="20sp" />
-                <TextView
-                    android:id="@+id/newstitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="แมวควรกินเนื้อไหม?"
-                    android:layout_marginLeft="20dp"
-                    android:layout_below="@+id/newstext"
-                    android:layout_centerHorizontal="true"
-                    android:textSize="20sp"
-                    android:layout_marginTop="20dp"
-                    />
-                <androidx.cardview.widget.CardView
-                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/news_img"
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    card_view:cardCornerRadius="30dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:layout_below="@+id/newstitle"
-                    >
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/cat"
-                        >
-                    </androidx.appcompat.widget.AppCompatImageView>
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@+id/news_info_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="ข้อมูลข่าวสาร"
-                    android:layout_marginLeft="55dp"
-                    android:layout_below="@+id/news_img"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="20dp"
-                    />
-                <TextView
-                    android:id="@+id/news_info"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="รายละเอียดข่าว"
-                    android:layout_marginLeft="55dp"
-                    android:layout_marginRight="55dp"
-                    android:layout_below="@+id/news_info_title"
-                    android:textSize="16sp"
-                    android:layout_marginTop="20dp"
-                    />
-            </RelativeLayout>
-        </LinearLayout>
-    </ScrollView>
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <LinearLayout
+        android:id="@+id/frame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="end|bottom"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="74dp"
-        android:text="เพิ่มข่าว" />
-</RelativeLayout>
+        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <RelativeLayout
+                    android:id="@+id/news"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/newstext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="ข่าวสาร"
+                        android:textSize="20sp" />
 
-</LinearLayout>
+                    <TextView
+                        android:id="@+id/news_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/newstext"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:text="แมวควรกินเนื้อไหม?"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+                    <androidx.cardview.widget.CardView
+                        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/news_img_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        card_view:cardCornerRadius="30dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:layout_below="@+id/news_title"
+                        >
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/news_img"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/cat"
+                            >
+                        </androidx.appcompat.widget.AppCompatImageView>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/news_info_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ข้อมูลข่าวสาร"
+                        android:layout_marginLeft="55dp"
+                        android:layout_below="@+id/news_img_card"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_marginTop="20dp"
+                        />
+
+                    <TextView
+                        android:id="@+id/news_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/news_info_title"
+                        android:layout_marginLeft="55dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginRight="55dp"
+                        android:text="รายละเอียดข่าว"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </ScrollView>
+    </RelativeLayout>
+    </LinearLayout>
+</FrameLayout>
