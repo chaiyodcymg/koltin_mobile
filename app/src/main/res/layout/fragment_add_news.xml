@@ -55,7 +55,7 @@
             android:layout_marginBottom="10dp"
             app:cardBackgroundColor="#f1f1f1"
             android:text="เพิ่มรูปภาพ"
-            android:onClick=""
+
             >
             <TextView
                 android:layout_width="match_parent"

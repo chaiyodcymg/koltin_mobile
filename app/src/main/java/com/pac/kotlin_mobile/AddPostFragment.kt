@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,9 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import com.pac.kotlin_mobile.databinding.*
-import com.pac.kotlin_mobile.databinding.ActivityMainBinding
-import com.pac.kotlin_mobile.databinding.FragmentAddPostBinding
-import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
+
 
 
 class AddPostFragment : Fragment() {
@@ -20,14 +19,12 @@ class AddPostFragment : Fragment() {
     ): View? {
         binding = FragmentAddPostBinding.inflate(layoutInflater)
         binding.findHouse.setOnClickListener() {
-            var frag: Fragment? = null
-            frag = AddCatFindhouse()
-            replaceFragment(frag)
+            val  intent = Intent(requireActivity().applicationContext, AddCatFindhouseActivity::class.java)
+           startActivity(intent)
         }
         binding.findCat.setOnClickListener {
-            var fragment: Fragment? = null
-            fragment = LostCatFragment()
-            replaceFragment(fragment)
+            val  intent = Intent(requireActivity().applicationContext, LostCatActivity::class.java)
+            startActivity(intent)
         }
         return binding.root
     }

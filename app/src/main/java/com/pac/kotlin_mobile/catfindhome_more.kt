@@ -19,9 +19,16 @@ class catfindhome_more : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCatfindhomeMoreBinding.inflate(layoutInflater)
-        binding.catFind.setOnClickListener() {
-            var detailfragment: Fragment? = null
-            detailfragment = activity_details()
+
+
+        binding.catFind.setOnClickListener {
+            var detailfragment: Fragment = activity_details()
+
+            replaceFragment(detailfragment)
+        }
+        binding.btnHome.setOnClickListener {
+            var detailfragment: Fragment = activity_details()
+
             replaceFragment(detailfragment)
         }
         return binding.root

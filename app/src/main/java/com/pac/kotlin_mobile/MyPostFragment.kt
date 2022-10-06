@@ -43,29 +43,6 @@ class MyPostFragment : Fragment() {
             replaceFragment(fragment)
         }
 
-//        bindingRV.deletePost.setOnClickListener {
-//           val myBuilder = AlertDialog.Builder(requireActivity())
-//            myBuilder.apply {
-//                setMessage("ลบ")
-//                setNegativeButton("Yes") {dialog, which ->
-//                    api.deletePost(id)
-//                        .enqueue(object : Callback<Cat> {
-//                            override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
-//                                if(response.isSuccessful) {
-//                                    Toast.makeText(requireActivity().applicationContext, "Successfully Deleted", Toast.LENGTH_LONG).show()
-//                                }
-//                            }
-//
-//                            override fun onFailure(call: Call<Cat>, t: Throwable) {
-//                                Toast.makeText(requireActivity().applicationContext, "Faill Deleted", Toast.LENGTH_LONG).show()
-//                            }
-//                        })
-//                }
-//                setPositiveButton("No") {dialog, which -> dialog.cancel()}
-//                show()
-//            }
-//        }
-
 
         return binding.root
     }
