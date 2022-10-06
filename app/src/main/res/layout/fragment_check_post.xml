@@ -168,6 +168,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="bottom"
                             >
+
                             <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/deny_post"
                                 android:layout_width="100dp"
