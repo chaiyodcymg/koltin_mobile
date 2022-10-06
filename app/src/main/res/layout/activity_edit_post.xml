@@ -71,13 +71,14 @@
                 android:paddingLeft="20dp">
 
                 <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/male"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="ผู้"
                     android:textSize="18sp" />
 
                 <androidx.appcompat.widget.AppCompatRadioButton
-
+                    android:id="@+id/famale"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="เมีย"
@@ -482,7 +483,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/card_post"
+                android:id="@+id/submitUpdate"
                 android:layout_width="100dp"
                 android:layout_height="50dp"
                 android:layout_below="@id/facebook"
@@ -502,8 +503,7 @@
                     android:gravity="center"
                     android:text="เสร็จสิ้น"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
-                    android:onClick="submitUpdate"/>
+                    android:textSize="16sp" />
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>

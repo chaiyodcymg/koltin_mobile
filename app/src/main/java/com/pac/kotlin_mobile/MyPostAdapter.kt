@@ -76,8 +76,11 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         }
 
         binding.editPost.setOnClickListener {
+            Toast.makeText(context,"Click : ${items[position].id}",
+                Toast.LENGTH_LONG).show()
+            val post_id = items[position].id
             val intent = Intent(context, EditPostActivity::class.java)
-            intent.putExtra("id", items[position].id)
+            intent.putExtra("id", post_id.toString())
             intent.putExtra("namecat", items[position].name)
             intent.putExtra("gender", items[position].gender)
             intent.putExtra("color", items[position].color)
@@ -85,7 +88,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
             intent.putExtra("date", items[position].date)
             intent.putExtra("species", items[position].species)
             intent.putExtra("more_info", items[position].more_info)
-            intent.putExtra("image", items[position].image)
+//            intent.putExtra("image", items[position].image)
             intent.putExtra("house_no", items[position].house_no)
             intent.putExtra("street", items[position].street)
             intent.putExtra("sub_district", items[position].sub_district)

@@ -2,6 +2,7 @@ package com.pac.kotlin_mobile
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class Cat(
     val color: String,
@@ -58,7 +59,7 @@ data class Postlist(
     @SerializedName("vaccine") val vaccine: String,
 
     @Expose
-    @SerializedName("date") val date: String,
+    @SerializedName("date_vaccine") val date: String,
 
     @Expose
     @SerializedName("species") val species: String,
@@ -73,7 +74,7 @@ data class Postlist(
     @SerializedName("house_no") val house_no: String,
 
     @Expose
-    @SerializedName("String") val street: String,
+    @SerializedName("street") val street: String,
 
     @Expose
     @SerializedName("sub_district") val sub_district: String,

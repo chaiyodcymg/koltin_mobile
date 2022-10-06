@@ -2,6 +2,7 @@ package com.pac.kotlin_mobile
 
 import retrofit2.Call
 import retrofit2.http.*
+import java.util.*
 
 interface Cat_API {
     @GET("mypost")
@@ -17,11 +18,31 @@ interface Cat_API {
     fun updatePost(
         @Path("id") id: Int,
         @Field("name") name: String,
-       ): Call<Cat>
+        @Field("gender") gender: String,
+        @Field("color") color: String,
+        @Field("vaccine") vaccine: String,
+        @Field("date_vaccine") date: String,
+        @Field("species") species: String,
+        @Field("more_info") more_info: String,
+//        @Field("image") image: String,
+        @Field("house_no") house_no: String,
+        @Field("street") street: String,
+        @Field("sub_district") sub_district: String,
+        @Field("district") district: String,
+        @Field("province") province: String,
+        @Field("post_address") post_address: String,
+        @Field("firstname") firstname: String,
+        @Field("lastname") lastname: String,
+        @Field("phone") phone: String,
+        @Field("email") email: String,
+        @Field("line_id") line_id: String,
+        @Field("facebook") facebook: String,
+        ): Call<Cat>
 
     @DELETE("deletePost/{id}")
     fun deletePost(
         @Path("id") id: Int): Call<Cat>
+
 
 
 }

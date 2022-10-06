@@ -1,6 +1,5 @@
 package com.pac.kotlin_mobile
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
-import com.pac.kotlin_mobile.databinding.MypostLayoutBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
