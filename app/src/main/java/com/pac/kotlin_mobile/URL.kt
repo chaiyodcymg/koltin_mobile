@@ -4,7 +4,7 @@ object URL {
 
 
 
-    var URL_API: String = "https://3582-180-183-70-210.jp.ngrok.io/"
+    var URL_API: String = "https://2e8e-202-12-97-202.jp.ngrok.io/"
 
 
 }
