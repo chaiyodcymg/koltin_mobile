@@ -20,8 +20,8 @@
         android:id="@+id/catno"
         android:layout_marginTop="20dp"
         style="@android:style/Animation"
-        android:layout_width="168dp"
-        android:layout_height="137dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:src="@drawable/catno"/>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_goto_login"
