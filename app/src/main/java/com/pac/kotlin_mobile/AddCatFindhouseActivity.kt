@@ -65,11 +65,7 @@ class AddCatFindhouseActivity : AppCompatActivity() {
         binding.imageSelected.setOnClickListener {
             openImageChooser()
         }
-//        binding.cancel.setOnClickListener {
-//            var fragment_post: Fragment? = null
-//            fragment_post = AddPostFragment()
-//            replaceFragment(fragment_post)
-//        }
+//
 
         binding.submit.setOnClickListener {
             val parcelFileDescriptor = contentResolver?.openFileDescriptor(selectedImageUri!!, "r", null)

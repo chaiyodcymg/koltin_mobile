@@ -2,6 +2,7 @@ package com.pac.kotlin_mobile
 
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -68,7 +69,11 @@ class MyPostFragment : Fragment() {
 //                show()
 //            }
 //        }
+        bindingRV.imageCat.setOnClickListener {
+            var detailfragment: Fragment = activity_details()
 
+            replaceFragment(detailfragment)
+        }
 
         return binding.root
     }
@@ -97,8 +102,11 @@ class MyPostFragment : Fragment() {
                 Response<List<Cat>>
                 ) {
                     response.body()?.forEach {
-                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine)) }
-//// Set Data to RecyclerRecyclerView
+                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine))
+                        Log.i("Event", "${it.id}")
+                    }
+
+                // Set Data to RecyclerRecyclerView
 
                     binding.recyclerView.adapter = MyPostAdapter(postlist,requireContext())
                 }
