@@ -23,7 +23,7 @@ class SearchActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchBinding
     lateinit var AUTH : SharedPreferences
     var Select_Page : Int = R.id.page_1
-    var data_search_List = arrayListOf<Cat_search>()
+    var data_search_List = arrayListOf<Lostcat>()
     var URL_API = URL.URL_API
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,7 +46,7 @@ class SearchActivity : AppCompatActivity() {
         }
         Select_Page = intent.getIntExtra("Select_Page",0)
 
-        binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext)
+        binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext,this@SearchActivity,layoutInflater )
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
        
 
@@ -69,12 +69,10 @@ class SearchActivity : AppCompatActivity() {
                                 if (response.isSuccessful()) {
                                     data_search_List.clear()
                                     Log.i("Events" ,"${response.body()}")
-                                    response.body()?.forEach {
-                                        Log.i("Events","${it.id}")
-                                        data_search_List.add(Cat_search(it.id ,it.color , it.species, it.name,it.image))
-                                    }
+                                    data_search_List.addAll(response.body()!!)
+
                                     binding.recyclerView.adapter?.notifyDataSetChanged()
-                                    binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext)
+                                    binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext,  this@SearchActivity,layoutInflater )
                                 }
                             }
 

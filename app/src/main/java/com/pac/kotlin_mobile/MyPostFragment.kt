@@ -35,4 +35,5 @@ class MyPostFragment : Fragment() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
 }
