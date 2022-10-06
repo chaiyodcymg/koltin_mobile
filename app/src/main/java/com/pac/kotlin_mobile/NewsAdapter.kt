@@ -69,6 +69,7 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
 
 }
 //class NewsAdapter(val items :List<Search>, val context: Context):
+
 //    RecyclerView.Adapter<NewsAdapter.ViewHolder>() {
 //
 //    inner class ViewHolder(view: View, val binding: FragmentNewsBinding) : RecyclerView.ViewHolder(view) {init {} }
@@ -82,9 +83,9 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
 //
 //    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 //        val binding_holder = holder.binding
-
-//        binding_holder.tvID.text =  items[position].firstname
-//        binding_holder.tvName.text = items[position].lastname
+//
+//        binding_holder.newstitle.text =  items[position].
+//        binding_holder.news_info.text = items[position].lastname
 //    }
 //
 //    override fun getItemCount(): Int {

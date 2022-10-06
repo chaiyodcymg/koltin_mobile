@@ -14,6 +14,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
@@ -29,9 +32,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
-    var Select_Page : Int = R.id.page_1
+
+     var Select_Page : Int = R.id.page_1
+
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -40,7 +49,9 @@ class MainActivity : AppCompatActivity() {
 
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var id =  AUTH.getString("id","")
+
         if(id?.isNotEmpty()==true){
+
             getData()
         }
 
@@ -48,27 +59,14 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
 
-//        val view: View = supportActionBar!!.customView
-//        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-//        var name =  AUTH.getString("id","")
-//        AUTH.edit{clear()}
-//        if(name != null && name.isNotEmpty()){
-//            val  intent = Intent(applicationContext, HomeActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent )
-//        }else{
-//            val intent = Intent(applicationContext, LoginActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent)
-//        }
-
-
 
 
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
             HomeFragment()
         ).commit()
+
+
 
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -128,9 +126,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-//        Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
+
 
     }
+
     fun getData(){
         var api : UserAPI =   Retrofit.Builder()
             .baseUrl(URL_API)
@@ -199,6 +198,7 @@ class MainActivity : AppCompatActivity() {
         })
         return super.onPrepareOptionsMenu(menu)
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
 
@@ -236,11 +236,15 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
+
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty()==true){
             getData()
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
+
+
+
 //        if(select == R.id.page_2 ){
 //            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 //            var id =  AUTH.getString("id","")
@@ -259,31 +263,10 @@ class MainActivity : AppCompatActivity() {
 //        }
 
 
-    }
-
-    override fun onPause() {
-        super.onPause()
-
-        Log.i("Event","onPause")
-    }
-
-    override fun onStop() {
-        super.onStop()
-
-        Log.i("Event","onStop")
-    }
-
-    override fun onDestroy() {
-
-
-        Log.i("Event","onDestroy")
-
-//
-//        Log.i("Event","${Select_Page.getInt("id",0)}")
-        super.onDestroy()
-
 
     }
+
+
 
 
 

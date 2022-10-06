@@ -44,6 +44,7 @@ class HomeFragment : Fragment() {
             missingCatfragment = missing_cat()
             replaceFragment(missingCatfragment)
         }
+
         return binding.root
     }
 

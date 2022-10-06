@@ -33,6 +33,10 @@ class ProfileFragment : Fragment() {
     private lateinit var binding: FragmentProfileBinding
     lateinit var AUTH : SharedPreferences
     var URL_API = URL.URL_API
+    var image_url = ""
+    var email_user = ""
+    var fname = ""
+    var lname = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +45,11 @@ class ProfileFragment : Fragment() {
 
         binding = FragmentProfileBinding.inflate(layoutInflater)
         AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        binding.btnChangeToEdit.isEnabled = false
         getData()
+
+
+
 
 
         binding.btnLogout.setOnClickListener {
@@ -58,10 +66,15 @@ class ProfileFragment : Fragment() {
 
         binding.btnChangeToEdit.setOnClickListener {
             val  intent = Intent(requireActivity().applicationContext, EditProfileActivity::class.java)
+            intent.putExtra("email_user",email_user)
+            intent.putExtra("fname",fname)
+            intent.putExtra("lname",lname)
+            intent.putExtra("image_url",image_url)
             startActivity(intent)
         }
         return binding.root
     }
+
     fun getData(){
         var api : UserAPI =   Retrofit.Builder()
             .baseUrl(URL_API)
@@ -75,13 +88,17 @@ class ProfileFragment : Fragment() {
 
             override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
                 if (response.isSuccessful()){
+
                     binding.imageSelected.setImageURI(null)
                     Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
                     binding.email.setText( "อีเมล : ${response.body()?.email.toString()}")
                     binding.firstname.setText("ชื่อ : ${response.body()?.firstname.toString()}")
                     binding.lastname.setText( "นามสกุล : ${response.body()?.lastname.toString()}")
-
-
+                 email_user =  response.body()?.email.toString()
+                 fname =   response.body()?.firstname.toString()
+                lname =    response.body()?.lastname.toString()
+                 image_url =   URL_API +response.body()?.image_profile.toString()
+                    binding.btnChangeToEdit.isEnabled = true
 
 
                 }
@@ -94,6 +111,7 @@ class ProfileFragment : Fragment() {
 
 
         })
+
     }
 
     override fun onResume() {
