@@ -25,9 +25,7 @@
         <activity
             android:name=".AddCatFindhouseActivity"
             android:exported="false" />
-        <activity
-            android:name=".AddCatFindhouseMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
@@ -37,12 +35,7 @@
         <activity
             android:name=".SearchActivity"
             android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
