@@ -34,8 +34,9 @@ class EditProfileActivity : AppCompatActivity() {
     var fname = ""
     var lname = ""
     var selectedImageUri : Uri? = null
-    lateinit var AUTH : SharedPreferences
     var REQUEST_CODE_PICK_IMAGE = 100
+    lateinit var AUTH : SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditProfileBinding.inflate(layoutInflater)

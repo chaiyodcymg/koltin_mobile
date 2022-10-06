@@ -6,7 +6,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".activity_details">
+    tools:context=".activity_details"
+    android:background="@color/grey">
 
     <LinearLayout
         android:layout_width="436dp"

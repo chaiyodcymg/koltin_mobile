@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/radius_layout"
+    android:background="@color/grey"
     tools:context=".EditProfileActivity">
   <TextView
       android:layout_width="wrap_content"
@@ -68,6 +68,7 @@
           android:layout_height="wrap_content"
           android:inputType="text"
           android:textSize="15sp"
+          android:background="@drawable/radius_layout"
           />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -96,6 +97,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:inputType="text"
+          android:background="@drawable/radius_layout"
           android:textSize="15sp"/>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,6 +123,7 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:inputType="text"
+          android:background="@drawable/radius_layout"
           android:textSize="15sp"/>
     </com.google.android.material.textfield.TextInputLayout>
 

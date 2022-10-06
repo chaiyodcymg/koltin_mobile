@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
@@ -230,6 +231,7 @@ class MainActivity : AppCompatActivity() {
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
+
         }else{
             Log.i("Event","ข้อมูลว่างง")
             val settingsItem =  this.menu?.findItem(R.id.menu2)
