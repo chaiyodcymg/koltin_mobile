@@ -26,7 +26,8 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
 
-    var Select_Page : Int = R.id.page_1
+
+     var Select_Page : Int = R.id.page_1
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
@@ -49,9 +50,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
-
-
-
+        supportActionBar!!.setCustomView(null)
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
             HomeFragment()
@@ -70,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         HomeFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_2 -> {
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                         ).commit()
 
                     }
-
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_3 -> {
@@ -99,6 +99,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         NewsFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_4 -> {
@@ -108,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         MyPostFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 else -> false
@@ -190,6 +192,7 @@ class MainActivity : AppCompatActivity() {
         return super.onPrepareOptionsMenu(menu)
     }
 
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Log.i("Event","onCreateOptionsMenu")
 
@@ -199,15 +202,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu1 -> {
+
                 val  intent = Intent(applicationContext, SearchActivity::class.java)
                 intent.putExtra("Select_Page",Select_Page)
                 startActivityForResult(intent ,1)
+                supportActionBar!!.setCustomView(null)
             }
             R.id.menu2 -> {
+
                 val  intent = Intent(applicationContext, ProfileActivity::class.java)
                 intent.putExtra("Select_Page",Select_Page)
 
                 startActivityForResult(intent ,1)
+                supportActionBar!!.setCustomView(null)
             }
 
 
@@ -227,17 +234,22 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
-
+        supportActionBar!!.setCustomView(null)
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
 
         }else{
             Log.i("Event","ข้อมูลว่างง")
-            val settingsItem =  this.menu?.findItem(R.id.menu2)
+
+             val settingsItem =  this.menu?.findItem(R.id.menu2)
+
             settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
+
+
+
 
 
     }
@@ -245,6 +257,8 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         finishAffinity()
     }
+
+
 
     fun setMenu(image_url :String){
         val settingsItem =  this.menu?.findItem(R.id.menu2)

@@ -13,7 +13,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="MY APP"
+        android:label="CAT CARE"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlin_mobile"
@@ -25,9 +25,7 @@
         <activity
             android:name=".AddCatFindhouseActivity"
             android:exported="false" />
-        <activity
-            android:name=".AddCatFindhouseMainActivity"
-            android:exported="false" />
+
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
@@ -37,12 +35,7 @@
         <activity
             android:name=".SearchActivity"
             android:exported="false" />
-        <activity
-            android:name=".RegisterActivity"
-            android:exported="false" />
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

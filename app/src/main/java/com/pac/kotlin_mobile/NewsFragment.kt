@@ -24,13 +24,11 @@ private const val ARG_PARAM2 = "param2"
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
     lateinit var AUTH : SharedPreferences
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
 
         binding = FragmentNewsBinding.inflate(layoutInflater)
-        binding.fab.setOnClickListener() {
+        binding.fab.setOnClickListener {
             var addnews: Fragment? = null
             addnews = AddNewsFragment()
             replaceFragment(addnews)

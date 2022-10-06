@@ -37,6 +37,7 @@ class HomeFragment : Fragment() {
             var detailfragment: Fragment? = null
             detailfragment = catfindhome_more()
             replaceFragment(detailfragment)
+
         }
 
         binding.missingCat.setOnClickListener() {
@@ -44,6 +45,12 @@ class HomeFragment : Fragment() {
             missingCatfragment = missing_cat()
             replaceFragment(missingCatfragment)
         }
+        binding.newsBox.setOnClickListener() {
+            var newsInfofragment: Fragment? = null
+            newsInfofragment = news_info()
+            replaceFragment(newsInfofragment)
+        }
+
         return binding.root
     }
 

@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 import com.pac.kotlin_mobile.databinding.FragmentCatfindhomeMoreBinding
 import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
@@ -19,9 +21,31 @@ class catfindhome_more : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCatfindhomeMoreBinding.inflate(layoutInflater)
-        binding.catFind.setOnClickListener() {
-            var detailfragment: Fragment? = null
-            detailfragment = activity_details()
+
+        // แก้ไขปุ่มย้อนกลับ
+        (activity as AppCompatActivity).supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowCustomEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.setCustomView(R.layout.custom_action_bar_layout)
+        (activity as AppCompatActivity).supportActionBar?.elevation = 0.0F
+        val view = (activity as AppCompatActivity).supportActionBar?.customView
+
+        val imageButton = view?.findViewById<View>(R.id.action_bar_back)
+        imageButton?.setOnClickListener {
+           requireActivity().supportFragmentManager.beginTransaction().add(
+                R.id.frameLayout,
+                HomeFragment()
+            ).commit()
+            (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+        }
+
+        binding.catFind.setOnClickListener {
+            var detailfragment: Fragment = FragmentDetail()
+
+            replaceFragment(detailfragment)
+        }
+        binding.btnHome.setOnClickListener {
+            var detailfragment: Fragment =  FragmentDetail()
+
             replaceFragment(detailfragment)
         }
         return binding.root
