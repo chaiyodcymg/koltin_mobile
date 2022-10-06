@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Add_Cat_findhouse">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp">
+        <TextView
+            android:id="@+id/newsname"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="หัวข้อเรื่อง"
+            android:gravity="center|top"
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
+
+        <!-- ชื่อเรื่อง-->
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="ชื่อเรื่อง"
+            android:layout_marginBottom="20dp"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_newsname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                android:textSize="15sp"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--รูปภาพ-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="รูปภาพ"
+
+            android:textSize="20dp"
+            />
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            app:cardBackgroundColor="#f1f1f1"
+            android:text="เพิ่มรูปภาพ"
+
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="เพิ่มรูปภาพ"
+                android:gravity="center"
+                />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/image_selected"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+        </androidx.cardview.widget.CardView>
+
+
+        <!--ข้อความ-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="ข้อมูลข่าวสาร"
+            android:textSize="20dp"
+            />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:hint="ข้อความ"
+            android:layout_marginBottom="20dp"
+            app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.Chip"
+            >
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newstext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:textSize="15sp"
+                android:scrollbars="vertical"
+                android:gravity="top"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_submitnews"
+            android:layout_width="300px"
+            android:layout_height="150px"
+            android:text="เสร็จสิ้น"
+            android:layout_gravity="right"
+            android:background="@drawable/radius_btnav"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginBottom="100dp"
+            />
+    </LinearLayout>
+</ScrollView>
