@@ -24,6 +24,7 @@
                 android:layout_height="100dp"
                 android:padding="10dp"
                 android:text="โพสต์ของฉัน"
+                android:textColor="@color/white"
                 android:textSize="20sp"
                 android:background="#DF7861"/>
         </androidx.cardview.widget.CardView>
