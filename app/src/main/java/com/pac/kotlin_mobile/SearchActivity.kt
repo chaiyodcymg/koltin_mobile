@@ -47,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-       
+
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
@@ -70,7 +70,7 @@ class SearchActivity : AppCompatActivity() {
                                     Log.i("Events" ,"${response.body()}")
                                     response.body()?.forEach {
                                         Log.i("Events","${it.id}")
-                                        data_search_List.add(Cat_search(it.id ,it.color , it.species, it.name))
+                                        data_search_List.add(Cat_search(it.id ,it.color , it.species, it.name ,it.image))
                                     }
                                     binding.recyclerView.adapter?.notifyDataSetChanged()
                                     binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext)

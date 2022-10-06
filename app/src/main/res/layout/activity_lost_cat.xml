@@ -2,27 +2,65 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    tools:context=".LostCatActivity"
+    >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        tools:context=".AddCatFindhouse"
+        tools:context=".LostCatFragment"
         android:background="#DCD9D9"
         >
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="100dp"
             >
             <TextView
-                android:id="@+id/addpostinfo"
+                android:id="@+id/addposttext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="น้องเหมียวหาบ้าน"
+                android:text="เรื่องที่แจ้ง"
+                android:layout_centerHorizontal="true"
                 android:textSize="20sp"
                 android:layout_marginTop="20dp"
+                />
+            <RadioGroup
+                android:id="@+id/radiogroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
+                android:layout_below="@+id/addposttext"
+                android:layout_marginTop="10dp"
+                >
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/catlost"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="แจ้งน้องแมวหาย"
+                    android:background="@drawable/round"
+                    android:layout_marginTop="5dp"
+                    />
+                <androidx.appcompat.widget.AppCompatRadioButton
+                    android:id="@+id/foundcat"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:text="พบน้องแมว"
+                    android:background="@drawable/round"
+                    android:layout_marginTop="5dp"
+                    />
+            </RadioGroup>
+            <TextView
+                android:id="@+id/addpostinfo"
+                android:layout_below="@+id/radiogroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ข้อมูลสัตว์เลี้ยง"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="30dp"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
@@ -54,32 +92,28 @@
                 />
             <RadioGroup
                 android:id="@+id/gender"
-                android:layout_marginTop="12dp"
                 android:layout_below="@+id/namecat"
                 android:layout_toRightOf="@+id/rela"
                 android:layout_width="250dp"
                 android:layout_height="55dp"
-                android:paddingLeft="20dp"
                 android:layout_marginLeft="5dp"
+                android:layout_marginTop="12dp"
                 android:background="@drawable/round"
-                >
-                <LinearLayout
+                android:orientation="horizontal"
+                android:paddingLeft="20dp">
+
+                <androidx.appcompat.widget.AppCompatRadioButton
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="ผู้"
-                        android:textSize="18sp"
-                        />
-                    <androidx.appcompat.widget.AppCompatRadioButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="เมีย"
-                        android:textSize="18sp"
-                        />
-                </LinearLayout>
+                    android:text="ผู้"
+                    android:textSize="18sp" />
+                <androidx.appcompat.widget.AppCompatRadioButton
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="เมีย"
+                    android:textSize="18sp" />
+
             </RadioGroup>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
@@ -154,6 +188,7 @@
                 android:background="@drawable/round"
                 />
             <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/select_vaccine_date"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:src="@drawable/calendar"
@@ -161,7 +196,6 @@
                 android:layout_toRightOf="@+id/card_view"
                 android:layout_marginTop="35dp"
                 android:layout_marginLeft="110dp"
-                android:onClick="datepicker"
                 />
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
@@ -203,38 +237,114 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="รูปภาพ"
+                android:text="**เพิ่มรูปภาพ"
                 android:layout_marginLeft="55dp"
                 android:layout_marginTop="20dp"
                 android:layout_below="@+id/more"
                 />
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/image_selected"
-                android:layout_width="190dp"
+                android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/home"
+                android:src="@drawable/upload"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/textimg"
                 />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_image_upload"
-                android:layout_width="190dp"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/image_selected"
-                android:layout_centerHorizontal="true"
-                android:text="อัปโหลดรูปภาพ" />
             <TextView
                 android:id="@+id/textplacedate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="สถานที่"
+                android:text="วันเวลาและจุดที่หาย/พบ"
                 android:layout_marginLeft="55dp"
                 android:layout_marginTop="20dp"
-                android:layout_below="@+id/btn_image_upload"
+                android:layout_below="@+id/image_selected"
                 />
+            <androidx.cardview.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_place"
+                android:layout_gravity="center"
+                android:layout_width="100dp"
+                android:layout_marginLeft="52dp"
+                android:layout_height="55dp"
+                card_view:cardCornerRadius="30dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                card_view:cardBackgroundColor="#B8B5B5"
+                android:layout_below="@+id/textplacedate"
+                >
+                <TextView
+                    android:id="@+id/datetextplace"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:text="วันที่พบ :"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginLeft="20dp"
+                    />
+            </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/dateplace"
+                android:layout_width="240dp"
+                android:layout_height="55dp"
+                android:text="dd/mm/yy"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:layout_below="@+id/textplacedate"
+                android:layout_toRightOf="@+id/card_view_place"
+                android:textSize="16sp"
+                android:paddingLeft="60dp"
+                android:layout_marginLeft="-60dp"
+                android:background="@drawable/round"
+                />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/select_date"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@drawable/calendar"
+                android:layout_below="@+id/textplacedate"
+                android:layout_toRightOf="@+id/card_view_place"
+                android:layout_marginTop="35dp"
+                android:layout_marginLeft="140dp"
+
+                />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="จุดสังเกตเบื้องต้น"
+                android:layout_marginTop="12dp"
+                android:id="@+id/spot"
+                android:layout_below="@+id/dateplace"
+                android:layout_centerInParent="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtSpot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:background="@drawable/round"
+                    android:textSize="20sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:hint="จุดที่หาย/พบ(สถานที่)"
+                android:layout_marginTop="12dp"
+                android:id="@+id/lostplace"
+                android:layout_below="@+id/spot"
+                android:layout_centerInParent="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edtLostplace"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:background="@drawable/round"
+                    android:textSize="20sp"/>
+            </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="300dp"
                 android:layout_height="60dp"
@@ -242,7 +352,7 @@
                 android:hint="เลขที่"
                 android:layout_marginTop="12dp"
                 android:id="@+id/place"
-                android:layout_below="@+id/textplacedate"
+                android:layout_below="@+id/lostplace"
                 android:layout_centerInParent="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPlace"
@@ -327,7 +437,7 @@
                 android:hint="รหัสไปรษณีย์"
                 android:layout_marginTop="12dp"
                 android:id="@+id/postcode"
-                android:layout_below="@+id/district"
+                android:layout_below="@+id/province"
                 android:layout_centerInParent="true">
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/edtPostcode"
@@ -465,6 +575,7 @@
                 android:layout_alignParentEnd="true"
                 >
                 <TextView
+                    android:id="@+id/submit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="เสร็จสิ้น"

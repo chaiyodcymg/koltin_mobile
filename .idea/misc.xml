@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/corner_while.xml" value="0.175" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/radius_btnav.xml" value="0.172" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/radius_layout.xml" value="0.1635" />
@@ -39,6 +40,9 @@
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/menu/top_menu.xml" value="0.25416666666666665" />
+=======
+        <entry key="..\:/projMobileYear32/kotlin_mobile/app/src/main/res/layout/mypost_layout.xml" value="0.19010416666666666" />
+>>>>>>> caf7c8c377d7a586dcd18d21abdb4b3b73dca9e2
       </map>
     </option>
   </component>
@@ -48,6 +52,7 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+<<<<<<< HEAD
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
@@ -55,4 +60,6 @@
       </ProjectState>
     </option>
   </component>
+=======
+>>>>>>> caf7c8c377d7a586dcd18d21abdb4b3b73dca9e2
 </project>

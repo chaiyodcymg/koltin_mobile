@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
+
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
@@ -16,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 class MyPostFragment : Fragment() {
     private lateinit var binding: FragmentMyPostBinding
@@ -71,20 +73,22 @@ class MyPostFragment : Fragment() {
     }
 
 
-        fun replaceFragment(someFragment: Fragment) {
-            var binding: ActivityMainBinding
-            binding = ActivityMainBinding.inflate(layoutInflater)
-            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-            transaction.replace(binding.frameLayout.id, someFragment)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-
 
     override fun onResume() {
         super.onResume()
         callpostData()
     }
+
+    fun replaceFragment(someFragment: Fragment) {
+        var binding: ActivityMainBinding
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+        transaction.replace(binding.frameLayout.id, someFragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
+
+
 
     fun callpostData () {
         api.getMypost()
@@ -108,5 +112,6 @@ class MyPostFragment : Fragment() {
 
 
     }
+
 
 

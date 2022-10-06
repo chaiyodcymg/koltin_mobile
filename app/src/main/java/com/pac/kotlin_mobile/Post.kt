@@ -22,5 +22,4 @@ data class Post(
     @Expose
     @SerializedName("species") val species: String,
 
-) {
-}
+)

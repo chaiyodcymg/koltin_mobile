@@ -88,6 +88,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
 
         binding.deletePost.setOnClickListener{
            //pass the 'context' here
+
             var URL_API = URL.URL_API
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
@@ -99,7 +100,9 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
                         .build()
                         .create(Cat_API::class.java)
                     var id =  items[position].id
-                    api.deletePost(id.toString().toInt())
+
+                    api.softdelete(id.toString().toInt())
+
                         .enqueue(object : Callback<Cat> {
                             override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
                                 if(response.isSuccessful) {

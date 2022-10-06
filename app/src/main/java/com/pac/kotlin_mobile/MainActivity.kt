@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
 
-     var Select_Page : Int = R.id.page_1
+    var Select_Page : Int = R.id.page_1
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
