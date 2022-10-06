@@ -9,6 +9,7 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
 import retrofit2.Call
@@ -47,7 +48,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext)
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-       
+
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
@@ -55,7 +56,6 @@ class SearchActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(search: String): Boolean {
                 Log.i("Events",search)
                 if(search.trim().isNotEmpty() && search.isNotEmpty()){
-
 
                     val api: Cat_API = Retrofit.Builder()
                         .baseUrl(URL_API)

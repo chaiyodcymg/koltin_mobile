@@ -10,8 +10,14 @@ interface Cat_API {
     @GET("search")
     fun search(
         @Query("data") data: String
-        ): Call<List<Cat>>
+        ): Call<List<Lostcat>>
 
+    @FormUrlEncoded /// Update
+    @PUT("updatePost/{id}")
+    fun updatePost(
+        @Path("id") id: Int,
+        @Field("name") name: String,
+       ): Call<Cat>
 
     @DELETE("deletePost/{id}")
     fun deletePost(

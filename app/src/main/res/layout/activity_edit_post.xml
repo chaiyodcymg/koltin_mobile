@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".AddCatFindhouseActivity"
+    tools:context=".EditPostActivity"
     >
     <LinearLayout
         android:layout_width="match_parent"
@@ -502,7 +502,8 @@
                     android:gravity="center"
                     android:text="เสร็จสิ้น"
                     android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:onClick="submitUpdate"/>
             </androidx.cardview.widget.CardView>
 
         </RelativeLayout>

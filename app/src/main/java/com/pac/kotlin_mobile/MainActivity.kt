@@ -1,7 +1,5 @@
 package com.pac.kotlin_mobile
 
-
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -11,9 +9,9 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -26,16 +24,17 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
+
 
      var Select_Page : Int = R.id.page_1
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
     private var menu: Menu? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -194,7 +193,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Log.i("Event","onCreateOptionsMenu")
 
@@ -232,6 +230,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
+
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
@@ -246,11 +245,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
     }
 
     override fun onBackPressed() {
         finishAffinity()
     }
+
 
  fun setMenu(image_url :String){
      val settingsItem =  this.menu?.findItem(R.id.menu2)
@@ -266,6 +267,7 @@ class MainActivity : AppCompatActivity() {
 
          })
  }
+
 
 
 //

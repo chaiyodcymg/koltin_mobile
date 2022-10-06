@@ -76,7 +76,28 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         }
 
         binding.editPost.setOnClickListener {
-            val intent = Intent( context, EditPostActivity::class.java)
+            val intent = Intent(context, EditPostActivity::class.java)
+            intent.putExtra("id", items[position].id)
+            intent.putExtra("namecat", items[position].name)
+            intent.putExtra("gender", items[position].gender)
+            intent.putExtra("color", items[position].color)
+            intent.putExtra("vaccine", items[position].vaccine)
+            intent.putExtra("date", items[position].date)
+            intent.putExtra("species", items[position].species)
+            intent.putExtra("more_info", items[position].more_info)
+            intent.putExtra("image", items[position].image)
+            intent.putExtra("house_no", items[position].house_no)
+            intent.putExtra("street", items[position].street)
+            intent.putExtra("sub_district", items[position].sub_district)
+            intent.putExtra("district", items[position].district)
+            intent.putExtra("province", items[position].province)
+            intent.putExtra("post_address", items[position].post_address)
+            intent.putExtra("firstname", items[position].firstname)
+            intent.putExtra("lastname", items[position].lastname)
+            intent.putExtra("phone", items[position].phone)
+            intent.putExtra("email", items[position].email)
+            intent.putExtra("line_id", items[position].line_id)
+            intent.putExtra("facebook", items[position].facebook)
             context.startActivity(intent)
         }
 

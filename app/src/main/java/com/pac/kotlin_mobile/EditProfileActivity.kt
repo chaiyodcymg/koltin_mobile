@@ -5,13 +5,12 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.ActivityEditProfileBinding
 import okhttp3.MediaType
@@ -25,7 +24,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
-
 
 class EditProfileActivity : AppCompatActivity() {
     lateinit var binding : ActivityEditProfileBinding
@@ -44,8 +42,8 @@ class EditProfileActivity : AppCompatActivity() {
         binding = ActivityEditProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-         var data = intent.extras
-         image_url = data?.getString("image_url").toString()
+        var data = intent.extras
+        image_url = data?.getString("image_url").toString()
         email_user = data?.getString("email_user").toString()
         fname = data?.getString("fname").toString()
         lname = data?.getString("lname").toString()

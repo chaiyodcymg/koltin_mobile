@@ -45,8 +45,7 @@ interface FindhouseAPI {
         @Field("vaccine") vaccine: String,
         @Field("date_vaccine") date_vaccine: String,
         @Field("species") species: String,
-        @Field("more_info") more_info: String,
-        @Field("more_info") more_info: String,
+
     ): Call<Cat>
 
 
