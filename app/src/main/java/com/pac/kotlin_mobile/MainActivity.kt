@@ -48,7 +48,7 @@ class MainActivity : AppCompatActivity() {
             getData()
         }
 
-//        supportActionBar!!.setDisplayShowTitleEnabled(false)
+     supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
 
         supportFragmentManager.beginTransaction().add(
