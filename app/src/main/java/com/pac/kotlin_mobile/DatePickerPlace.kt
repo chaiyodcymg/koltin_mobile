@@ -12,7 +12,7 @@ import androidx.fragment.app.DialogFragment
 import java.text.DateFormat
 import java.util.*
 
-class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
+class DatePickerPlace: DialogFragment(), DatePickerDialog.OnDateSetListener {
     private lateinit var calendar: Calendar
     @SuppressLint("ResourceType")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -28,7 +28,7 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     }
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
 // Display the selected date in text view
-        var tv : TextView? = activity?.findViewById(R.id.date)
+        var tv : TextView? = activity?.findViewById(R.id.dateplace)
         tv!!.text = formatDate(year,month,day)
     }
     override fun onCancel(dialog: DialogInterface) {

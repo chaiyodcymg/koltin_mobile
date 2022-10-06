@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/grad.xml" value="0.1" />
         <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/drawable/radius2_layout.xml" value="0.1" />
@@ -41,8 +42,19 @@
         <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/radius3_layout.xml" value="0.10648148148148148" />
         <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/radius_btnav.xml" value="0.1" />
         <entry key="..\:/Project_mobile/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.1" />
+=======
+        <entry key="app/src/main/res/drawable/grad.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius2_layout.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius3_layout.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius_btnav.xml" value="0.2425" />
+        <entry key="app/src/main/res/drawable/radius_layout.xml" value="0.2425" />
+        <entry key="app/src/main/res/layout/action_bar_search.xml" value="0.9" />
+        <entry key="app/src/main/res/layout/activity_add_cat_findhouse.xml" value="0.11550151975683891" />
+        <entry key="app/src/main/res/layout/activity_edit_profile.xml" value="0.16259057971014493" />
+>>>>>>> e4b24aac618d677a548008cfc16860dff07d81c0
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_lost_cat.xml" value="0.2234375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.11727456940222898" />
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11854103343465046" />
@@ -52,6 +64,11 @@
         <entry key="app/src/main/res/layout/fragment_check_post.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
+<<<<<<< HEAD
+=======
+        <entry key="app/src/main/res/layout/fragment_lost_cat.xml" value="0.20597652081109924" />
+        <entry key="app/src/main/res/layout/fragment_missing_cat.xml" value="0.25" />
+>>>>>>> e4b24aac618d677a548008cfc16860dff07d81c0
         <entry key="app/src/main/res/layout/fragment_my_post.xml" value="0.10555555555555556" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/fragment_not_logged_in.xml" value="0.10833333333333334" />
@@ -71,6 +88,7 @@
   <component name="ProjectType">
     <option name="id" value="Android" />
   </component>
+<<<<<<< HEAD
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
@@ -78,4 +96,6 @@
       </ProjectState>
     </option>
   </component>
+=======
+>>>>>>> e4b24aac618d677a548008cfc16860dff07d81c0
 </project>
