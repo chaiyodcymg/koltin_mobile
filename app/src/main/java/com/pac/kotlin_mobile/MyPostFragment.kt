@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
@@ -48,12 +49,8 @@ class MyPostFragment : Fragment() {
         }
 
 
-        bindingRV.imageCat.setOnClickListener {
-            var detailfragment: Fragment = activity_details()
 
-            replaceFragment(detailfragment)
-        }
-
+        callpostData()
         return binding.root
     }
 
@@ -69,19 +66,17 @@ class MyPostFragment : Fragment() {
         }
 
 
-    override fun onResume() {
-        super.onResume()
-        callpostData()
-    }
 
     fun callpostData () {
-        api.getMypost()
+        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        var id =  AUTH.getString("id","")
+        api.getMypost(id.toString().toInt())
             .enqueue(object : Callback<List<Cat>> {
                 override fun onResponse(call: Call<List<Cat>>, response:
                 Response<List<Cat>>
                 ) {
                     response.body()?.forEach {
-                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine))
+                        postlist.add(Postlist(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook))
                     }
 
                 // Set Data to RecyclerRecyclerView

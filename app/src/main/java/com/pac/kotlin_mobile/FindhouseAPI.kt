@@ -35,5 +35,7 @@ interface FindhouseAPI {
         @Part("user_id") user_id: RequestBody,
     ): Call<UploadResponse>
 
+    @GET("home_find")
+    fun gethomeFind():Call<List<Findhouse>>
 
 }

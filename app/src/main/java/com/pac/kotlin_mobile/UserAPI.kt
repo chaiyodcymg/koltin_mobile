@@ -8,8 +8,6 @@ import retrofit2.http.*
 
 
 interface UserAPI {
-    @GET("allemp")
-    fun retrieveStudent(): Call<List<Login>>
 
     @FormUrlEncoded
     @POST("login")

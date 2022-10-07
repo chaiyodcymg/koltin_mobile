@@ -28,12 +28,5 @@ class AddPostFragment : Fragment() {
         }
         return binding.root
     }
-    fun replaceFragment(someFragment: Fragment) {
-        var binding: ActivityMainBinding
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-        transaction.replace(binding.frameLayout.id, someFragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
-    }
+
 }
