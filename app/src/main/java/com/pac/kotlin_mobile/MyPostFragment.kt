@@ -16,6 +16,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
+private const val ARG_PARAM1 = "param1"
+private const val ARG_PARAM2 = "param2"
+
 class MyPostFragment : Fragment() {
     private lateinit var binding: FragmentMyPostBinding
     val postlist = arrayListOf<Postlist>()
@@ -58,6 +62,7 @@ class MyPostFragment : Fragment() {
         callpostData()
     }
 
+
     fun callpostData () {
         api.getMypost()
             .enqueue(object : Callback<List<Cat>> {
@@ -84,5 +89,7 @@ class MyPostFragment : Fragment() {
 
 
     }
+
+
 
 

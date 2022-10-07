@@ -4,19 +4,22 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    tools:context=".FragmentDetail"
+    android:background="@color/grey"
+    >
 
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:orientation="vertical"
     android:gravity="center"
-    tools:context=".activity_details">
+    android:orientation="vertical"
+
+   >
 
     <LinearLayout
         android:layout_width="436dp"
-        android:layout_height="638dp"
+        android:layout_height="match_parent"
 
         android:orientation="vertical">
         <de.hdodenhof.circleimageview.CircleImageView
@@ -41,7 +44,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="350dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="15dp"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="40dp"
@@ -53,9 +56,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+               android:layout_marginBottom="20dp"
 
-                android:layout_marginRight="-35dp"
-                android:layout_gravity="center"
                 android:orientation="vertical">
 
 
@@ -94,7 +97,20 @@
                     android:layout_width="300dp"
                     android:layout_height="wrap_content"
                     android:text="อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน          มีปัญหาสุขภาพส่วนตัวนิดหน่อยอยากให้พี่ๆ เข้าใจ   แล้วรับหนูไปดูแล *** เป็นอาการเกี่ยวกับ     เส้นประสาทส่วนก้น อึ ฉี่ หลุดบ่อย มียาที่ต้องกินตลอดชีวิต ***"
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน          มีปัญหาสุขภาพส่วนตัวนิดหน่อยอยากให้พี่ๆ เข้าใจ   แล้วรับหนูไปดูแล *** เป็นอาการเกี่ยวกับ     เส้นประสาทส่วนก้น อึ ฉี่ หลุดบ่อย มียาที่ต้องกินตลอดชีวิต ***
+
+อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อนอายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+"
                     android:textSize="15sp"
                     android:layout_marginBottom="10dp"
                     android:layout_marginLeft="10dp"
@@ -116,7 +132,13 @@
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical"
 
-
+        >
+    </LinearLayout>
 </LinearLayout>
 </ScrollView>
