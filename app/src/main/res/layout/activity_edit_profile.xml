@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/grad"
+    android:background="@color/grey"
     tools:context=".EditProfileActivity">
   <TextView
       android:layout_width="wrap_content"
@@ -14,7 +14,6 @@
       android:text="แก้ไขข้อมูลส่วนตัว"
       android:textSize="20sp"
       android:textStyle="bold"
-
       android:textColor="@color/black"/>
   <LinearLayout
       android:layout_width="match_parent"
@@ -45,6 +44,7 @@
     <!--                android:layout_height="200dp"-->
     <!--                android:src="@drawable/user_black"-->
     <!--                />-->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,17 +54,24 @@
         android:layout_marginTop="20dp"
         android:layout_marginRight="120dp"
         android:textColor="@color/black"/>
-    <EditText
-        android:hint="อีเมล"
-        android:id="@+id/email"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:maxLength="30"
-        android:layout_marginTop="10dp"
-        android:inputType="textPersonName"
-        android:background="@drawable/radius_layout"
-        android:textSize="15sp"/>
+        android:layout_height="60dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="อีเมล"
+        android:layout_marginBottom="20dp"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+        >
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/email"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:textSize="15sp"
+          android:background="@drawable/radius_layout"
+          />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -72,39 +79,54 @@
         android:maxLength="30"
         android:textSize="13sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="130dp"
         android:textColor="@color/black"/>
-    <EditText
-        android:hint="ชื่อ"
-        android:id="@+id/firstname"
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:maxLength="30"
-        android:layout_marginTop="10dp"
-        android:inputType="textPersonName"
-        android:background="@drawable/radius_layout"
-        android:textSize="15sp"/>
+        android:layout_height="60dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="ชื่อ"
+        android:layout_marginBottom="20dp"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+
+        >
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/firstname"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:background="@drawable/radius_layout"
+          android:textSize="15sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="* นามสกุล"
         android:textSize="13sp"
         android:textStyle="bold"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="120dp"
         android:textColor="@color/black"/>
-    <EditText
-        android:hint="นามสกุล"
-        android:id="@+id/lastname"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:paddingLeft="20dp"
-        android:layout_marginTop="10dp"
-        android:inputType="textPersonName"
-        android:background="@drawable/radius_layout"
-        android:textSize="15sp"/>
+        android:layout_height="60dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:hint="นามสกุล"
+        android:layout_marginBottom="20dp"
+        app:shapeAppearance="@style/ShapeAppearanceOverlay.Material3.FloatingActionButton"
+        >
+      <com.google.android.material.textfield.TextInputEditText
+          android:id="@+id/lastname"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:inputType="text"
+          android:background="@drawable/radius_layout"
+          android:textSize="15sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_save"
         android:layout_width="200dp"
@@ -113,7 +135,8 @@
         android:textSize="18dp"
         android:textColor="#423F3F"
         android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/radius3_layout"/>
 
   </LinearLayout>

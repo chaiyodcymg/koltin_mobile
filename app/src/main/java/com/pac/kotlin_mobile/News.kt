@@ -5,6 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class News(
     @Expose
+    @SerializedName("id") val id: Int,
+
+    @Expose
     @SerializedName("title") val title: String,
 
     @Expose

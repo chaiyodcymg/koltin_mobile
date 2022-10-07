@@ -17,12 +17,17 @@ interface NewsAPI {
     ): Call<News>
 
     @FormUrlEncoded
-    @PUT("editnews")
+    @PUT("editnews/{id}")
     fun updateNews(
         @Path("id") id:Int,
+        @Field("title") title: String,
         @Field("image") image: String,
         @Field("detail") detail: String,
         @Field("user_id") user_id: String
     ): Call<News>
 
+    @PUT("softdelnews/{id}")
+    fun softdeletenews(
+        @Path("id") id:Int
+    ):Call<News>
 }

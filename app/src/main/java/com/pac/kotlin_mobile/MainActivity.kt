@@ -1,23 +1,17 @@
 package com.pac.kotlin_mobile
 
-
-
-
-
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
-
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -28,16 +22,16 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
+
 
     var Select_Page : Int = R.id.page_1
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
-
+    private var menu: Menu? = null
 
 
 
@@ -49,24 +43,18 @@ class MainActivity : AppCompatActivity() {
 
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var id =  AUTH.getString("id","")
-
-        if(id?.isNotEmpty()==true){
-
+        if(id?.isNotEmpty() == true){
             getData()
         }
 
 
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
-
-
-
+        supportActionBar!!.setCustomView(null)
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
             HomeFragment()
         ).commit()
-
-
 
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -81,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         HomeFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_2 -> {
@@ -100,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                         ).commit()
 
                     }
-
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_3 -> {
@@ -110,6 +99,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         NewsFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_4 -> {
@@ -119,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         MyPostFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 else -> false
@@ -139,7 +130,6 @@ class MainActivity : AppCompatActivity() {
         api.Profile(
             AUTH.getString("id","")!!
 
-
         ).enqueue(object : Callback<Profile> {
 
             override fun onResponse(call: Call<Profile>, response: Response<Profile>) {
@@ -147,6 +137,7 @@ class MainActivity : AppCompatActivity() {
 
                     image_profile =  URL_API +response.body()?.image_profile.toString()
                     Log.i("Event","${image_profile }")
+                    setMenu(image_profile )
                 }
 
             }
@@ -161,7 +152,9 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
-        val settingsItem = menu?.findItem(R.id.menu2)
+        Log.i("Event","onPrepareOptionsMenu")
+        this.menu = menu
+        val settingsItem =  this.menu?.findItem(R.id.menu2)
 
         var api : UserAPI =   Retrofit.Builder()
             .baseUrl(URL_API)
@@ -199,8 +192,9 @@ class MainActivity : AppCompatActivity() {
         return super.onPrepareOptionsMenu(menu)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        Log.i("Event","onCreateOptionsMenu")
 
         menuInflater.inflate(R.menu.top_menu, menu)
         return super.onCreateOptionsMenu(menu)
@@ -208,15 +202,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu1 -> {
+
                 val  intent = Intent(applicationContext, SearchActivity::class.java)
                 intent.putExtra("Select_Page",Select_Page)
                 startActivityForResult(intent ,1)
+                supportActionBar!!.setCustomView(null)
             }
             R.id.menu2 -> {
+
                 val  intent = Intent(applicationContext, ProfileActivity::class.java)
                 intent.putExtra("Select_Page",Select_Page)
 
                 startActivityForResult(intent ,1)
+                supportActionBar!!.setCustomView(null)
             }
 
 
@@ -236,38 +234,46 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
-
+        supportActionBar!!.setCustomView(null)
         var id =  AUTH.getString("id","")
-        if(id?.isNotEmpty()==true){
+        if(id?.isNotEmpty() == true){
             getData()
+
+        }else{
+            Log.i("Event","ข้อมูลว่างง")
+
+            val settingsItem =  this.menu?.findItem(R.id.menu2)
+
+            settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
 
 
 
-//        if(select == R.id.page_2 ){
-//            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-//            var id =  AUTH.getString("id","")
-//            if(id != null && id.isNotEmpty()){
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.frameLayout,
-//                    AddPostFragment()
-//                ).commit()
-//            }else{
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.frameLayout,
-//                    NotLoggedInFragment()
-//                ).commit()
-//
-//            }
-//        }
-
 
 
     }
 
+    override fun onBackPressed() {
+        finishAffinity()
+    }
 
 
+
+    fun setMenu(image_url :String){
+        val settingsItem =  this.menu?.findItem(R.id.menu2)
+
+        Glide.with(this@MainActivity).asBitmap()
+            .load(image_url)
+            .circleCrop()
+            .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                    settingsItem?.icon = BitmapDrawable(resources, resource)
+
+                }
+
+            })
+    }
 
 
 //
@@ -340,9 +346,7 @@ class MainActivity : AppCompatActivity() {
 //        const val REQUEST_CODE_PICK_IMAGE = 101
 //    }
 
-//    override fun onBackPressed() {
-//        finishAffinity()
-//    }
+
 //    fun logout(v: View){
 //        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
 //        AUTH.edit{clear()}

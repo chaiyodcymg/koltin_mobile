@@ -41,6 +41,7 @@ class AddNewsActivity : AppCompatActivity() {
                 override fun onResponse(call: Call<News>, response: retrofit2.Response<News>) {
                     if (response.isSuccessful) {
                         Toast.makeText(applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
+                        finish()
                     }else{
                         Toast.makeText(applicationContext,"Error", Toast.LENGTH_SHORT).show()
                     }

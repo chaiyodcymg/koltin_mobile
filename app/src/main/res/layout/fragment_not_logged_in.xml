@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#FAAC9B"
+    android:background="#DF7861"
     tools:context=".NotLoggedInFragment">
     <TextView
         android:src="@drawable/catno"
