@@ -7,6 +7,7 @@ import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
 
@@ -22,6 +23,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    var data_List = arrayListOf<Profile>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,12 +47,10 @@ class HomeFragment : Fragment() {
             missingCatfragment = missing_cat()
             replaceFragment(missingCatfragment)
         }
-        binding.newsBox.setOnClickListener() {
-            var newsInfofragment: Fragment? = null
-            newsInfofragment = news_info()
-            replaceFragment(newsInfofragment)
-        }
-
+        binding.newsRecyclerview.adapter = HomeNewsAdapter(this.data_List,requireActivity().applicationContext)
+        binding.newsRecyclerview.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+       data_List.add(Profile("email","fn","l","/images/U1M9hDysU1YwzZ2kzCtoQRRxnUq1DiN5HFQiO4PxLYx66bO43V.jpg"))
+        binding.newsRecyclerview.adapter = HomeNewsAdapter(data_List,requireActivity().applicationContext)
         return binding.root
     }
 

@@ -128,9 +128,7 @@ class EditProfileActivity : AppCompatActivity() {
             val outputStream = FileOutputStream(file)
             inputStream.copyTo(outputStream)
 
-
             val body = UploadRequestBody(file, "image")
-
 
             api.updateprofile_withImage(
                 MultipartBody.Part.createFormData(
@@ -146,7 +144,7 @@ class EditProfileActivity : AppCompatActivity() {
             ).enqueue(object : Callback<UploadResponse> {
 
                 override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
-                    if (response.isSuccessful()){
+                    if (response.isSuccessful){
                         Toast.makeText(applicationContext,"แก้ไขสำเร็จ ", Toast.LENGTH_LONG).show()
                     }
 

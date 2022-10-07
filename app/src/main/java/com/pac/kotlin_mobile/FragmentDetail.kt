@@ -28,7 +28,8 @@ class FragmentDetail : Fragment() {
 
         val imageButton = view?.findViewById<View>(R.id.action_bar_back)
         imageButton?.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction().add(
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(
                 R.id.frameLayout,
                 catfindhome_more()
             ).commit()

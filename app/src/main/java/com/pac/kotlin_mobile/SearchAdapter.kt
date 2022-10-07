@@ -1,19 +1,15 @@
 package com.pac.kotlin_mobile
 
+import android.R.attr.data
 import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
-import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
-import androidx.fragment.app.FragmentTransaction
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
-import com.pac.kotlin_mobile.databinding.FragmentDetailsBinding
 import com.pac.kotlin_mobile.databinding.SearchLayoutBinding
 
 
@@ -39,6 +35,17 @@ class SearchAdapter(val items: ArrayList<Lostcat>, val context: Context,val requ
         Glide.with(context).load(URL_API +items[position].image).into( binding_holder.catImg)
         binding_holder.cardView.setOnClickListener {
 
+            val  intent = Intent(requireActivity.applicationContext, DetailFindhouseActivity::class.java)
+            intent.putExtra("search",items)
+            requireActivity.startActivity(intent)
+
+//            var binding: ActivitySearchBinding
+//            binding = ActivitySearchBinding.inflate(inflater)
+//            val catmore = FragmentDetail()
+//            val transaction = requireActivity.supportFragmentManager.beginTransaction()
+//            transaction.replace(binding.frameLayout.id, catmore)
+//            transaction.addToBackStack(null)
+//            transaction.commit()
         }
     }
 
