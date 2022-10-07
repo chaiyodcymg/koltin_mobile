@@ -52,7 +52,7 @@ class SearchActivity : AppCompatActivity() {
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
-        binding_actionbar .setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding_actionbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(search: String): Boolean {
                 Log.i("Events",search)
                 if(search.trim().isNotEmpty() && search.isNotEmpty()){

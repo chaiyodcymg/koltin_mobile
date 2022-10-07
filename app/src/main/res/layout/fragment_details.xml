@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FragmentDetail"
+    android:background="@color/grey"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+
+   >
+
+    <LinearLayout
+        android:layout_width="436dp"
+        android:layout_height="match_parent"
+
+        android:orientation="vertical">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_selected"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/cat"
+            app:civ_border_color="#FF000000" />
+
+        <TextView
+            android:id="@+id/id"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:hint="รหัสแมว : 123 "
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="5dp"
+            app:cardPreventCornerOverlap="true"
+            android:layout_gravity="center">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+               android:layout_marginBottom="20dp"
+
+                android:orientation="vertical">
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="สี : ส้ม"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="สายพันธ์ุ : ไทย"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="วัคซีนที่เคยได้รับ : วัคซีนโรคหัดแมว"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ข้อมูล :"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:text="อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน          มีปัญหาสุขภาพส่วนตัวนิดหน่อยอยากให้พี่ๆ เข้าใจ   แล้วรับหนูไปดูแล *** เป็นอาการเกี่ยวกับ     เส้นประสาทส่วนก้น อึ ฉี่ หลุดบ่อย มียาที่ต้องกินตลอดชีวิต ***
+
+อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อนอายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+ อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
+ **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
+"
+                    android:textSize="15sp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                     />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="สนใจอุปการะ ติดต่อ"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0943750213"
+                    android:textSize="15sp"
+                    android:layout_marginLeft="10dp"
+                     />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:gravity="center"
+        android:orientation="vertical"
+
+        >
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

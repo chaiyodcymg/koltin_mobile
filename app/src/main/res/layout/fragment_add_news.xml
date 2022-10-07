@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/grey"
-    tools:context=".Add_Cat_findhouse">
+    tools:context=".Add_Cat_findhouse"
+    android:background="@color/grey">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -38,6 +38,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
+                android:background="@drawable/radius_layout"
                 android:textSize="15sp"/>
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -63,6 +64,7 @@
                 android:layout_height="match_parent"
                 android:text="เพิ่มรูปภาพ"
                 android:gravity="center"
+                android:background="@color/white"
                 />
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/image_selected"
@@ -95,6 +97,7 @@
                 android:textSize="15sp"
                 android:scrollbars="vertical"
                 android:gravity="top"
+                android:background="@drawable/radius_layout"
                 />
         </com.google.android.material.textfield.TextInputLayout>
 

@@ -1,17 +1,15 @@
 package com.pac.kotlin_mobile
 
-
-
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -24,16 +22,17 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class MainActivity : AppCompatActivity() {
     private  lateinit var binding : ActivityMainBinding
     lateinit var AUTH : SharedPreferences
+
 
      var Select_Page : Int = R.id.page_1
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
     private var menu: Menu? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,9 +47,10 @@ class MainActivity : AppCompatActivity() {
             getData()
         }
 
-//        supportActionBar!!.setDisplayShowTitleEnabled(false)
-        supportActionBar!!.elevation = 0.0F
 
+        supportActionBar!!.setDisplayShowTitleEnabled(false)
+        supportActionBar!!.elevation = 0.0F
+        supportActionBar!!.setCustomView(null)
         supportFragmentManager.beginTransaction().add(
             R.id.frameLayout,
             HomeFragment()
@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         HomeFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_2 -> {
@@ -88,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                         ).commit()
 
                     }
-
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_3 -> {
@@ -98,6 +99,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         NewsFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 R.id.page_4 -> {
@@ -107,6 +109,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.frameLayout,
                         MyPostFragment()
                     ).commit()
+                    supportActionBar!!.setCustomView(null)
                     true
                 }
                 else -> false
@@ -190,7 +193,6 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         Log.i("Event","onCreateOptionsMenu")
 
@@ -200,15 +202,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.menu1 -> {
+
                 val  intent = Intent(applicationContext, SearchActivity::class.java)
                 intent.putExtra("Select_Page",Select_Page)
                 startActivityForResult(intent ,1)
+                supportActionBar!!.setCustomView(null)
             }
             R.id.menu2 -> {
+
                 val  intent = Intent(applicationContext, ProfileActivity::class.java)
                 intent.putExtra("Select_Page",Select_Page)
 
                 startActivityForResult(intent ,1)
+                supportActionBar!!.setCustomView(null)
             }
 
 
@@ -228,16 +234,20 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         Log.i("Event","onResume")
+        supportActionBar!!.setCustomView(null)
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
 
         }else{
             Log.i("Event","ข้อมูลว่างง")
+
              val settingsItem =  this.menu?.findItem(R.id.menu2)
+
             settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
+
 
 
 
@@ -248,20 +258,22 @@ class MainActivity : AppCompatActivity() {
         finishAffinity()
     }
 
- fun setMenu(image_url :String){
-     val settingsItem =  this.menu?.findItem(R.id.menu2)
 
-     Glide.with(this@MainActivity).asBitmap()
-         .load(image_url)
-         .circleCrop()
-         .into(object : SimpleTarget<Bitmap?>(100, 100) {
-             override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
-                 settingsItem?.icon = BitmapDrawable(resources, resource)
 
-             }
+    fun setMenu(image_url :String){
+        val settingsItem =  this.menu?.findItem(R.id.menu2)
 
-         })
- }
+        Glide.with(this@MainActivity).asBitmap()
+            .load(image_url)
+            .circleCrop()
+            .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                    settingsItem?.icon = BitmapDrawable(resources, resource)
+
+                }
+
+            })
+    }
 
 
 //

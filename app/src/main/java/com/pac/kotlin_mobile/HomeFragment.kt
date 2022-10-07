@@ -28,6 +28,7 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding = FragmentHomeBinding.inflate(layoutInflater)
+
         binding.seemoreCat.setOnClickListener() {
             var seemorefragment: Fragment? = null
             seemorefragment = catfindhome_more()
