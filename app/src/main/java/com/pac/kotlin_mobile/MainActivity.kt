@@ -62,6 +62,8 @@ class MainActivity : AppCompatActivity() {
 //            startActivity(intent)
 //        }
 
+        supportActionBar!!.setCustomView(null)
+
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId) {

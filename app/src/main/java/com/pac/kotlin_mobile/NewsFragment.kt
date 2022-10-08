@@ -41,6 +41,7 @@ class NewsFragment : Fragment() {
 
         return binding.root
     }
+
     fun callNewsData(){
         NewsList.clear();
         val api: NewsAPI = Retrofit.Builder()
