@@ -1,6 +1,7 @@
 package com.pac.kotlin_mobile
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -19,16 +20,13 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
+
 class MyPostFragment : Fragment() {
     private lateinit var binding: FragmentMyPostBinding
     private lateinit var bindingRV: MypostLayoutBinding
     val postlist = arrayListOf<Postlist>()
     var URL_API = URL.URL_API
-    val api: Cat_API = Retrofit.Builder()
-        .baseUrl(URL_API)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(Cat_API::class.java)
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,6 +42,9 @@ class MyPostFragment : Fragment() {
             fragment = CheckPostFragment()
             replaceFragment(fragment)
         }
+
+            callpostData()
+
 
 //        bindingRV.deletePost.setOnClickListener {
 //           val myBuilder = AlertDialog.Builder(requireActivity())
@@ -74,10 +75,6 @@ class MyPostFragment : Fragment() {
 
 
 
-    override fun onResume() {
-        super.onResume()
-        callpostData()
-    }
 
     fun replaceFragment(someFragment: Fragment) {
         var binding: ActivityMainBinding
@@ -90,7 +87,15 @@ class MyPostFragment : Fragment() {
 
 
 
+
+
+
     fun callpostData () {
+        val api: Cat_API = Retrofit.Builder()
+            .baseUrl(URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(Cat_API::class.java)
         api.getMypost()
             .enqueue(object : Callback<List<Cat>> {
                 override fun onResponse(call: Call<List<Cat>>, response:
@@ -101,6 +106,7 @@ class MyPostFragment : Fragment() {
 //// Set Data to RecyclerRecyclerView
 
                     binding.recyclerView.adapter = MyPostAdapter(postlist,requireContext())
+                    binding.recyclerView.adapter?.notifyDataSetChanged()
                 }
 
                 override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
@@ -112,6 +118,5 @@ class MyPostFragment : Fragment() {
 
 
     }
-
 
 

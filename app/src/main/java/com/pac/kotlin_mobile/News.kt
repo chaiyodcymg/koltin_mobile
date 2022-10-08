@@ -17,6 +17,7 @@ data class News(
     @SerializedName("detail") val detail: String,
 
     @Expose
-    @SerializedName("user_id") val user_id: String
-    ){}
+    @SerializedName("user_id") val user_id: Int
+
+    )
 

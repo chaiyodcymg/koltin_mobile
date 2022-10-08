@@ -19,16 +19,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NewsFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
     private lateinit var bindingnews: NewsLayoutBinding
@@ -40,7 +31,9 @@ class NewsFragment : Fragment() {
     ): View? {
         binding = FragmentNewsBinding.inflate(layoutInflater)
         bindingnews = NewsLayoutBinding.inflate(layoutInflater)
+
         callNewsData()
+
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
         binding.recyclerView.addItemDecoration(DividerItemDecoration(
             binding.recyclerView.getContext(),DividerItemDecoration.HORIZONTAL
@@ -58,7 +51,6 @@ class NewsFragment : Fragment() {
         return binding.root
     }
 
-
     fun callNewsData(){
         val api: NewsAPI = Retrofit.Builder()
             .baseUrl(URL_API)
@@ -73,12 +65,14 @@ class NewsFragment : Fragment() {
                     NewsList.clear();
                     if(response.isSuccessful){
                         response.body()?.forEach {
-                            NewsList.add(News(it.id,it.title,it.image,it.detail,it.user_id)) }
-//// Set Data to RecyclerRecyclerView
-                        binding. recyclerView.adapter = NewsAdapter(NewsList,requireContext(), requireActivity() as MainActivity,layoutInflater)
+                            NewsList.add(News(it.id,it.title,it.image,it.detail,it.user_id))
+                        }
+
+                        binding.recyclerView.adapter = NewsAdapter(NewsList,requireContext(), requireActivity() as MainActivity,layoutInflater)
+                        binding.recyclerView.adapter?.notifyDataSetChanged()
                     }
 
-            }
+                }
                 override fun onFailure(call: Call<List<News>>, t: Throwable) {
                     Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
                 }

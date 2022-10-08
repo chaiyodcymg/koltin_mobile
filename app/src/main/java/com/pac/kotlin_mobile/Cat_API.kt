@@ -17,7 +17,7 @@ interface Cat_API {
     @GET("search")
     fun search(
         @Query("data") data: String
-    ): Call<List<Cat>>
+    ): Call<List<Search>>
 
 
     @PUT("soft_delete/{id}")

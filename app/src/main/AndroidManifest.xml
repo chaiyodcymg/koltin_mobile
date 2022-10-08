@@ -30,6 +30,15 @@
             android:name=".EditPost"
             android:exported="false" />
         <activity
+            android:name=".DetailLostCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailFindhouseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".LostCatActivity"
             android:exported="false" />
         <activity

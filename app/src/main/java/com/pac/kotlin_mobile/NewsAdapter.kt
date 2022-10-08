@@ -84,10 +84,7 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
         }
         binding_holder.deleteNews.setOnClickListener{
             //pass the 'context' here
-
             var URL_API = URL.URL_API
-            var  binding : FragmentNewsBinding
-            binding = FragmentNewsBinding.inflate(inflater)
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
                 setMessage("delete : ${items[position].title} ?")

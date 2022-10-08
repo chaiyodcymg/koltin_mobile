@@ -6,6 +6,8 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface FindhouseAPI {
+    @GET("more_findhouse")
+    fun retrievePost():Call<List<Findhouse>>
 
     @Multipart
     @POST("insertfindhouse")
