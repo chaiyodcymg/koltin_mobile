@@ -19,6 +19,16 @@
         android:theme="@style/Theme.Kotlin_mobile"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <activity
+            android:name=".EditNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditPost"
+            android:exported="false" />
         <activity
             android:name=".DetailLostCatActivity"
             android:exported="false" />
@@ -43,6 +53,7 @@
         <activity
             android:name=".SearchActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">

@@ -1,6 +1,6 @@
 package com.pac.kotlin_mobile
 
-import android.R.attr.data
+
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -13,7 +13,7 @@ import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.SearchLayoutBinding
 
 
-class SearchAdapter(val items: ArrayList<Lostcat>, val context: Context,val requireActivity: SearchActivity,val inflater: LayoutInflater):
+class SearchAdapter(val items: ArrayList<Search>, val context: Context,val requireActivity: SearchActivity,val inflater: LayoutInflater):
     RecyclerView.Adapter<SearchAdapter.ViewHolder>() {
     var URL_API = URL.URL_API
     inner class ViewHolder(view: View, val binding: SearchLayoutBinding) : RecyclerView.ViewHolder(view) {init {} }
@@ -34,22 +34,97 @@ class SearchAdapter(val items: ArrayList<Lostcat>, val context: Context,val requ
         binding_holder.color.text = "สี ${items[position].color}"
         Glide.with(context).load(URL_API +items[position].image).into( binding_holder.catImg)
         binding_holder.cardView.setOnClickListener {
+            val  intent : Intent
+            if(items[position].type == 0){
+                intent = Intent(requireActivity.applicationContext, DetailFindhouseActivity::class.java)
+            }else{
+                intent = Intent(requireActivity.applicationContext, DetailLostCatActivity::class.java)
+            }
 
-            val  intent = Intent(requireActivity.applicationContext, DetailFindhouseActivity::class.java)
-            intent.putExtra("search",items)
+        intent.putExtra("search",SearchPacelable(
+            items[position].id,
+            items[position].name,
+            items[position].gender,
+            items[position].color,
+            items[position].vaccine,
+            items[position].date_vaccine,
+            items[position].species,
+            items[position].more_info,
+            items[position].image,
+            items[position].house_no,
+            items[position].street,
+            items[position].sub_district,
+            items[position].district,
+            items[position].province,
+            items[position].post_address,
+           if (items[position].date == null) "" else items[position].date,
+           if( items[position].notice_point == null)  "" else items[position].notice_point,
+            if(items[position].place_to_found  == null)  "" else items[position].place_to_found ,
+            items[position].firstname,
+            items[position].lastname,
+            items[position].phone,
+            items[position].email,
+            items[position].line_id,
+            items[position].facebook,
+            items[position].type,
+            items[position].status,
+            items[position].user_id,
+
+
+        ))
             requireActivity.startActivity(intent)
 
-//            var binding: ActivitySearchBinding
-//            binding = ActivitySearchBinding.inflate(inflater)
-//            val catmore = FragmentDetail()
-//            val transaction = requireActivity.supportFragmentManager.beginTransaction()
-//            transaction.replace(binding.frameLayout.id, catmore)
-//            transaction.addToBackStack(null)
-//            transaction.commit()
+        }
+        binding_holder.btnHome.setOnClickListener {
+
+            val  intent : Intent
+            if(items[position].type == 0){
+                intent = Intent(requireActivity.applicationContext, DetailFindhouseActivity::class.java)
+            }else{
+                intent = Intent(requireActivity.applicationContext, DetailLostCatActivity::class.java)
+            }
+
+            intent.putExtra("search",SearchPacelable(
+                items[position].id,
+                items[position].name,
+                items[position].gender,
+                items[position].color,
+                items[position].vaccine,
+                items[position].date_vaccine,
+                items[position].species,
+                items[position].more_info,
+                items[position].image,
+                items[position].house_no,
+                items[position].street,
+                items[position].sub_district,
+                items[position].district,
+                items[position].province,
+                items[position].post_address,
+                if (items[position].date == null) "" else items[position].date,
+                if( items[position].notice_point == null)  "" else items[position].notice_point,
+                if(items[position].place_to_found  == null)  "" else items[position].place_to_found ,
+                items[position].firstname,
+                items[position].lastname,
+                items[position].phone,
+                items[position].email,
+                items[position].line_id,
+                items[position].facebook,
+                items[position].type,
+                items[position].status,
+                items[position].user_id,
+
+
+                ))
+            requireActivity.startActivity(intent)
+
         }
     }
+
+
 
     override fun getItemCount(): Int {
         return items.size
     }
+
 }
+

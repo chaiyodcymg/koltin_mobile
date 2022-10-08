@@ -9,7 +9,6 @@ import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
 import retrofit2.Call
@@ -23,7 +22,7 @@ class SearchActivity : AppCompatActivity() {
     lateinit var binding : ActivitySearchBinding
     lateinit var AUTH : SharedPreferences
     var Select_Page : Int = R.id.page_1
-    var data_search_List = arrayListOf<Lostcat>()
+    var data_search_List = arrayListOf<Search>()
     var URL_API = URL.URL_API
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,7 +47,7 @@ class SearchActivity : AppCompatActivity() {
 
         binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext,this@SearchActivity,layoutInflater )
         binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
-       
+
 
         var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
 
@@ -64,11 +63,12 @@ class SearchActivity : AppCompatActivity() {
                         .build()
                         .create(Cat_API::class.java)
                     api.search(search)
-                        .enqueue(object : Callback<List<Lostcat>> {
-                            override fun onResponse(call: Call<List<Lostcat>>, response: Response<List<Lostcat>>) {
+                        .enqueue(object : Callback<List<Search>> {
+                            override fun onResponse(call: Call<List<Search>>, response: Response<List<Search>>) {
                                 if (response.isSuccessful()) {
                                     data_search_List.clear()
                                     Log.i("Events" ,"${response.body()}")
+
                                     data_search_List.addAll(response.body()!!)
 
                                     binding.recyclerView.adapter?.notifyDataSetChanged()
@@ -76,7 +76,7 @@ class SearchActivity : AppCompatActivity() {
                                 }
                             }
 
-                            override fun onFailure(call: Call<List<Lostcat>>, t: Throwable) {
+                            override fun onFailure(call: Call<List<Search>>, t: Throwable) {
                                 Toast.makeText(applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
                             }
                         })

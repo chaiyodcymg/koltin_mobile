@@ -27,9 +27,18 @@
                 android:layout_marginTop="15dp"
                 android:src="@drawable/cat"
                 app:civ_border_color="#FF000000" />
-
             <TextView
                 android:id="@+id/id"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:hint="รหัสแมว : 123 "
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/type"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
@@ -58,6 +67,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -66,6 +76,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -74,6 +85,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -83,6 +95,7 @@
 
 
                     <TextView
+                        android:id="@+id/vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -91,6 +104,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/date_vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -99,6 +113,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/species"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -114,6 +129,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/detail"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -123,6 +139,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -131,6 +148,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/notice_point"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -139,6 +157,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/place_to_found"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -147,6 +166,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/address"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -163,11 +183,44 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="300dp"
+                        android:id="@+id/name_owner"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginBottom="10dp"
-                        android:text="ชื่อ: นางสาว พิมพ์นิภา  ศรีสมอ \nเบอร์ติดต่อ: 0632358971 \nอีเมล: pimnipa@gmail.com \nLine: 0632448979 \nFacebook: pimnipa srisamor"
+                        android:text="ชื่อ : นางสาวปรีญา ไชย"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="เบอร์โทร : 0943750213"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="อีเมล : preeya@gmail.com"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/line"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="LINE ID : praa00"
+
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/facebook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="Facebook : preeyanuch"
                         android:textSize="15sp" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

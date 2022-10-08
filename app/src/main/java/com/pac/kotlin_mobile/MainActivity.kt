@@ -27,7 +27,9 @@ class MainActivity : AppCompatActivity() {
     lateinit var AUTH : SharedPreferences
 
 
+
      var Select_Page : Int = R.id.page_1
+
 
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
@@ -48,13 +50,13 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+
+
+
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
         supportActionBar!!.setCustomView(null)
-        supportFragmentManager.beginTransaction().add(
-            R.id.frameLayout,
-            HomeFragment()
-        ).commit()
+
 
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -65,16 +67,22 @@ class MainActivity : AppCompatActivity() {
                     Select_Page = R.id.page_1
 
 
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.frameLayout,
-                        HomeFragment()
-                    ).commit()
-                    supportActionBar!!.setCustomView(null)
+                        supportActionBar!!.setCustomView(null)
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            HomeFragment()
+                        ).commit()
+
+
+
                     true
                 }
                 R.id.page_2 -> {
 
                     Select_Page = R.id.page_2
+
+
+
                     AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
                     var id =  AUTH.getString("id","")
                     if(id != null && id.isNotEmpty()){
@@ -90,26 +98,33 @@ class MainActivity : AppCompatActivity() {
 
                     }
                     supportActionBar!!.setCustomView(null)
+
                     true
                 }
                 R.id.page_3 -> {
 
                     Select_Page = R.id.page_3
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.frameLayout,
-                        NewsFragment()
-                    ).commit()
-                    supportActionBar!!.setCustomView(null)
+
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            NewsFragment()
+                        ).commit()
+                        supportActionBar!!.setCustomView(null)
+
+
                     true
                 }
                 R.id.page_4 -> {
 
                     Select_Page = R.id.page_4
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.frameLayout,
-                        MyPostFragment()
-                    ).commit()
-                    supportActionBar!!.setCustomView(null)
+
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            MyPostFragment()
+                        ).commit()
+                        supportActionBar!!.setCustomView(null)
+
+
                     true
                 }
                 else -> false
@@ -235,6 +250,7 @@ class MainActivity : AppCompatActivity() {
         super.onResume()
         Log.i("Event","onResume")
         supportActionBar!!.setCustomView(null)
+        binding.bottomNavigation.selectedItemId =  Select_Page
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty() == true){
             getData()
@@ -242,11 +258,13 @@ class MainActivity : AppCompatActivity() {
         }else{
             Log.i("Event","ข้อมูลว่างง")
 
+
              val settingsItem =  this.menu?.findItem(R.id.menu2)
+
 
             settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
-        binding.bottomNavigation.selectedItemId =  Select_Page
+
 
 
 
