@@ -43,4 +43,6 @@ interface LostcatAPI {
     @GET("home_lost")
     fun gethomeLost():Call<List<Lostcat>>
 
+    @GET("catlost_more")
+    fun getCatlostmore():Call<List<Lostcat>>
 }

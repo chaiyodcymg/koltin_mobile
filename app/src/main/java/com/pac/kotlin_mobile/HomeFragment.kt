@@ -31,29 +31,20 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentHomeBinding.inflate(layoutInflater)
         binding.seemoreCat.setOnClickListener() {
             var seemorefragment: Fragment? = null
             seemorefragment = catfindhome_more()
             replaceFragment(seemorefragment)
         }
-//        binding.postShort.setOnClickListener() {
-//            var detailfragment: Fragment? = null
-//            detailfragment = catfindhome_more()
-//            replaceFragment(detailfragment)
-//        }
-
         binding.missingCat.setOnClickListener() {
             var missingCatfragment: Fragment? = null
             missingCatfragment = missing_cat()
             replaceFragment(missingCatfragment)
         }
-
         binding.newsView.layoutManager = LinearLayoutManager( requireActivity().applicationContext)
         binding.findhouseView.layoutManager = LinearLayoutManager( requireActivity().applicationContext)
         binding.lostcatView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
-
         callNewsHome()
         callFindHome()
         callLostcat()
@@ -72,15 +63,12 @@ class HomeFragment : Fragment() {
             .enqueue(object: Callback<News> {
                 override fun onResponse(call: Call<News>, response: Response<News>) {
                     if(response.isSuccessful){
-
                             NewsList.add( response.body()!!)
-
                         //// Set Data to RecyclerRecyclerView
                         Log.i("Event","${NewsList}")
                         binding.newsView.adapter = HomeAdapter(NewsList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
 
                     }
-
                 }
                 override fun onFailure(call: Call<News>, t: Throwable) {
                     Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
@@ -104,9 +92,7 @@ class HomeFragment : Fragment() {
                         //// Set Data to RecyclerRecyclerView
                         Log.i("Event","${FindList}")
                         binding.findhouseView.adapter = HomeFindhouseAdapter(FindList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
-
                     }
-
                 }
                 override fun onFailure(call: Call<List<Findhouse>>, t: Throwable) {
                     Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
@@ -128,7 +114,7 @@ class HomeFragment : Fragment() {
                             LostList.add(Lostcat(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook,it.type,it.status,it.user_id))
                         }
                         //// Set Data to RecyclerRecyclerView
-                        Log.i("Event","${FindList}")
+
                         binding.lostcatView.adapter = HomeCatlostAdapter(LostList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
 
                     }

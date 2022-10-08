@@ -1,59 +1,62 @@
 package com.pac.kotlin_mobile
 
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.pac.kotlin_mobile.databinding.FragmentMissingCatBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [missing_cat.newInstance] factory method to
- * create an instance of this fragment.
- */
 class missing_cat : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
-
+    private lateinit var binding: FragmentMissingCatBinding
+    var LostList = arrayListOf<Lostcat>()
+    lateinit var AUTH : SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_missing_cat, container, false)
+
+        binding = FragmentMissingCatBinding.inflate(layoutInflater)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+
+        callLostcat()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment missing_cat.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            missing_cat().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+    fun callLostcat(){
+        LostList.clear();
+        val api: LostcatAPI = Retrofit.Builder()
+            .baseUrl(URL.URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(LostcatAPI::class.java)
+        api.getCatlostmore()
+            .enqueue(object: Callback<List<Lostcat>> {
+                override fun onResponse(call: Call<List<Lostcat>>, response: Response<List<Lostcat>>) {
+                    if(response.isSuccessful){
+                        response.body()?.forEach {
+                            LostList.add(Lostcat(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook,it.type,it.status,it.user_id))
+                        }
+                        //// Set Data to RecyclerRecyclerView
+
+                        binding.recyclerView.adapter = CatLostMoreAdapter(LostList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
+
+                    }
+
                 }
-            }
+                override fun onFailure(call: Call<List<Lostcat>>, t: Throwable) {
+                    Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                }
+            })
     }
 }
