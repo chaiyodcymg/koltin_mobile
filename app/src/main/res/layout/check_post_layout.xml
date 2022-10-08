@@ -2,17 +2,18 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="285dp"
+        android:layout_height="295dp"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
+        android:paddingRight="20dp"
         card_view:cardCornerRadius="30dp">
 
         <LinearLayout
@@ -33,73 +34,72 @@
                 android:id="@+id/card"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
                 android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/post_type"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
+                    android:paddingRight="10dp"
                     android:text="ประเภท :" />
 
                 <TextView
                     android:id="@+id/cat_name"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="15dp"
+                    android:paddingRight="10dp"
                     android:text="ชื่อ :" />
 
                 <TextView
                     android:id="@+id/cat_color"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
+                    android:paddingRight="10dp"
                     android:text="สี :" />
 
                 <TextView
                     android:id="@+id/cat_species"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
+                    android:paddingRight="10dp"
                     android:text="สายพันธ์ :" />
 
                 <TextView
                     android:id="@+id/cat_vacine"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
+                    android:paddingRight="10dp"
                     android:text="วัคซีนที่เคยได้รับ :" />
 
                 <TextView
                     android:id="@+id/cat_info"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
+                    android:paddingRight="20dp"
                     android:text="ข้อมูลสัตว์ :" />
 
                 <TextView
                     android:id="@+id/cat_contact"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
+                    android:paddingRight="10dp"
                     android:text="ติดต่อ :" />
 
                 <TextView
                     android:id="@+id/cat_phone"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
+                    android:paddingRight="10dp"
                     android:text="เบอร์โทร :" />
-
-
             </LinearLayout>
         </LinearLayout>
 
@@ -108,7 +108,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             >
-
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/deny_post"
                 android:layout_width="100dp"
