@@ -23,7 +23,7 @@ class CatLostMoreAdapter(val items: ArrayList<Lostcat>, val context: Context, va
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding_holder = holder.binding
-        binding_holder.catName?.text = items[position].name
+        binding_holder.catName?.text = "ชื่อ:" + items[position].name
         Glide.with(context).load( URL_API + items[position].image).into(binding_holder.catHomelessImg)
         binding_holder.catColor?.text ="สี:" +  items[position].color
         binding_holder.catSpecies?.text = "สายพันธุ์:" + items[position].species
