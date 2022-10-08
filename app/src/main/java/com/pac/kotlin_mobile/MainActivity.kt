@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
-
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -30,8 +29,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var AUTH : SharedPreferences
 
 
-     var Select_Page : Int = R.id.page_1
-
+    var Select_Page : Int = R.id.page_1
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
     private var menu: Menu? = null
@@ -58,8 +56,6 @@ class MainActivity : AppCompatActivity() {
             R.id.frameLayout,
             HomeFragment()
         ).commit()
-
-
 
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->
@@ -247,8 +243,7 @@ class MainActivity : AppCompatActivity() {
         }else{
             Log.i("Event","ข้อมูลว่างง")
 
-             val settingsItem =  this.menu?.findItem(R.id.menu2)
-
+            val settingsItem =  this.menu?.findItem(R.id.menu2)
             settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
         binding.bottomNavigation.selectedItemId =  Select_Page

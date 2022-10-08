@@ -3,6 +3,13 @@ package com.pac.kotlin_mobile
 import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
+import retrofit2.http.DELETE
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
+
+import retrofit2.http.*
+
 
 interface Cat_API {
     @GET("mypost")
@@ -38,6 +45,12 @@ interface Cat_API {
         @Field("line_id") line_id: String,
         @Field("facebook") facebook: String,
         ): Call<Cat>
+
+
+
+    @PUT("soft_delete/{id}")
+    fun softdelete(
+        @Path("id") id:Int):Call<Cat>
 
     @DELETE("deletePost/{id}")
     fun deletePost(

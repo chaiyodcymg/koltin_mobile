@@ -42,6 +42,7 @@ data class Cat_search(
     val image: String,
     )
 
+
 data class Postlist(
     @Expose
     @SerializedName("id") val id: Int,
@@ -106,7 +107,5 @@ data class Postlist(
     @Expose
     @SerializedName("facebook") val facebook: String
     )
-
-
 
 

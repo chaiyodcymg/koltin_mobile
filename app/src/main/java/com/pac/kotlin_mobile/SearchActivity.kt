@@ -57,6 +57,7 @@ class SearchActivity : AppCompatActivity() {
                 Log.i("Events",search)
                 if(search.trim().isNotEmpty() && search.isNotEmpty()){
 
+
                     val api: Cat_API = Retrofit.Builder()
                         .baseUrl(URL_API)
                         .addConverterFactory(GsonConverterFactory.create())

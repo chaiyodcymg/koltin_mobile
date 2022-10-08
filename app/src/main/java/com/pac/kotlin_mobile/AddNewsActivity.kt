@@ -1,31 +1,26 @@
 package com.pac.kotlin_mobile
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import com.pac.kotlin_mobile.URL.URL_API
-import com.pac.kotlin_mobile.databinding.FragmentAddNewsBinding
-import com.pac.kotlin_mobile.databinding.FragmentLoginBinding
+import com.pac.kotlin_mobile.databinding.ActivityAddNewsBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class AddNewsFragment : Fragment() {
-    private lateinit var binding: FragmentAddNewsBinding
-    var URL_API = URL.URL_API
+class AddNewsActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityAddNewsBinding
     lateinit var AUTH : SharedPreferences
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentAddNewsBinding.inflate(layoutInflater)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityAddNewsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         binding.btnSubmitnews.setOnClickListener{
             val api: NewsAPI = Retrofit.Builder()
                 .baseUrl(URL_API)
@@ -35,27 +30,27 @@ class AddNewsFragment : Fragment() {
             var name = binding.edtNewsname.text.toString()
             var imageSelected = "gg"
             var detail = binding.newsText.text.toString()
-            AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
             var id =  AUTH.getString("id","").toString()
             api.insertNews(
                 name,
                 imageSelected,
                 detail,
                 id
-                ).enqueue(object : Callback<News> {
+            ).enqueue(object : Callback<News> {
                 override fun onResponse(call: Call<News>, response: retrofit2.Response<News>) {
                     if (response.isSuccessful) {
-                        Toast.makeText(requireActivity().applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
+                        finish()
                     }else{
-                        Toast.makeText(requireActivity().applicationContext,"Error", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext,"Error", Toast.LENGTH_SHORT).show()
                     }
                 }
                 override fun onFailure(call: Call<News>, t: Throwable) {
-                    Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
                 }
             })
         }
-        return binding.root
-    }
 
+    }
 }
