@@ -10,7 +10,7 @@
         android:id="@+id/page_2"
         android:enabled="true"
         android:icon="@drawable/upload"
-        android:title="โพสต์"/>
+        android:title="เพิ่มโพสต์"/>
     <item
         android:id="@+id/page_3"
         android:icon="@drawable/check"

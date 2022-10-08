@@ -15,6 +15,7 @@ import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
     var Select_Page : Int = R.id.page_1
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
+    private var menu: Menu? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -111,10 +113,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.page_4 -> {
 
                     Select_Page = R.id.page_4
+
+
+                    AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+                    var id =  AUTH.getString("id","")
+                    if(id != null && id.isNotEmpty()){
+
                     supportFragmentManager.beginTransaction().replace(
                         R.id.frameLayout,
                         MyPostFragment()
                     ).commit()
+                    }else{
+
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            NotLoggedInFragment()
+                        ).commit()
+                    }
                     true
                 }
                 else -> false
@@ -142,6 +157,7 @@ class MainActivity : AppCompatActivity() {
 
                     image_profile =  URL_API +response.body()?.image_profile.toString()
                     Log.i("Event","${image_profile }")
+                    setMenu(image_profile )
                 }
 
             }
@@ -233,50 +249,29 @@ class MainActivity : AppCompatActivity() {
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty()==true){
             getData()
+        }else{
+            val settingsItem =  this.menu?.findItem(R.id.menu2)
+
+            settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
-//        if(select == R.id.page_2 ){
-//            AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-//            var id =  AUTH.getString("id","")
-//            if(id != null && id.isNotEmpty()){
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.frameLayout,
-//                    AddPostFragment()
-//                ).commit()
-//            }else{
-//                supportFragmentManager.beginTransaction().replace(
-//                    R.id.frameLayout,
-//                    NotLoggedInFragment()
-//                ).commit()
-//
-//            }
-//        }
 
 
     }
 
-    override fun onPause() {
-        super.onPause()
+    fun setMenu(image_url :String){
+        val settingsItem =  this.menu?.findItem(R.id.menu2)
 
-        Log.i("Event","onPause")
-    }
+        Glide.with(this@MainActivity).asBitmap()
+            .load(image_url)
+            .circleCrop()
+            .into(object : SimpleTarget<Bitmap?>(100, 100) {
+                override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap?>?) {
+                    settingsItem?.icon = BitmapDrawable(resources, resource)
 
-    override fun onStop() {
-        super.onStop()
+                }
 
-        Log.i("Event","onStop")
-    }
-
-    override fun onDestroy() {
-
-
-        Log.i("Event","onDestroy")
-
-//
-//        Log.i("Event","${Select_Page.getInt("id",0)}")
-        super.onDestroy()
-
-
+            })
     }
 
 
