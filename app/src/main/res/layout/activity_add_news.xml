@@ -44,29 +44,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="รูปภาพ"
-
                 android:textSize="20dp"
                 />
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginBottom="10dp"
-                app:cardBackgroundColor="#f1f1f1"
-                android:text="เพิ่มรูปภาพ"
-                >
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="เพิ่มรูปภาพ"
-                    android:gravity="center"
-                    />
+
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/image_selected"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@drawable/upload_cat"
                     />
-            </androidx.cardview.widget.CardView>
+
 
 
             <!--ข้อความ-->

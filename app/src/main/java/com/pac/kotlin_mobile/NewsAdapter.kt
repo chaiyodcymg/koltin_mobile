@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
@@ -28,6 +29,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireActivity: MainActivity,val inflater: LayoutInflater,) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
+
     inner class ViewHolder(view: View, val binding: NewsLayoutBinding ) :
         RecyclerView.ViewHolder(view) {
         init {
@@ -59,12 +61,11 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
     }
 
 
-
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        var URL_API = URL.URL_API
         val binding_holder = holder.binding
         binding_holder.newsTitle?.text = items[position].title
-        Glide.with(context).load(items[position].image).into(binding_holder.newsImg)
+        Glide.with(context).load(URL_API +items[position].image).into(binding_holder.newsImg)
 
         binding_holder.cardView.setOnClickListener{
             val bundle = Bundle()
@@ -86,8 +87,7 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
             //pass the 'context' here
 
             var URL_API = URL.URL_API
-            var  binding : FragmentNewsBinding
-            binding = FragmentNewsBinding.inflate(inflater)
+
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
                 setMessage("delete : ${items[position].title} ?")
@@ -120,10 +120,8 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
 
         }
 
-
-
-
     }
+
     fun remove(index:Int){
         items.removeAt(index)
         notifyDataSetChanged()

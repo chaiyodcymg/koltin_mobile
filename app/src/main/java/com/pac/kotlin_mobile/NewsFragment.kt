@@ -30,9 +30,7 @@ class NewsFragment : Fragment() {
     ): View? {
         binding = FragmentNewsBinding.inflate(layoutInflater)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
-        binding.recyclerView.addItemDecoration(DividerItemDecoration(
-            binding.recyclerView.getContext(),DividerItemDecoration.HORIZONTAL
-        ))
+
         callNewsData()
         binding.fab.setOnClickListener() {
             val intent = Intent(requireActivity().applicationContext, AddNewsActivity::class.java)
@@ -59,7 +57,7 @@ class NewsFragment : Fragment() {
                     }
 //// Set Data to RecyclerRecyclerView
 
-                    binding. recyclerView.adapter = NewsAdapter(NewsList,requireActivity().applicationContext, requireActivity() as MainActivity,layoutInflater)
+                    binding. recyclerView.adapter = NewsAdapter(NewsList,requireContext(), requireActivity() as MainActivity,layoutInflater)
 
                 }
                 override fun onFailure(call: Call<List<News>>, t: Throwable) {
