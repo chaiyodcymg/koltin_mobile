@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,101 +9,125 @@ import android.view.View
 import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
+import com.pac.kotlin_mobile.databinding.FragmentNewsBinding
 import retrofit2.Call
 import retrofit2.Callback
-
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [HomeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
+    lateinit var AUTH : SharedPreferences
     var NewsList = arrayListOf<News>()
-    var URL_API = URL.URL_API
+    var FindList = arrayListOf<Findhouse>()
+    var LostList = arrayListOf<Lostcat>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         binding = FragmentHomeBinding.inflate(layoutInflater)
-        binding.newsRecyclerview.adapter = HomeNewsAdapter(NewsList,requireActivity().applicationContext)
-        binding.newsRecyclerview.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
-
-
         binding.seemoreCat.setOnClickListener() {
             var seemorefragment: Fragment? = null
             seemorefragment = catfindhome_more()
             replaceFragment(seemorefragment)
         }
-        binding.postShort.setOnClickListener() {
-            var detailfragment: Fragment? = null
-            detailfragment = catfindhome_more()
-            replaceFragment(detailfragment)
-
-        }
-
         binding.missingCat.setOnClickListener() {
             var missingCatfragment: Fragment? = null
             missingCatfragment = missing_cat()
             replaceFragment(missingCatfragment)
         }
-
-
-//        data_List.add(Profile("Packk","a","a","a"))
-//        binding.newsRecyclerview.adapter = HomeNewsAdapter(data_List,requireActivity().applicationContext)
-
-//       data_List.add(News("email","fn","l","/images/U1M9hDysU1YwzZ2kzCtoQRRxnUq1DiN5HFQiO4PxLYx66bO43V.jpg"))
-//        binding.newsRecyclerview.adapter = HomeNewsAdapter(data_List,requireActivity().applicationContext)
-
-     callNewsData()
-
+        binding.newsView.layoutManager = LinearLayoutManager( requireActivity().applicationContext)
+        binding.findhouseView.layoutManager = LinearLayoutManager( requireActivity().applicationContext)
+        binding.lostcatView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+        callNewsHome()
+        callFindHome()
+        callLostcat()
         return binding.root
     }
-    fun callNewsData() {
 
+
+    fun callNewsHome(){
+        NewsList.clear();
         val api: NewsAPI = Retrofit.Builder()
             .baseUrl(URL.URL_API)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
             .create(NewsAPI::class.java)
         api.gethomeNews()
-            .enqueue(object : Callback<News> {
+            .enqueue(object: Callback<News> {
                 override fun onResponse(call: Call<News>, response: Response<News>) {
-                    NewsList.clear();
-                    Log.i("Event","${response.body()}")
-                    if (response.isSuccessful) {
-
-                            NewsList.add(response.body()!!)
-
-
-                        binding.newsRecyclerview.adapter =
-                            HomeNewsAdapter(NewsList, requireContext())
-                        binding.newsRecyclerview.adapter?.notifyDataSetChanged()
+                    if(response.isSuccessful){
+                        NewsList.add( response.body()!!)
+                        //// Set Data to RecyclerRecyclerView
+                        Log.i("Event","${NewsList}")
+                        binding.newsView.adapter = HomeAdapter(NewsList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
 
                     }
                 }
+                override fun onFailure(call: Call<News>, t: Throwable) {
+                    Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                }
+            })
+    }
+    fun callFindHome(){
+        FindList.clear();
+        val api: FindhouseAPI = Retrofit.Builder()
+            .baseUrl(URL.URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(FindhouseAPI::class.java)
+        api.gethomeFind()
+            .enqueue(object: Callback<List<Findhouse>> {
+                override fun onResponse(call: Call<List<Findhouse>>, response: Response<List<Findhouse>>) {
+                    if(response.isSuccessful){
+                        response.body()?.forEach {
+                            FindList.add(Findhouse(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook,it.type,it.status,it.user_id))
+                        }
+                        //// Set Data to RecyclerRecyclerView
+                        Log.i("Event","${FindList}")
+                        binding.findhouseView.adapter = HomeFindhouseAdapter(FindList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
+                    }
+                }
+                override fun onFailure(call: Call<List<Findhouse>>, t: Throwable) {
+                    Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                }
+            })
+    }
 
-                    override fun onFailure(call: Call<News>, t: Throwable) {
+    fun callLostcat(){
+        LostList.clear();
+        val api: LostcatAPI = Retrofit.Builder()
+            .baseUrl(URL.URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(LostcatAPI::class.java)
+        api.gethomeLost()
+            .enqueue(object: Callback<List<Lostcat>> {
+                override fun onResponse(call: Call<List<Lostcat>>, response: Response<List<Lostcat>>) {
+                    if(response.isSuccessful){
+                        response.body()?.forEach {
+                            LostList.add(Lostcat(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook,it.type,it.status,it.user_id))
+                        }
+                        //// Set Data to RecyclerRecyclerView
+
+                        binding.lostcatView.adapter = HomeCatlostAdapter(LostList,requireActivity().applicationContext,requireActivity() as MainActivity,layoutInflater)
 
                     }
 
-
-
+                }
+                override fun onFailure(call: Call<List<Lostcat>>, t: Throwable) {
+                    Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                }
             })
     }
+
+
     fun replaceFragment(someFragment:Fragment){
         var binding: FragmentHomeBinding
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -112,5 +137,4 @@ class HomeFragment : Fragment() {
         transaction.commit()
     }
 }
-
 

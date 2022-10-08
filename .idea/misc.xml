@@ -35,14 +35,17 @@
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_lost_cat.xml" value="0.20597652081109924" />
         <entry key="app/src/main/res/layout/fragment_missing_cat.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/fragment_my_post.xml" value="0.10555555555555556" />
+        <entry key="app/src/main/res/layout/fragment_my_post.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_news.xml" value="0.20416666666666666" />
         <entry key="app/src/main/res/layout/fragment_news_info.xml" value="0.159375" />
         <entry key="app/src/main/res/layout/fragment_not_logged_in.xml" value="0.10833333333333334" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_register.xml" value="0.11727456940222898" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.11727456940222898" />
+        <entry key="app/src/main/res/layout/home_catlost_layout.xml" value="0.1539855072463768" />
+        <entry key="app/src/main/res/layout/home_findhouse_layout.xml" value="0.1539855072463768" />
         <entry key="app/src/main/res/layout/home_news_layout.xml" value="0.18297101449275363" />
+        <entry key="app/src/main/res/layout/mypost_layout.xml" value="0.1111111111111111" />
         <entry key="app/src/main/res/layout/news_layout.xml" value="0.14719202898550723" />
         <entry key="app/src/main/res/layout/search_layout.xml" value="0.1" />
         <entry key="app/src/main/res/layout/style.xml" value="0.1" />

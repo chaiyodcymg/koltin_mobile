@@ -117,13 +117,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.page_4 -> {
 
                     Select_Page = R.id.page_4
-
+                    AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+                    var id =  AUTH.getString("id","")
+                    if(id != null && id.isNotEmpty()){
                         supportFragmentManager.beginTransaction().replace(
                             R.id.frameLayout,
                             MyPostFragment()
                         ).commit()
-                        supportActionBar!!.setCustomView(null)
 
+
+                    }else{
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            NotLoggedInFragment()
+                        ).commit()
+
+                    }
+                    supportActionBar!!.setCustomView(null)
 
                     true
                 }

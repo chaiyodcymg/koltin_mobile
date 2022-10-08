@@ -11,8 +11,10 @@ import retrofit2.http.*
 
 
 interface Cat_API {
-    @GET("mypost")
-    fun getMypost(): Call<List<Cat>>
+    @GET("mypost/{id}")
+    fun getMypost(
+        @Path("id") id: Int
+    ): Call<List<Cat>>
 
     @GET("search")
     fun search(
