@@ -32,7 +32,7 @@ class NewsFragment : Fragment() {
         binding = FragmentNewsBinding.inflate(layoutInflater)
         bindingnews = NewsLayoutBinding.inflate(layoutInflater)
 
-//        callNewsData()
+       callNewsData()
 
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
         binding.recyclerView.addItemDecoration(DividerItemDecoration(

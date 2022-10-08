@@ -102,8 +102,9 @@ class MyPostFragment : Fragment() {
                 Response<List<Cat>>
                 ) {
                     response.body()?.forEach {
-                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine)) }
-//// Set Data to RecyclerRecyclerView
+                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine))
+                    }
+
 
                     binding.recyclerView.adapter = MyPostAdapter(postlist,requireContext())
                     binding.recyclerView.adapter?.notifyDataSetChanged()
