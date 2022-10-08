@@ -40,8 +40,8 @@ class MyPostFragment : Fragment() {
 
         binding = FragmentMyPostBinding.inflate(layoutInflater)
         bindingRV = MypostLayoutBinding.inflate(layoutInflater)
-        binding.recyclerView.adapter = MyPostAdapter(this.postlist,requireActivity().applicationContext)
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+//        binding.recyclerView.adapter = MyPostAdapter(this.postlist,requireActivity().applicationContext)
+        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.checkPostText.setOnClickListener {
             var fragment: Fragment? = null
             fragment = CheckPostFragment()

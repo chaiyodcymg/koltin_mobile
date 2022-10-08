@@ -230,7 +230,7 @@
                 android:layout_below="@+id/textimg"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/upload" />
+                android:src="@drawable/upload_cat" />
 
 
 

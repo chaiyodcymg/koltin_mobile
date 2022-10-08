@@ -1,6 +1,7 @@
 package com.pac.kotlin_mobile
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
@@ -83,7 +84,34 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
 
         }
 
-
+        binding.editPost.setOnClickListener {
+            Toast.makeText(context,"Click : ${items[position].id}",
+                Toast.LENGTH_LONG).show()
+            val post_id = items[position].id
+            val intent = Intent(context, EditPostActivity::class.java)
+            intent.putExtra("id", post_id.toString())
+            intent.putExtra("namecat", items[position].name)
+            intent.putExtra("gender", items[position].gender)
+            intent.putExtra("color", items[position].color)
+            intent.putExtra("vaccine", items[position].vaccine)
+            intent.putExtra("date", items[position].date)
+            intent.putExtra("species", items[position].species)
+            intent.putExtra("more_info", items[position].more_info)
+//            intent.putExtra("image", items[position].image)
+            intent.putExtra("house_no", items[position].house_no)
+            intent.putExtra("street", items[position].street)
+            intent.putExtra("sub_district", items[position].sub_district)
+            intent.putExtra("district", items[position].district)
+            intent.putExtra("province", items[position].province)
+            intent.putExtra("post_address", items[position].post_address)
+            intent.putExtra("firstname", items[position].firstname)
+            intent.putExtra("lastname", items[position].lastname)
+            intent.putExtra("phone", items[position].phone)
+            intent.putExtra("email", items[position].email)
+            intent.putExtra("line_id", items[position].line_id)
+            intent.putExtra("facebook", items[position].facebook)
+            context.startActivity(intent)
+        }
 
     }
 
