@@ -1,15 +1,13 @@
 package com.pac.kotlin_mobile
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.pac.kotlin_mobile.databinding.ActivityMainBinding
+import com.pac.kotlin_mobile.databinding.CheckPostLayoutBinding
 import com.pac.kotlin_mobile.databinding.MypostLayoutBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -17,28 +15,21 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
-class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
-    RecyclerView.Adapter<MyPostAdapter.ViewHolder>() {
-
-    inner class ViewHolder(view: View ,val binding: MypostLayoutBinding) : RecyclerView.ViewHolder(view) {init {
+class CheckPostAdapter(val items: ArrayList<Postlist>, val context: Context):
+    RecyclerView.Adapter<CheckPostAdapter.ViewHolder>() {
+    inner class ViewHolder(view: View, val binding: CheckPostLayoutBinding) : RecyclerView.ViewHolder(view) {init {
 
 
     } }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPostAdapter.ViewHolder {
-        val binding = MypostLayoutBinding.inflate(
-            LayoutInflater.from(parent.context), parent,
-            false)
-
-
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = CheckPostLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding.root, binding)
     }
 
-
-
-    override fun onBindViewHolder(holder: MyPostAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding = holder.binding
+
 
         binding.catName?.text = "ชื่อ : ${items[position].name}"
         binding.catColor?.text = "สี : ${items[position].color}"
@@ -49,12 +40,12 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         binding.catPhone?.text = "เบอร์โทร : ${items[position].phone}"
 
 
-        binding.deletePost.setOnClickListener{
+        binding.denyPost.setOnClickListener{
 
             var URL_API = URL.URL_API
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
-                setMessage("${items[position].id}")
+                setMessage("ปฏิเสธโพสต์ ${items[position].id}," + "ชื่อ: ${items[position].name}")
                 setNegativeButton("Yes") {dialog, which ->
                     val api: Cat_API = Retrofit.Builder()
                         .baseUrl(URL_API)
@@ -62,7 +53,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
                         .build()
                         .create(Cat_API::class.java)
                     var id =  items[position].id
-                    api.softdelete(id.toString().toInt())
+                    api.deny_post(id.toString().toInt())
                         .enqueue(object : Callback<Cat> {
                             override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
                                 if(response.isSuccessful) {
@@ -82,17 +73,41 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
 
         }
 
+        binding.acceptPost.setOnClickListener{
 
+            var URL_API = URL.URL_API
+            val myBuilder = AlertDialog.Builder(context)
+            myBuilder.apply {
+                setMessage("ยอมรับโพสต์ ${items[position].id}," + "ชื่อ: ${items[position].name}")
+                setNegativeButton("Yes") {dialog, which ->
+                    val api: Cat_API = Retrofit.Builder()
+                        .baseUrl(URL_API)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
+                        .create(Cat_API::class.java)
+                    var id =  items[position].id
+                    api.accept_post(id.toString().toInt())
+                        .enqueue(object : Callback<Cat> {
+                            override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
+                                if(response.isSuccessful) {
+                                    Toast.makeText(context, "Successfully Updated", Toast.LENGTH_LONG).show()
 
+                                }
+                            }
+
+                            override fun onFailure(call: Call<Cat>, t: Throwable) {
+                                Toast.makeText(context.applicationContext, "Faill Updated", Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
+                setPositiveButton("No") {dialog, which -> dialog.cancel()}
+                show()
+            }
+
+        }
     }
 
     override fun getItemCount(): Int {
         return items.size
     }
-
-
-
 }
-
-
-

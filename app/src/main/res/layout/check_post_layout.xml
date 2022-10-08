@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="285dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="10dp"
+        card_view:cardCornerRadius="30dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/image_cat"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="35dp"
+                android:src="@drawable/cat"
+                app:civ_border_color="#FF000000" />
+
+            <LinearLayout
+                android:id="@+id/card"
+                android:layout_width="230dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/post_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="ประเภท :" />
+
+                <TextView
+                    android:id="@+id/cat_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="15dp"
+                    android:text="ชื่อ :" />
+
+                <TextView
+                    android:id="@+id/cat_color"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="สี :" />
+
+                <TextView
+                    android:id="@+id/cat_species"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="สายพันธ์ :" />
+
+                <TextView
+                    android:id="@+id/cat_vacine"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="วัคซีนที่เคยได้รับ :" />
+
+                <TextView
+                    android:id="@+id/cat_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="ข้อมูลสัตว์ :" />
+
+                <TextView
+                    android:id="@+id/cat_contact"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="ติดต่อ :" />
+
+                <TextView
+                    android:id="@+id/cat_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="5dp"
+                    android:text="เบอร์โทร :" />
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="258dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            >
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/deny_post"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="15dp"
+
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_outline"
+                android:text="ปฏิเสธ"
+                android:textColor="@color/white" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/accept_post"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="30dp"
+                android:layout_toRightOf="@+id/deny_post"
+                android:background="@drawable/round_green"
+                android:text="อนุมัติ"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</RelativeLayout>

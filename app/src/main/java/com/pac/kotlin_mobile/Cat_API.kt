@@ -1,24 +1,42 @@
 package com.pac.kotlin_mobile
 
 import retrofit2.Call
+
 import retrofit2.http.*
-import java.util.*
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
-import retrofit2.http.*
-
 
 interface Cat_API {
-    @GET("mypost")
-    fun getMypost(): Call<List<Cat>>
-
     @GET("search")
     fun search(
         @Query("data") data: String
-        ): Call<List<Search>>
+    ): Call<List<Cat>>
+
+    @GET("mypost/{id}")
+    fun getMypost(
+        @Path("id") id:Int):Call<List<Cat>>
+
+    @GET("allpost")
+    fun getAllpost(): Call<List<Cat>>
+
+    @PUT("soft_delete/{id}")
+    fun softdelete(
+        @Path("id") id:Int):Call<Cat>
+
+    @PUT("deny_post/{id}")
+    fun deny_post(
+        @Path("id") id:Int):Call<Cat>
+
+    @PUT("accept_post/{id}")
+    fun accept_post(
+        @Path("id") id:Int):Call<Cat>
+
+    @DELETE("deletePost/{id}")
+    fun deletePost(
+        @Path("id") id: Int): Call<Cat>
 
     @FormUrlEncoded /// Update
     @PUT("updatePost/{id}")
@@ -44,17 +62,7 @@ interface Cat_API {
         @Field("email") email: String,
         @Field("line_id") line_id: String,
         @Field("facebook") facebook: String,
-        ): Call<Cat>
-
-
-    @PUT("soft_delete/{id}")
-    fun softdelete(
-        @Path("id") id:Int):Call<Cat>
-
-    @DELETE("deletePost/{id}")
-    fun deletePost(
-        @Path("id") id: Int): Call<Cat>
-
+    ): Call<Cat>
 
 
 }

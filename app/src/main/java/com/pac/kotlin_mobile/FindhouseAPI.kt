@@ -48,5 +48,10 @@ interface FindhouseAPI {
 
     ): Call<Cat>
 
+    @GET("home_find")
+    fun gethomeFind():Call<List<Findhouse>>
+
+    @GET("more_findhouse")
+    fun  getFindhouse() :Call<List<Findhouse>>
 
 }

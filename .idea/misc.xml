@@ -6,6 +6,11 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        <entry key="..\:/projMobileYear32/kotlin_mobile/app/src/main/res/layout/mypost_layout.xml" value="0.19010416666666666" />
+=======
+>>>>>>> 6269da53a935ad8487ae33f3f1f29dd4447e016f
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/corner_while.xml" value="0.175" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/radius_btnav.xml" value="0.172" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/drawable/radius_layout.xml" value="0.1635" />
@@ -43,6 +48,7 @@
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/layout/search_layout.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/Timmily/Desktop/Mobile/kotlin_mobile/app/src/main/res/menu/top_menu.xml" value="0.25416666666666665" />
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 =======
@@ -226,6 +232,9 @@
 >>>>>>> 1f5a1ae7c371f14ed6e1c6fd4116147cfb7dbdf4
 =======
 >>>>>>> 811ce5561e87c3463d6d26a2798ec0a129148b90
+=======
+>>>>>>> 52774e7ef02882a785db3c0211d03831356d7709
+>>>>>>> 6269da53a935ad8487ae33f3f1f29dd4447e016f
       </map>
     </option>
   </component>
@@ -237,6 +246,7 @@
   </component>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -245,6 +255,9 @@
 =======
 >>>>>>> 911635e35b297393b9b5afb51031f7fb4de34df1
 >>>>>>> 1f5a1ae7c371f14ed6e1c6fd4116147cfb7dbdf4
+=======
+=======
+>>>>>>> 6269da53a935ad8487ae33f3f1f29dd4447e016f
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
@@ -252,6 +265,7 @@
       </ProjectState>
     </option>
   </component>
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -265,4 +279,7 @@
 >>>>>>> 1f5a1ae7c371f14ed6e1c6fd4116147cfb7dbdf4
 =======
 >>>>>>> 811ce5561e87c3463d6d26a2798ec0a129148b90
+=======
+>>>>>>> 52774e7ef02882a785db3c0211d03831356d7709
+>>>>>>> 6269da53a935ad8487ae33f3f1f29dd4447e016f
 </project>

@@ -20,6 +20,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+
+        <activity
+            android:name=".LostCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCatFindhouseActivity"
+            android:exported="false" />
         <activity
             android:name=".EditNewsActivity"
             android:exported="false" />
@@ -38,19 +45,17 @@
         <activity
             android:name=".SearchDetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".LostCatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCatFindhouseActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".LostCatActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".AddCatFindhouseActivity"-->
+<!--            android:exported="false" />-->
 
 <!--        <activity-->
 <!--            android:name=".AddCatFindhouseMainActivity"-->
 <!--            android:exported="false" />-->
 
-=======
->>>>>>> 811ce5561e87c3463d6d26a2798ec0a129148b90
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />

@@ -40,5 +40,9 @@ interface LostcatAPI {
         @Part("user_id") user_id: RequestBody,
     ): Call<UploadResponse>
 
+    @GET("home_lost")
+    fun gethomeLost():Call<List<Lostcat>>
 
+    @GET("catlost_more")
+    fun getCatlostmore():Call<List<Lostcat>>
 }
