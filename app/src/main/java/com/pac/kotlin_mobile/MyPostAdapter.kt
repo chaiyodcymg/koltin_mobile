@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 import com.pac.kotlin_mobile.databinding.MypostLayoutBinding
 import retrofit2.Call
@@ -20,7 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
     RecyclerView.Adapter<MyPostAdapter.ViewHolder>() {
-
+    var URL_API = URL.URL_API
     inner class ViewHolder(view: View ,val binding: MypostLayoutBinding) : RecyclerView.ViewHolder(view) {init {
 
 
@@ -47,7 +48,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         binding.catInfo?.text = "ข้อมูลสัตว์ : ${items[position].more_info}"
         binding.catContact?.text = "ติดต่อ : ${items[position].firstname} " + "${items[position].lastname} "
         binding.catPhone?.text = "เบอร์โทร : ${items[position].phone}"
-
+        Glide.with(context).load(URL_API + items[position].image).into(binding.imageCat)
 
         binding.deletePost.setOnClickListener{
 
