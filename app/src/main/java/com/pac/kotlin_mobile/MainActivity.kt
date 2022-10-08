@@ -51,10 +51,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
         supportActionBar!!.setCustomView(null)
-        supportFragmentManager.beginTransaction().add(
-            R.id.frameLayout,
-            HomeFragment()
-        ).commit()
 
 
         binding.bottomNavigation.setOnItemSelectedListener { item ->

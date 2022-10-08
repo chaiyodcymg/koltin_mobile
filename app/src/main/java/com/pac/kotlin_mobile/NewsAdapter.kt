@@ -26,7 +26,7 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class NewsAdapter(val items: List<News>, val context: Context,val requireActivity: MainActivity,val inflater: LayoutInflater,) :
+class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireActivity: MainActivity,val inflater: LayoutInflater,) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
     inner class ViewHolder(view: View, val binding: NewsLayoutBinding ) :
         RecyclerView.ViewHolder(view) {
@@ -49,8 +49,6 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
             }
 
 
-
-
         }
     }
 
@@ -61,9 +59,7 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
     }
 
 
-    override fun getItemCount(): Int {
-        return items.size
-    }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding_holder = holder.binding
@@ -79,6 +75,7 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
              binding = FragmentNewsBinding.inflate(inflater)
             val new = news_info()
             new.arguments = bundle
+
             val transaction = requireActivity.supportFragmentManager.beginTransaction()
             transaction.replace(binding.frameLayout.id, new)
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
@@ -89,6 +86,8 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
             //pass the 'context' here
 
             var URL_API = URL.URL_API
+            var  binding : FragmentNewsBinding
+            binding = FragmentNewsBinding.inflate(inflater)
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
                 setMessage("delete : ${items[position].title} ?")
@@ -106,6 +105,7 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
                             override fun onResponse(call: Call<News>, response: Response<News>) {
                                 if(response.isSuccessful) {
                                     Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_LONG).show()
+                                    remove(position)
                                 }
                             }
 
@@ -124,8 +124,14 @@ class NewsAdapter(val items: List<News>, val context: Context,val requireActivit
 
 
     }
+    fun remove(index:Int){
+        items.removeAt(index)
+        notifyDataSetChanged()
+    }
 
-
+    override fun getItemCount(): Int {
+        return items.size
+    }
 
 }
 //class NewsAdapter(val items :List<Search>, val context: Context):

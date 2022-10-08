@@ -57,10 +57,8 @@ class NewsFragment : Fragment() {
 
         return binding.root
     }
-    override fun onResume() {
-        super.onResume()
-        callNewsData()
-    }
+
+
     fun callNewsData(){
         val api: NewsAPI = Retrofit.Builder()
             .baseUrl(URL_API)
