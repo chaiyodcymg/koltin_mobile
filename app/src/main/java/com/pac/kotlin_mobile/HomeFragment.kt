@@ -31,6 +31,7 @@ private const val ARG_PARAM2 = "param2"
 class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
     var NewsList = arrayListOf<News>()
+    var findhouseList = arrayListOf<Findhouse>()
     var URL_API = URL.URL_API
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,12 +48,12 @@ class HomeFragment : Fragment() {
             seemorefragment = catfindhome_more()
             replaceFragment(seemorefragment)
         }
-        binding.postShort.setOnClickListener() {
-            var detailfragment: Fragment? = null
-            detailfragment = catfindhome_more()
-            replaceFragment(detailfragment)
-
-        }
+//        binding.postShort.setOnClickListener() {
+//            var detailfragment: Fragment? = null
+//            detailfragment = catfindhome_more()
+//            replaceFragment(detailfragment)
+//
+//        }
 
         binding.missingCat.setOnClickListener() {
             var missingCatfragment: Fragment? = null
@@ -65,9 +66,9 @@ class HomeFragment : Fragment() {
 //        binding.newsRecyclerview.adapter = HomeNewsAdapter(data_List,requireActivity().applicationContext)
 
 //       data_List.add(News("email","fn","l","/images/U1M9hDysU1YwzZ2kzCtoQRRxnUq1DiN5HFQiO4PxLYx66bO43V.jpg"))
-//        binding.newsRecyclerview.adapter = HomeNewsAdapter(data_List,requireActivity().applicationContext)
+//        binding.newsRecyclerview.adapter = HomeNewsAdapter(data_List,requireActivity().applicationContext) callCatfindhouseData()
 
-     callNewsData()
+        callNewsData()
 
         return binding.root
     }
@@ -103,6 +104,9 @@ class HomeFragment : Fragment() {
 
             })
     }
+
+
+
     fun replaceFragment(someFragment:Fragment){
         var binding: FragmentHomeBinding
         binding = FragmentHomeBinding.inflate(layoutInflater)

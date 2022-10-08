@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
+import com.pac.kotlin_mobile.databinding.MypostLayoutBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -19,11 +20,10 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
 class MyPostFragment : Fragment() {
     private lateinit var binding: FragmentMyPostBinding
+    private lateinit var bindingRV: MypostLayoutBinding
     val postlist = arrayListOf<Postlist>()
     var URL_API = URL.URL_API
 
@@ -34,6 +34,7 @@ class MyPostFragment : Fragment() {
     ): View? {
 
         binding = FragmentMyPostBinding.inflate(layoutInflater)
+        bindingRV = MypostLayoutBinding.inflate(layoutInflater)
         binding.recyclerView.adapter = MyPostAdapter(this.postlist,requireActivity().applicationContext)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
         binding.checkPostText.setOnClickListener {
@@ -41,7 +42,8 @@ class MyPostFragment : Fragment() {
             fragment = CheckPostFragment()
             replaceFragment(fragment)
         }
-            callpostData()
+
+        callpostData()
 
 
 //        bindingRV.deletePost.setOnClickListener {
@@ -67,6 +69,7 @@ class MyPostFragment : Fragment() {
 //            }
 //        }
 
+
         return binding.root
     }
 
@@ -81,6 +84,11 @@ class MyPostFragment : Fragment() {
         transaction.addToBackStack(null)
         transaction.commit()
     }
+
+
+
+
+
 
     fun callpostData () {
         val api: Cat_API = Retrofit.Builder()
@@ -98,12 +106,11 @@ class MyPostFragment : Fragment() {
                             it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,
                             it.post_address,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook
                         )) }
-//// Set Data to RecyclerRecyclerView
+
+
                     binding.recyclerView.adapter = MyPostAdapter(postlist,requireContext())
                     binding.recyclerView.adapter?.notifyDataSetChanged()
                 }
-
-
 
                 override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
                     Toast.makeText(requireActivity().applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
@@ -113,6 +120,5 @@ class MyPostFragment : Fragment() {
     }
 
 
-    }
-
+}
 
