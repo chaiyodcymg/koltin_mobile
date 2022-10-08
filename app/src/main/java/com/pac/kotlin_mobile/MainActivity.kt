@@ -172,6 +172,7 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onPrepareOptionsMenu(menu: Menu): Boolean {
+        this.menu = menu
         val settingsItem = menu?.findItem(R.id.menu2)
 
         var api : UserAPI =   Retrofit.Builder()
@@ -245,14 +246,16 @@ class MainActivity : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        Log.i("Event","onResume")
+
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty()==true){
+            Log.i("Event","มีข้อมูล")
             getData()
         }else{
             val settingsItem =  this.menu?.findItem(R.id.menu2)
 
-            settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.user))
+            settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.wuser))
+            Log.i("Event","ไม้มีข้อมูล")
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
 
@@ -262,7 +265,7 @@ class MainActivity : AppCompatActivity() {
     fun setMenu(image_url :String){
         val settingsItem =  this.menu?.findItem(R.id.menu2)
 
-        Glide.with(this@MainActivity).asBitmap()
+        Glide.with(this).asBitmap()
             .load(image_url)
             .circleCrop()
             .into(object : SimpleTarget<Bitmap?>(100, 100) {
