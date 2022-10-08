@@ -24,7 +24,7 @@ class DatePickerPlace: DialogFragment(), DatePickerDialog.OnDateSetListener {
 
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 // Initialize a new date picker dialog and return it
-        return DatePickerDialog(requireContext(), 0, this, year, month, day)
+        return DatePickerDialog(requireContext(), R.style.datepicker, this, year, month, day)
     }
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
 // Display the selected date in text view

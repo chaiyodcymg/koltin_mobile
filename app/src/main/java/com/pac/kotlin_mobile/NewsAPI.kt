@@ -7,6 +7,9 @@ interface NewsAPI {
     @GET("news")
     fun retrieveNews():Call<List<News>>
 
+    @GET("home_news")
+    fun gethomeNews():Call<News>
+
     @FormUrlEncoded
     @POST("insertnews")
     fun insertNews(
@@ -31,6 +34,5 @@ interface NewsAPI {
         @Path("id") id:Int
     ):Call<News>
 
-    @GET("home_news")
-    fun gethomeNews():Call<News>
+
 }

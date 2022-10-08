@@ -35,6 +35,21 @@ interface FindhouseAPI {
         @Part("user_id") user_id: RequestBody,
     ): Call<UploadResponse>
 
+
+    @FormUrlEncoded /// Update
+    @PUT("updatePost/{id}")
+    fun updatePost(
+        @Path("id") id: Int,
+        @Field("name") name: String,
+        @Field("gender") gender: Int,
+        @Field("color") color: String,
+        @Field("vaccine") vaccine: String,
+        @Field("date_vaccine") date_vaccine: String,
+        @Field("species") species: String,
+
+    ): Call<Cat>
+
+
     @GET("home_find")
     fun gethomeFind():Call<List<Findhouse>>
 

@@ -172,7 +172,7 @@ data class  SearchPacelable(
 
     @Expose
     @SerializedName("user_id") val user_id: Int,
-    ):Parcelable{
+):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readInt(),
         parcel.readString().toString(),

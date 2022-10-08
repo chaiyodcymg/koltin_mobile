@@ -10,7 +10,10 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.FragmentHomeBinding
+
+import com.pac.kotlin_mobile.databinding.FragmentNewsBinding
 import com.pac.kotlin_mobile.databinding.HomeNewsLayoutBinding
+import com.pac.kotlin_mobile.databinding.SearchLayoutBinding
 
 
 
@@ -39,8 +42,10 @@ class HomeAdapter(val items: ArrayList<News>, val context: Context,val requireAc
     var URL_API = URL.URL_API
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val binding_holder = holder.binding
+
         binding_holder.newsTitle?.text = items[position].title
         Glide.with(context).load(URL_API + items[position].image).into(binding_holder.newsImg)
+
         binding_holder.cardView.setOnClickListener{
             val bundle = Bundle()
             bundle.putString("title", items[position].title)

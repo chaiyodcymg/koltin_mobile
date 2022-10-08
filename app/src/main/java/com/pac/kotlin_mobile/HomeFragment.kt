@@ -99,7 +99,6 @@ class HomeFragment : Fragment() {
                 }
             })
     }
-
     fun callLostcat(){
         LostList.clear();
         val api: LostcatAPI = Retrofit.Builder()
@@ -126,8 +125,6 @@ class HomeFragment : Fragment() {
                 }
             })
     }
-
-
     fun replaceFragment(someFragment:Fragment){
         var binding: FragmentHomeBinding
         binding = FragmentHomeBinding.inflate(layoutInflater)
@@ -137,4 +134,3 @@ class HomeFragment : Fragment() {
         transaction.commit()
     }
 }
-

@@ -15,16 +15,18 @@
             android:layout_height="wrap_content"
 
             >
+
             <TextView
                 android:id="@+id/posttext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="เรื่องที่แจ้ง"
-                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="40dp"
-                android:layout_centerHorizontal="true"
-
-                />
+                android:drawableLeft="@drawable/iconreport"
+                android:drawablePadding="10dp"
+                android:drawableTint="#DF7861"
+                android:text="เรื่องที่แจ้ง"
+                android:textSize="25sp" />
             <RelativeLayout
                 android:id="@+id/relapost"
                 android:layout_width="400dp"
