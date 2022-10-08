@@ -20,46 +20,13 @@
 
             <!--      ข่าว      -->
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/news_box"
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_marginTop="10dp"
+                android:id="@+id/news_recyclerview"
                 android:layout_width="match_parent"
-                android:layout_height="280dp"
-                android:layout_marginTop="50dp"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="20dp"
-                app:cardElevation="10dp"
-                app:cardMaxElevation="12dp"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                >
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|top"
-                    android:padding="5dp"
-                    android:text="แมวควรกินเนื้อไหม"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:translationY="10dp" />
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="330dp"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="15dp"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp"
-                    app:cardUseCompatPadding="true">
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/img"
-                        android:layout_width="match_parent"
-                        android:layout_height="200dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/cat1" />
-                </androidx.cardview.widget.CardView>
-            </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:scrollbars="vertical" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -164,7 +131,9 @@
                     android:drawableRight="@drawable/right_arrow"
                     android:drawableTint="#DF7861"
                     android:text="ดูเพิ่มเติม"
-                    android:textSize="18dp" />
+                    android:textColor="#FFDF7861"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
 
             </LinearLayout>
 
@@ -214,21 +183,21 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="รหัสแมว 100"
+                                android:text="ชื่อ : ทองม้วน"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="สี "
+                                android:text="สี : ส้ม"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="สายพันธ์ "
+                                android:text="สายพันธ์ : ไทย"
                                 android:textSize="15sp"
                                 android:textStyle="bold" />
                         </LinearLayout>
@@ -246,7 +215,9 @@
                     android:drawableTint="#DF7861"
                     android:onClick="seemorehomeless"
                     android:text="ดูเพิ่มเติม"
-                    android:textSize="18dp" />
+                    android:textColor="#FFDF7861"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
             </LinearLayout>
 
         </LinearLayout>

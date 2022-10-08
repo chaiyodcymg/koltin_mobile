@@ -5,22 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentDetail"
     android:background="@color/grey"
+    tools:context=".DetailLostCatActivity"
     >
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:orientation="vertical"
-
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="436dp"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -31,14 +27,23 @@
                 android:layout_marginTop="15dp"
                 android:src="@drawable/cat"
                 app:civ_border_color="#FF000000" />
-
             <TextView
                 android:id="@+id/id"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:hint="รหัสแมว : 123 "
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:hint="เรื่องที่แจ้ง : แจ้งแมวหาย"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -59,27 +64,19 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp"
-
                     android:orientation="vertical">
 
-
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="ชื่อ : น้องอรหัน"
+                        android:text="ชื่อ: ทองม้วน"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp"
-                        android:text="เพศ : ผู้"
-                        android:textSize="15sp"
-                        android:textStyle="bold" />
-
-                    <TextView
+                        android:id="@+id/color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -88,14 +85,17 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="สายพันธ์ุ : ไทย"
+                        android:text="เพศ: ผู้"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
+
                     <TextView
+                        android:id="@+id/vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -104,10 +104,20 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/date_vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="ววันที่ได้รับวัคซีน : 30/07/2565"
+                        android:text="วันที่ได้รับวัคซีน : 22/02/65"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/species"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="สายพันธ์ุ : ไทย"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -119,50 +129,61 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/detail"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"
                         android:text="อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน          มีปัญหาสุขภาพส่วนตัวนิดหน่อยอยากให้พี่ๆ เข้าใจ   แล้วรับหนูไปดูแล *** เป็นอาการเกี่ยวกับ     เส้นประสาทส่วนก้น อึ ฉี่ หลุดบ่อย มียาที่ต้องกินตลอดชีวิต ***
-
-อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
- อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
- อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อนอายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
- อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
- อายุ 4.11 ปี ทำหมันแล้ว (เด็กซ้ำชั้น)
- **เหมาะกับคนมีเวลา**   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน
-"
+ *เหมาะกับคนมีเวลา*   ลักษณะนิสัย : เป็นเด็กน่ารัก ชอบออดอ้อน          มีปัญหาสุขภาพส่วนตัวนิดหน่อยอยากให้พี่ๆ เข้าใจ   แล้วรับหนูไปดูแล * เป็นอาการเกี่ยวกับ     เส้นประสาทส่วนก้น อึ ฉี่ หลุดบ่อย มียาที่ต้องกินตลอดชีวิต *"
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ที่อยู่ : "
+                        android:layout_marginBottom="10dp"
+                        android:text="วันที่พบ: 10/05/65"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/notice_point"
                         android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="จุดสังเกตเบื้องต้น: มีปานที่ตา"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/place_to_found"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:text="จุดที่พบ/หาย(สถานที่):"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/address"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginBottom="10dp"
-                        android:text="166 หมู่ที่ 1 ตำบลแวง อำเภอสว่าง จังหวัดขอนแก่น รหัสไปรยษณีย์ 40100"
+                        android:text="22 ถนน อดุลยราม ตำบลในเมือง อำเภอเมือง จังหวัดขอนแก่น 40000"
                         android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="สนใจอุปการะ ติดต่อ"
+                        android:layout_marginBottom="10dp"
+                        android:text="ข้อมูลติดต่อ:"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/name_owner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -170,6 +191,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -177,6 +199,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -184,6 +207,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/line"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -192,6 +216,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/facebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

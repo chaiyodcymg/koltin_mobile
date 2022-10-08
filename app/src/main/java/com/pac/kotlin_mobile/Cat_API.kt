@@ -18,7 +18,7 @@ interface Cat_API {
     @GET("search")
     fun search(
         @Query("data") data: String
-        ): Call<List<Lostcat>>
+        ): Call<List<Search>>
 
     @FormUrlEncoded /// Update
     @PUT("updatePost/{id}")
@@ -45,7 +45,6 @@ interface Cat_API {
         @Field("line_id") line_id: String,
         @Field("facebook") facebook: String,
         ): Call<Cat>
-
 
 
     @PUT("soft_delete/{id}")

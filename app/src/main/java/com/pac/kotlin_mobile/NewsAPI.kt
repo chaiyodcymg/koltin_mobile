@@ -30,4 +30,7 @@ interface NewsAPI {
     fun softdeletenews(
         @Path("id") id:Int
     ):Call<News>
+
+    @GET("home_news")
+    fun gethomeNews():Call<News>
 }

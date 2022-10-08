@@ -8,7 +8,6 @@ import retrofit2.http.*
 
 
 interface UserAPI {
-
     @FormUrlEncoded
     @POST("login")
     fun Login(

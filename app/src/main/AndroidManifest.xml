@@ -26,6 +26,18 @@
         <activity
             android:name=".AddNewsActivity"
             android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".EditPost"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".DetailLostCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailFindhouseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchDetailActivity"
+            android:exported="false" />
         <activity
             android:name=".LostCatActivity"
             android:exported="false" />
@@ -37,6 +49,8 @@
 <!--            android:name=".AddCatFindhouseMainActivity"-->
 <!--            android:exported="false" />-->
 
+=======
+>>>>>>> 811ce5561e87c3463d6d26a2798ec0a129148b90
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />

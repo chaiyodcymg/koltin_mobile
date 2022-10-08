@@ -1,0 +1,251 @@
+package com.pac.kotlin_mobile
+
+import android.os.Parcel
+import android.os.Parcelable
+import com.google.gson.annotations.Expose
+import com.google.gson.annotations.SerializedName
+
+data class Search(
+    @Expose
+    @SerializedName("id") val id: Int,
+
+    @Expose
+    @SerializedName("name") val name: String,
+
+    @Expose
+    @SerializedName("gender") val gender: String,
+
+    @Expose
+    @SerializedName("color") val color: String,
+
+    @Expose
+    @SerializedName("vaccine") val vaccine: String,
+
+    @Expose
+    @SerializedName("date_vaccine") val date_vaccine: String,
+
+    @Expose
+    @SerializedName("species") val species: String,
+
+    @Expose
+    @SerializedName("more_info") val more_info: String,
+
+    @Expose
+    @SerializedName("image") val image: String,
+
+    @Expose
+    @SerializedName("house_no") val house_no: String,
+
+    @Expose
+    @SerializedName("street") val street: String,
+
+    @Expose
+    @SerializedName("sub_district") val sub_district: String,
+
+    @Expose
+    @SerializedName("district") val district: String,
+
+    @Expose
+    @SerializedName("province") val province: String,
+
+    @Expose
+    @SerializedName("post_address") val post_address: String,
+
+    @Expose
+    @SerializedName("date") val date: String,
+
+    @Expose
+    @SerializedName("notice_point") val notice_point: String,
+
+    @Expose
+    @SerializedName("place_to_found") val place_to_found: String,
+
+    @Expose
+    @SerializedName("firstname") val firstname: String,
+
+    @Expose
+    @SerializedName("lastname") val lastname: String,
+
+    @Expose
+    @SerializedName("phone") val phone: String,
+
+    @Expose
+    @SerializedName("email") val email: String,
+
+    @Expose
+    @SerializedName("line_id") val line_id: String,
+
+    @Expose
+    @SerializedName("facebook") val facebook: String,
+
+    @Expose
+    @SerializedName("type") val type: Int,
+
+    @Expose
+    @SerializedName("status") val status: Int,
+
+    @Expose
+    @SerializedName("user_id") val user_id: Int,
+
+
+
+    )
+
+data class  SearchPacelable(
+    @Expose
+    @SerializedName("id") val id: Int,
+
+    @Expose
+    @SerializedName("name") val name: String,
+
+    @Expose
+    @SerializedName("gender") val gender: String,
+
+    @Expose
+    @SerializedName("color") val color: String,
+
+    @Expose
+    @SerializedName("vaccine") val vaccine: String,
+
+    @Expose
+    @SerializedName("date_vaccine") val date_vaccine: String,
+
+    @Expose
+    @SerializedName("species") val species: String,
+
+    @Expose
+    @SerializedName("more_info") val more_info: String,
+
+    @Expose
+    @SerializedName("image") val image: String,
+
+    @Expose
+    @SerializedName("house_no") val house_no: String,
+
+    @Expose
+    @SerializedName("street") val street: String,
+
+    @Expose
+    @SerializedName("sub_district") val sub_district: String,
+
+    @Expose
+    @SerializedName("district") val district: String,
+
+    @Expose
+    @SerializedName("province") val province: String,
+
+    @Expose
+    @SerializedName("post_address") val post_address: String,
+
+    @Expose
+    @SerializedName("date") val date: String,
+
+    @Expose
+    @SerializedName("notice_point") val notice_point: String,
+
+    @Expose
+    @SerializedName("place_to_found") val place_to_found: String,
+
+    @Expose
+    @SerializedName("firstname") val firstname: String,
+
+    @Expose
+    @SerializedName("lastname") val lastname: String,
+
+    @Expose
+    @SerializedName("phone") val phone: String,
+
+    @Expose
+    @SerializedName("email") val email: String,
+
+    @Expose
+    @SerializedName("line_id") val line_id: String,
+
+    @Expose
+    @SerializedName("facebook") val facebook: String,
+
+    @Expose
+    @SerializedName("type") val type: Int,
+
+    @Expose
+    @SerializedName("status") val status: Int,
+
+    @Expose
+    @SerializedName("user_id") val user_id: Int,
+):Parcelable{
+    constructor(parcel: Parcel) : this(
+        parcel.readInt(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readString().toString(),
+        parcel.readInt(),
+        parcel.readInt(),
+        parcel.readInt()
+    ) {
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeInt(id)
+        parcel.writeString(name)
+        parcel.writeString(gender)
+        parcel.writeString(color)
+        parcel.writeString(vaccine)
+        parcel.writeString(date_vaccine)
+        parcel.writeString(species)
+        parcel.writeString(more_info)
+        parcel.writeString(image)
+        parcel.writeString(house_no)
+        parcel.writeString(street)
+        parcel.writeString(sub_district)
+        parcel.writeString(district)
+        parcel.writeString(province)
+        parcel.writeString(post_address)
+        parcel.writeString(date)
+        parcel.writeString(notice_point)
+        parcel.writeString(place_to_found)
+        parcel.writeString(firstname)
+        parcel.writeString(lastname)
+        parcel.writeString(phone)
+        parcel.writeString(email)
+        parcel.writeString(line_id)
+        parcel.writeString(facebook)
+        parcel.writeInt(type)
+        parcel.writeInt(status)
+        parcel.writeInt(user_id)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<SearchPacelable> {
+        override fun createFromParcel(parcel: Parcel): SearchPacelable {
+            return SearchPacelable(parcel)
+        }
+
+        override fun newArray(size: Int): Array<SearchPacelable?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+}

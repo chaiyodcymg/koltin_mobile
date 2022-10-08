@@ -5,8 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FragmentDetail"
+    tools:context=".DetailFindhouseActivity"
     android:background="@color/grey"
+
     >
 
     <LinearLayout
@@ -14,7 +15,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:orientation="vertical"
-
+        xmlns:tools="http://schemas.android.com/tools"
         >
 
         <LinearLayout
@@ -42,7 +43,15 @@
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="center"
+                android:hint="เรื่องที่แจ้ง : หาบ้านให้น้องเหมียว"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
             <androidx.cardview.widget.CardView
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
@@ -64,14 +73,17 @@
 
 
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:text="ชื่อ : น้องอรหัน"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                         />
 
                     <TextView
+                        android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -80,6 +92,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -88,6 +101,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/species"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -96,6 +110,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -104,10 +119,11 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/date_vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
-                        android:text="ววันที่ได้รับวัคซีน : 30/07/2565"
+                        android:text="วันที่ได้รับวัคซีน : 30/07/2565"
                         android:textSize="15sp"
                         android:textStyle="bold" />
 
@@ -119,6 +135,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/detail"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -148,6 +165,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/address"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -163,6 +181,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/name_owner"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -170,6 +189,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -177,6 +197,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/email"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -184,6 +205,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/line"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -192,6 +214,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/facebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
