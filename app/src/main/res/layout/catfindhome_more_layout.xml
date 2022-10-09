@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <!--  กล่องแมวหาบ้าน   -->
     <LinearLayout
         android:id="@+id/cat_findhome_block"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
         <androidx.cardview.widget.CardView
             android:id="@+id/cat_find"
             android:layout_width="match_parent"
@@ -22,8 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
                 <TableRow>
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/cat_img"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
@@ -38,23 +41,21 @@
                         android:layout_marginTop="15dp"
                         android:orientation="vertical">
                         <TextView
-                            android:id="@+id/catName"
+                            android:id="@+id/id_cat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ชื่อ"
+                            android:text="รหัสแมว 100"
                             android:textSize="15sp"
                             android:textStyle="bold" />
-
                         <TextView
-                            android:id="@+id/catColor"
+                            android:id="@+id/color_cat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="สี "
                             android:textSize="15sp"
                             android:textStyle="bold" />
-
                         <TextView
-                            android:id="@+id/catSpecies"
+                            android:id="@+id/species_cat"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="สายพันธ์ "
@@ -81,4 +82,5 @@
                 android:src="@drawable/shelter" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>
+

@@ -8,6 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.FragmentMissingCatBinding
 import retrofit2.Call
@@ -25,7 +27,25 @@ class missing_cat : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        // แก้ไขปุ่มย้อนกลับ
+        (activity as AppCompatActivity).supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowCustomEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.setCustomView(R.layout.custom_action_bar_layout)
+        (activity as AppCompatActivity).supportActionBar?.elevation = 0.0F
+        val view = (activity as AppCompatActivity).supportActionBar?.customView
 
+        val imageButton = view?.findViewById<View>(R.id.action_bar_back)
+
+
+        imageButton?.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.frameLayout,
+                HomeFragment()
+            ).commit()
+            (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+
+
+        }
         binding = FragmentMissingCatBinding.inflate(layoutInflater)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
 

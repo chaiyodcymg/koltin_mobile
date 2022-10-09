@@ -36,8 +36,8 @@ class NewsFragment : Fragment() {
 
         AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var role =  AUTH.getString("role","")
-        if(role.toString() == "0"){
-         binding.fab.visibility = View.GONE
+       if(role.toString() != "1"){
+            binding.fab.visibility = View.GONE
         }
 
 

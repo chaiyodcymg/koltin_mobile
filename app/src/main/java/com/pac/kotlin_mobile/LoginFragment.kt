@@ -39,58 +39,64 @@ class LoginFragment : Fragment() {
             transaction.commit()
         }
         binding.btnLogin.setOnClickListener {
-            val api: UserAPI = Retrofit.Builder()
-                .baseUrl(URL_API)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(UserAPI::class.java)
-
             var email = binding.email.text.toString()
             var pass = binding.password.text.toString()
 
-            api.Login(
-                email,
-                pass
-
-            ).enqueue(object : Callback<Login> {
-                override fun onResponse(call: Call<Login>, response: retrofit2.Response<Login>) {
-                    if (response.isSuccessful()) {
-                        Toast.makeText(activity?.applicationContext,"เข้าสู่ระบบสำเร็จ", Toast.LENGTH_SHORT).show()
-
-                        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-
-                        AUTH.edit {
-                            putString("id", response.body()?.AUTH.toString())
-                            putString("role",response.body()?.role.toString())
-                        }
+            if(email.isNotEmpty() && pass.isNotEmpty()){
+                val api: UserAPI = Retrofit.Builder()
+                    .baseUrl(URL_API)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(UserAPI::class.java)
 
 
-                        var binding: ActivityProfileBinding
-                        binding = ActivityProfileBinding.inflate(layoutInflater)
-                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                        transaction.replace(binding.frameLayout.id,ProfileFragment())
-                        transaction.addToBackStack(null)
-                        transaction.commit()
-                    } else {
+                api.Login(
+                    email,
+                    pass
 
-                        val myBuilder = AlertDialog.Builder(activity?.applicationContext)
-                        myBuilder.apply {
-                            setTitle("ข้อผิดพลาดในการเข้าสู่ระบบ")
-                            setMessage("อีเมลหรือรหัสผ่านไม่ถูกต้องกรุณากรอกข้อมูลใหม่อีกรั้ง")
-                            setPositiveButton("ตกลง") { dialog, which ->
-//                            Toast.makeText(applicationContext, "Click on Yes", Toast.LENGTH_SHORT)
-//                                .show()
+                ).enqueue(object : Callback<Login> {
+                    override fun onResponse(call: Call<Login>, response: retrofit2.Response<Login>) {
+                        if (response.isSuccessful()) {
+                            Toast.makeText(activity?.applicationContext,"เข้าสู่ระบบสำเร็จ", Toast.LENGTH_SHORT).show()
+
+                            AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+
+                            AUTH.edit {
+                                putString("id", response.body()?.AUTH.toString())
+                                putString("role",response.body()?.role.toString())
                             }
 
-                            show()
+
+                            var binding: ActivityProfileBinding
+                            binding = ActivityProfileBinding.inflate(layoutInflater)
+                            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                            transaction.replace(binding.frameLayout.id,ProfileFragment())
+                            transaction.addToBackStack(null)
+                            transaction.commit()
+                        } else {
+
+                            val myBuilder = AlertDialog.Builder(requireContext())
+                            myBuilder.apply {
+                                setTitle("ข้อผิดพลาดในการเข้าสู่ระบบ")
+                                setMessage("อีเมลหรือรหัสผ่านไม่ถูกต้องกรุณากรอกข้อมูลใหม่อีกรั้ง")
+                                setPositiveButton("ตกลง") { dialog, which ->
+//                            Toast.makeText(applicationContext, "Click on Yes", Toast.LENGTH_SHORT)
+//                                .show()
+                                }
+
+                                show()
+                            }
                         }
                     }
-                }
 
-                override fun onFailure(call: Call<Login>, t: Throwable) {
-                    Toast.makeText(activity?.applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
-                }
-            })
+                    override fun onFailure(call: Call<Login>, t: Throwable) {
+                        Toast.makeText(activity?.applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                    }
+                })
+            }else{
+                Toast.makeText( requireActivity().applicationContext,"กรุณาใส่ข้อมูล", Toast.LENGTH_SHORT).show()
+            }
+
         }
         return binding.root
     }

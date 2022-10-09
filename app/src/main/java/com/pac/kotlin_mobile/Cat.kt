@@ -31,7 +31,7 @@ data class Cat(
     val vaccine: String,
     val street: String,
     val notice_point: String,
-
+    val type: Int
 
 
     )
@@ -118,6 +118,8 @@ data class Postlist(
     @Expose
     @SerializedName("facebook") val facebook: String,
 
+    @Expose
+    @SerializedName("type") val type: Int,
 
 
 

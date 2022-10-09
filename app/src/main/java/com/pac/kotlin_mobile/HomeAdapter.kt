@@ -48,6 +48,7 @@ class HomeAdapter(val items: ArrayList<News>, val context: Context,val requireAc
 
         binding_holder.cardView.setOnClickListener{
             val bundle = Bundle()
+            bundle.putString("Home", "Home")
             bundle.putString("title", items[position].title)
             bundle.putString("image",items[position].image)
             bundle.putString("detail",items[position].detail)

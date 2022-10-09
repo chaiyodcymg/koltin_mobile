@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -29,10 +30,10 @@ class CheckPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         return ViewHolder(binding.root, binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val binding = holder.binding
 
-
+        binding.postType.text = "เรื่องที่แจ้ง : "+if (items[position]?.type == 1) "น้องเหมียวหาย" else "พบน้องเหมียว"
         binding.catName?.text = "ชื่อ : ${items[position].name}"
         binding.catColor?.text = "สี : ${items[position].color}"
         binding.catSpecies?.text = "สายพันธุ์ : ${items[position].species}"
@@ -59,8 +60,8 @@ class CheckPostAdapter(val items: ArrayList<Postlist>, val context: Context):
                         .enqueue(object : Callback<Cat> {
                             override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
                                 if(response.isSuccessful) {
-                                    Toast.makeText(context, "Successfully Updated", Toast.LENGTH_LONG).show()
-
+                                    Toast.makeText(context, "ปฏิเสธโพสต์สำเร็จ", Toast.LENGTH_LONG).show()
+                                    remove(position)
                                 }
                             }
 
@@ -92,8 +93,8 @@ class CheckPostAdapter(val items: ArrayList<Postlist>, val context: Context):
                         .enqueue(object : Callback<Cat> {
                             override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
                                 if(response.isSuccessful) {
-                                    Toast.makeText(context, "Successfully Updated", Toast.LENGTH_LONG).show()
-
+                                    Toast.makeText(context, "อนุมัติโพสต์สำเร็จ", Toast.LENGTH_LONG).show()
+                                    remove(position)
                                 }
                             }
 
@@ -107,6 +108,10 @@ class CheckPostAdapter(val items: ArrayList<Postlist>, val context: Context):
             }
 
         }
+    }
+    fun remove(index:Int){
+        items.removeAt(index)
+        notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {

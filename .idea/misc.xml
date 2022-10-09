@@ -25,6 +25,8 @@
         <entry key="app/src/main/res/layout/activity_register.xml" value="0.11854103343465046" />
         <entry key="app/src/main/res/layout/activity_search.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_search_detail.xml" value="0.15670289855072464" />
+        <entry key="app/src/main/res/layout/catfindhome_more_layout.xml" value="0.19655797101449277" />
+        <entry key="app/src/main/res/layout/check_post_layout.xml" value="0.1743659420289855" />
         <entry key="app/src/main/res/layout/custom_action_bar_layout.xml" value="0.1890625" />
         <entry key="app/src/main/res/layout/fragment_activity_details.xml" value="0.17481884057971014" />
         <entry key="app/src/main/res/layout/fragment_add_news.xml" value="0.14719202898550723" />
@@ -49,6 +51,7 @@
         <entry key="app/src/main/res/layout/home_findhouse_layout.xml" value="0.1539855072463768" />
         <entry key="app/src/main/res/layout/home_news_layout.xml" value="0.18297101449275363" />
         <entry key="app/src/main/res/layout/more_catlost_layout.xml" value="0.13229166666666667" />
+        <entry key="app/src/main/res/layout/more_findhouse_layout.xml" value="0.23854166666666668" />
         <entry key="app/src/main/res/layout/mypost_layout.xml" value="0.1111111111111111" />
         <entry key="app/src/main/res/layout/news_layout.xml" value="0.14719202898550723" />
         <entry key="app/src/main/res/layout/search_layout.xml" value="0.1" />

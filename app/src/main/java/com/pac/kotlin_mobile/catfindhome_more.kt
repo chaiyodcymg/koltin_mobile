@@ -9,6 +9,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 import com.pac.kotlin_mobile.databinding.FragmentCatfindhomeMoreBinding
@@ -30,7 +32,25 @@ class catfindhome_more : Fragment() {
     ): View? {
         binding = FragmentCatfindhomeMoreBinding.inflate(layoutInflater)
 
+        // แก้ไขปุ่มย้อนกลับ
+        (activity as AppCompatActivity).supportActionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        (activity as AppCompatActivity).supportActionBar?.setDisplayShowCustomEnabled(true)
+        (activity as AppCompatActivity).supportActionBar?.setCustomView(R.layout.custom_action_bar_layout)
+        (activity as AppCompatActivity).supportActionBar?.elevation = 0.0F
+        val view = (activity as AppCompatActivity).supportActionBar?.customView
 
+        val imageButton = view?.findViewById<View>(R.id.action_bar_back)
+
+
+        imageButton?.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction().replace(
+                R.id.frameLayout,
+                HomeFragment()
+            ).commit()
+            (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+
+
+        }
 
         callFindHome()
         binding.morefindhouseView.layoutManager = LinearLayoutManager( requireActivity().applicationContext)
@@ -53,7 +73,7 @@ class catfindhome_more : Fragment() {
                             FindList.add(Findhouse(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook,it.type,it.status,it.user_id))
                         }
                         //// Set Data to RecyclerRecyclerView
-                        binding.morefindhouseView.adapter = CatFindhouseMoreAdapter(FindList,requireActivity().applicationContext)
+                        binding.morefindhouseView.adapter = CatFindhouseMoreAdapter(FindList,requireActivity().applicationContext, requireActivity() as MainActivity,layoutInflater)
 
                     }
 

@@ -24,14 +24,13 @@ interface NewsAPI {
     ): Call<News>
 
 
-    @FormUrlEncoded
-    @PUT("editnews/{id}")
+    @Multipart
+    @PUT("editnews")
     fun updateNews(
-        @Path("id") id:Int,
-        @Field("title") title: String,
-        @Field("image") image: String,
-        @Field("detail") detail: String,
-        @Field("user_id") user_id: String
+        @Part("title") title: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part("detail") detail: RequestBody,
+        @Part("id") id: RequestBody
     ): Call<News>
 
     @PUT("softdelnews/{id}")

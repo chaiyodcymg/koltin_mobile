@@ -40,18 +40,18 @@ class CheckPostFragment : Fragment() {
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
 
-        allpostData ()
+        allpostData()
         return binding.root
     }
 
-    fun allpostData () {
+    fun allpostData() {
         api.getAllpost()
             .enqueue(object : Callback<List<Cat>> {
                 override fun onResponse(call: Call<List<Cat>>, response:
                 Response<List<Cat>>
                 ) {
                     response.body()?.forEach {
-                        postlist.add(Postlist(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook))
+                        postlist.add(Postlist(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook,it.type))
                     }
 
                     // Set Data to RecyclerRecyclerView

@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -39,7 +40,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
 
 
 
-    override fun onBindViewHolder(holder: MyPostAdapter.ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyPostAdapter.ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val binding = holder.binding
 
         binding.catName?.text = "ชื่อ : ${items[position].name}"

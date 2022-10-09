@@ -16,6 +16,7 @@ import com.pac.kotlin_mobile.databinding.FragmentDetailLostBinding
 import android.widget.Toast
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.FragmentNewsBinding
 import com.pac.kotlin_mobile.databinding.FragmentNewsInfoBinding
 import retrofit2.Call
@@ -43,6 +44,7 @@ class news_info : Fragment() {
     private var title: String? = ""
     private var image: String? = ""
     private var detail: String? = ""
+    var URL_API = URL.URL_API
         override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
@@ -56,19 +58,29 @@ class news_info : Fragment() {
             val view = (activity as AppCompatActivity).supportActionBar?.customView
 
             val imageButton = view?.findViewById<View>(R.id.action_bar_back)
-            imageButton?.setOnClickListener {
-                requireActivity().supportFragmentManager.beginTransaction().replace(
-                    R.id.frameLayout,
-                    NewsFragment()
-                ).commit()
-                (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+            if(arguments?.getString("Home").isNullOrBlank()){
+                imageButton?.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        NewsFragment()
+                    ).commit()
+                    (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+                }
+            }else{
+                imageButton?.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        HomeFragment()
+                    ).commit()
+                    (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+                }
             }
 
             binding = FragmentNewsInfoBinding.inflate(layoutInflater)
             title = arguments?.getString("title")
             image = arguments?.getString("image")
             detail = arguments?.getString("detail")
-
+            Glide.with(requireActivity().applicationContext).load(URL_API + image).into(binding.newsImg)
             val outputTitle = binding.newsTitle
             outputTitle.text = title.toString()
             val outputDetail = binding.newsInfo
