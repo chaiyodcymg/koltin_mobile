@@ -68,78 +68,100 @@ class AddCatFindhouseActivity : AppCompatActivity() {
 //
 
         binding.submit.setOnClickListener {
-            val parcelFileDescriptor = contentResolver?.openFileDescriptor(selectedImageUri!!, "r", null)
 
-            val inputStream = FileInputStream(parcelFileDescriptor?.fileDescriptor)
-            var name = ""
-            val returnCursor = contentResolver?.query(selectedImageUri!!, null, null, null, null)
-            if (returnCursor != null) {
-                val nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
-                returnCursor.moveToFirst()
-                name = returnCursor.getString(nameIndex)
-                returnCursor.close()
-            }
-            val file = File(cacheDir,  name)
 
-            val outputStream = FileOutputStream(file)
-            inputStream.copyTo(outputStream)
-            val body = UploadRequestBody(file, "image")
 
-            var selectID: Int = binding.gender.checkedRadioButtonId
-            var radioButtonChecked: RadioButton = findViewById(selectID)
+
+
             var status: String = "0"
             var type :String = "0"
             var id =  AUTH.getString("id","")
-            val api: FindhouseAPI = Retrofit.Builder()
-                .baseUrl(URL_API)
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(FindhouseAPI::class.java)
-            api.insertpost(
-                MultipartBody.Part.createFormData("image", file.name, body),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtName.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),radioButtonChecked.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtColor.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtVacine.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.date.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtSpecies.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMore.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtPlace.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtStreet.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtTown.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtDistrict.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtProvince.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),  binding.edtPostcode.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtNameperson.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtLastnameperson.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtPhone.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtEmail.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtLineid.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtFacebook.text.toString()),
-                RequestBody.create(MediaType.parse("multipart/form-data"),type),
-                RequestBody.create(MediaType.parse("multipart/form-data"),status),
-                RequestBody.create(MediaType.parse("multipart/form-data"), id.toString())
+            if (binding.edtName.text.toString().isEmpty() || binding.gender.getCheckedRadioButtonId() == -1
+                || binding.edtColor.text.toString().isEmpty() || selectedImageUri == null
+                || binding.edtVacine.text.toString().isEmpty()|| binding.date.text.toString().isEmpty()
+                || binding.edtSpecies.text.toString().isEmpty()|| binding.edtMore.text.toString().isEmpty()
+                || binding.edtPlace.text.toString().isEmpty()|| binding.edtStreet.text.toString().isEmpty()
+                || binding.edtTown.text.toString().isEmpty() || binding.edtDistrict.text.toString().isEmpty()
+                || binding.edtProvince.text.toString().isEmpty() || binding.edtPostcode.text.toString().isEmpty()
+                || binding.edtNameperson.text.toString().isEmpty()|| binding.edtLastnameperson.text.toString().isEmpty()
+                || binding.edtPhone.text.toString().isEmpty()|| binding.edtEmail.text.toString().isEmpty()
+                || binding.edtLineid.text.toString().isEmpty()|| binding.edtFacebook.text.toString().isEmpty()
+            ){
+                Toast.makeText(applicationContext,"กรุณาใส่ข้อมูลให้ครบทุกช่อง",
+                    Toast.LENGTH_SHORT).show()
+            }
 
-            ).enqueue(object : Callback<UploadResponse> {
-                override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
-                    if (response.isSuccessful) {
-                        Toast.makeText(applicationContext, "Seccessfully Inserted",
-                            Toast.LENGTH_LONG).show()
-                        var fragment: Fragment? = null
-                        fragment = AddPostFragment()
-                        replaceFragment(fragment)
-                    } else {
-                        Toast.makeText(applicationContext, " Insert Failure",
-                            Toast.LENGTH_LONG)
-                            .show()
+            else{
+                val parcelFileDescriptor = contentResolver?.openFileDescriptor(selectedImageUri!!, "r", null)
+
+                val inputStream = FileInputStream(parcelFileDescriptor?.fileDescriptor)
+                var name = ""
+                val returnCursor = contentResolver?.query(selectedImageUri!!, null, null, null, null)
+                if (returnCursor != null) {
+                    val nameIndex = returnCursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                    returnCursor.moveToFirst()
+                    name = returnCursor.getString(nameIndex)
+                    returnCursor.close()
+                }
+                val file = File(cacheDir,  name)
+
+                val outputStream = FileOutputStream(file)
+                inputStream.copyTo(outputStream)
+                val body = UploadRequestBody(file, "image")
+                var selectID: Int? = binding.gender.checkedRadioButtonId
+                var radioButtonChecked: RadioButton = findViewById(selectID!!)
+                val api: FindhouseAPI = Retrofit.Builder()
+                    .baseUrl(URL_API)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build()
+                    .create(FindhouseAPI::class.java)
+                api.insertpost(
+                    MultipartBody.Part.createFormData("image", file.name, body),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtName.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),radioButtonChecked.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtColor.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtVacine.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.date.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtSpecies.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMore.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtPlace.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtStreet.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtTown.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtDistrict.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtProvince.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),  binding.edtPostcode.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtNameperson.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtLastnameperson.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtPhone.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtEmail.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtLineid.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtFacebook.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),type),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),status),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), id.toString())
+
+                ).enqueue(object : Callback<UploadResponse> {
+                    override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
+                        if (response.isSuccessful) {
+                            Toast.makeText(applicationContext, "Seccessfully Inserted",
+                                Toast.LENGTH_LONG).show()
+                            var fragment: Fragment? = null
+                            fragment = AddPostFragment()
+                            replaceFragment(fragment)
+                        } else {
+                            Toast.makeText(applicationContext, " Insert Failure",
+                                Toast.LENGTH_LONG)
+                                .show()
+                        }
                     }
-                }
 
-                override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
-                    Toast.makeText(applicationContext,"Error onFailure " + t.message,
-                        Toast.LENGTH_LONG).show()
-                }
-            })
+                    override fun onFailure(call: Call<UploadResponse>, t: Throwable) {
+                        Toast.makeText(applicationContext,"Error onFailure " + t.message,
+                            Toast.LENGTH_LONG).show()
+                    }
+                })
+            }
+
         }
 
 
