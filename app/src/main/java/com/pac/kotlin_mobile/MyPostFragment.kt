@@ -1,18 +1,19 @@
 package com.pac.kotlin_mobile
 
+import android.R
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
-
 import com.pac.kotlin_mobile.databinding.FragmentMyPostBinding
 import com.pac.kotlin_mobile.databinding.MypostLayoutBinding
 import retrofit2.Call
@@ -27,11 +28,7 @@ class MyPostFragment : Fragment() {
     private lateinit var bindingRV: MypostLayoutBinding
     val postlist = arrayListOf<Postlist>()
     var URL_API = URL.URL_API
-    val api: Cat_API = Retrofit.Builder()
-        .baseUrl(URL_API)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-        .create(Cat_API::class.java)
+
     lateinit var AUTH : SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,12 +38,27 @@ class MyPostFragment : Fragment() {
         binding = FragmentMyPostBinding.inflate(layoutInflater)
         bindingRV = MypostLayoutBinding.inflate(layoutInflater)
 //        binding.recyclerView.adapter = MyPostAdapter(this.postlist,requireActivity().applicationContext)
+
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.checkPostText.setOnClickListener {
-            var fragment: Fragment? = null
-            fragment = CheckPostFragment()
-            replaceFragment(fragment)
+        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        var role =  AUTH.getString("role","")
+        if(role.toString() == "1"){
+
+
+            binding.checkPostText.setOnClickListener {
+                var fragment: Fragment? = null
+                fragment = CheckPostFragment()
+                replaceFragment(fragment)
+            }
+        }else{
+            Log.i("Event","0")
+
+            binding.cardMypost.layoutParams.width = 995
+
+            binding.myPostText.layoutParams.width = 995
+            binding.cardCheckpost.visibility = View.GONE
         }
+
 
 
 
@@ -68,6 +80,11 @@ class MyPostFragment : Fragment() {
 
 
     fun callpostData () {
+        val api: Cat_API = Retrofit.Builder()
+            .baseUrl(URL_API)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(Cat_API::class.java)
         AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var id =  AUTH.getString("id","")
         api.getMypost(id.toString().toInt())

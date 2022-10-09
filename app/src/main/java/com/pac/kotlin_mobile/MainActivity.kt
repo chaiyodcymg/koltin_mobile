@@ -50,19 +50,6 @@ class MainActivity : AppCompatActivity() {
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
 
-//        val view: View = supportActionBar!!.customView
-//        AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-//        var name =  AUTH.getString("id","")
-//        AUTH.edit{clear()}
-//        if(name != null && name.isNotEmpty()){
-//            val  intent = Intent(applicationContext, HomeActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent )
-//        }else{
-//            val intent = Intent(applicationContext, LoginActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent)
-//        }
 
         supportActionBar!!.setCustomView(null)
 
@@ -249,13 +236,13 @@ class MainActivity : AppCompatActivity() {
 
         var id =  AUTH.getString("id","")
         if(id?.isNotEmpty()==true){
-            Log.i("Event","มีข้อมูล")
+
             getData()
         }else{
             val settingsItem =  this.menu?.findItem(R.id.menu2)
 
             settingsItem?.setIcon(ContextCompat.getDrawable(this, R.drawable.wuser))
-            Log.i("Event","ไม้มีข้อมูล")
+
         }
         binding.bottomNavigation.selectedItemId =  Select_Page
 

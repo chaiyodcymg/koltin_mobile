@@ -1,11 +1,13 @@
 package com.pac.kotlin_mobile
 
+import android.app.Activity
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.ActivityEditNewsBinding
 import com.pac.kotlin_mobile.databinding.ActivityEditProfileBinding
@@ -22,17 +24,37 @@ class EditNewsActivity : AppCompatActivity() {
     var id = ""
     var URL_API = URL.URL_API
     lateinit var AUTH : SharedPreferences
-
+    var Select_Page : Int = R.id.page_1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditNewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        // แก้ไขปุ่มย้อนกลับ
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setCustomView(R.layout.custom_action_bar_layout)
+        supportActionBar!!.elevation = 0.0F
+        val view = supportActionBar!!.customView
+        val imageButton = view.findViewById<View>(R.id.action_bar_back)
+        Select_Page = intent.getIntExtra("Select_Page",0)
+        imageButton.setOnClickListener {
+            val intent = intent.putExtra("Select_Page",Select_Page)
+            setResult( Activity.RESULT_OK,intent)
+            finish()
+        }
+
+
+
+
+
         AUTH = getSharedPreferences("AUTH", Context.MODE_PRIVATE)
         var data = intent.extras
         id = intent.getStringExtra("id").toString()
         title = data?.getString("title").toString()
         image = data?.getString("image").toString()
         detail = data?.getString("detail").toString()
+
 
 
         binding.edtNewsname.setText(title)

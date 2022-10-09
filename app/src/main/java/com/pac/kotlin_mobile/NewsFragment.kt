@@ -1,5 +1,6 @@
 package com.pac.kotlin_mobile
 
+import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.pac.kotlin_mobile.URL.URL_API
 import com.pac.kotlin_mobile.databinding.FragmentNewsBinding
+import com.pac.kotlin_mobile.databinding.NewsLayoutBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,6 +26,7 @@ class NewsFragment : Fragment() {
     private lateinit var binding: FragmentNewsBinding
     lateinit var AUTH : SharedPreferences
     var NewsList = arrayListOf<News>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,8 +34,15 @@ class NewsFragment : Fragment() {
         binding = FragmentNewsBinding.inflate(layoutInflater)
         binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
 
+        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        var role =  AUTH.getString("role","")
+        if(role.toString() == "0"){
+         binding.fab.visibility = View.GONE
+        }
+
+
         callNewsData()
-        binding.fab.setOnClickListener() {
+        binding.fab.setOnClickListener {
             val intent = Intent(requireActivity().applicationContext, AddNewsActivity::class.java)
             startActivity(intent)
         }

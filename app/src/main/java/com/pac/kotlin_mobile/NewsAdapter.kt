@@ -4,7 +4,9 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,26 +31,17 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireActivity: MainActivity,val inflater: LayoutInflater,) :
     RecyclerView.Adapter<NewsAdapter.ViewHolder>(){
-
+    lateinit var AUTH : SharedPreferences
     inner class ViewHolder(view: View, val binding: NewsLayoutBinding ) :
         RecyclerView.ViewHolder(view) {
         init {
-            binding.cardView.setOnClickListener {
-                val item = items[adapterPosition]
-                Toast.makeText(context,"Click on news: ${item.title} Image: ${item.image} detail: ${item.detail} " +
-                        "user_id: ${item.user_id}",
-                    Toast.LENGTH_SHORT).show()
-            }
-            binding.editNews.setOnClickListener{
-                val item = items[adapterPosition]
-                val contextView : Context = view.context
-                val  intent = Intent(requireActivity.applicationContext, EditNewsActivity::class.java)
-                intent.putExtra("id",item.id.toString())
-                intent.putExtra("title",item.title)
-                intent.putExtra("image",item.image)
-                intent.putExtra("detail",item.detail)
-                contextView.startActivity(intent)
-            }
+//            binding.cardView.setOnClickListener {
+//                val item = items[adapterPosition]
+//                Toast.makeText(context,"Click on news: ${item.title} Image: ${item.image} detail: ${item.detail} " +
+//                        "user_id: ${item.user_id}",
+//                    Toast.LENGTH_SHORT).show()
+//            }
+
 
 
         }
@@ -66,6 +59,8 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
         val binding_holder = holder.binding
         binding_holder.newsTitle?.text = items[position].title
         Glide.with(context).load(URL_API +items[position].image).into(binding_holder.newsImg)
+        AUTH = context.getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        var role =  AUTH.getString("role","")
 
         binding_holder.cardView.setOnClickListener{
             val bundle = Bundle()
@@ -83,40 +78,61 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
             transaction.addToBackStack(null)
             transaction.commit()
         }
-        binding_holder.deleteNews.setOnClickListener{
-            //pass the 'context' here
 
-            var URL_API = URL.URL_API
+        if(role.toString() == "1"){
+            Log.i("Event","${ role }")
 
-            val myBuilder = AlertDialog.Builder(context)
-            myBuilder.apply {
-                setMessage("delete : ${items[position].title} ?")
-                setNegativeButton("Yes") {dialog, which ->
-                    val api: NewsAPI = Retrofit.Builder()
-                        .baseUrl(URL_API)
-                        .addConverterFactory(GsonConverterFactory.create())
-                        .build()
-                        .create(NewsAPI::class.java)
-                    var id =  items[position].id
+            binding_holder.deleteNews.setOnClickListener{
+                //pass the 'context' here
 
-                    api.softdeletenews(id.toString().toInt())
-                        .enqueue(object : Callback<News> {
+                var URL_API = URL.URL_API
 
-                            override fun onResponse(call: Call<News>, response: Response<News>) {
-                                if(response.isSuccessful) {
-                                    Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_LONG).show()
-                                    remove(position)
+                val myBuilder = AlertDialog.Builder(context)
+                myBuilder.apply {
+                    setMessage("delete : ${items[position].title} ?")
+                    setNegativeButton("Yes") {dialog, which ->
+                        val api: NewsAPI = Retrofit.Builder()
+                            .baseUrl(URL_API)
+                            .addConverterFactory(GsonConverterFactory.create())
+                            .build()
+                            .create(NewsAPI::class.java)
+                        var id =  items[position].id
+
+                        api.softdeletenews(id.toString().toInt())
+                            .enqueue(object : Callback<News> {
+
+                                override fun onResponse(call: Call<News>, response: Response<News>) {
+                                    if(response.isSuccessful) {
+                                        Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_LONG).show()
+                                        remove(position)
+                                    }
                                 }
-                            }
 
-                            override fun onFailure(call: Call<News>, t: Throwable) {
-                                Toast.makeText(context.applicationContext, "Fail Deleted", Toast.LENGTH_LONG).show()
-                            }
-                        })
+                                override fun onFailure(call: Call<News>, t: Throwable) {
+                                    Toast.makeText(context.applicationContext, "Fail Deleted", Toast.LENGTH_LONG).show()
+                                }
+                            })
+                    }
+                    setPositiveButton("No") {dialog, which -> dialog.cancel()}
+                    show()
                 }
-                setPositiveButton("No") {dialog, which -> dialog.cancel()}
-                show()
+
             }
+            binding_holder.editNews.setOnClickListener{
+                val item = items[position]
+                val contextView : Context = context
+                val  intent = Intent(requireActivity.applicationContext, EditNewsActivity::class.java)
+                intent.putExtra("id",item.id.toString())
+                intent.putExtra("title",item.title)
+                intent.putExtra("image",item.image)
+                intent.putExtra("detail",item.detail)
+                contextView.startActivity(intent)
+            }
+
+        }else{
+            binding_holder.deleteNews.visibility = View.GONE
+
+            binding_holder.editNews.visibility = View.GONE
 
         }
 

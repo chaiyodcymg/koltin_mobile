@@ -69,7 +69,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
                             override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
                                 if(response.isSuccessful) {
                                     Toast.makeText(context, "Successfully Updated", Toast.LENGTH_LONG).show()
-
+                                    remove(position)
                                 }
                             }
 
@@ -114,7 +114,10 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         }
 
     }
-
+    fun remove(index:Int){
+        items.removeAt(index)
+        notifyDataSetChanged()
+    }
     override fun getItemCount(): Int {
         return items.size
     }

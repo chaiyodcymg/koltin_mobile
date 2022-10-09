@@ -125,9 +125,7 @@ class AddCatFindhouseActivity : AppCompatActivity() {
                     if (response.isSuccessful) {
                         Toast.makeText(applicationContext, "Seccessfully Inserted",
                             Toast.LENGTH_LONG).show()
-                        var fragment: Fragment? = null
-                        fragment = AddPostFragment()
-                        replaceFragment(fragment)
+                        finish()
                     } else {
                         Toast.makeText(applicationContext, " Insert Failure",
                             Toast.LENGTH_LONG)

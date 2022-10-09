@@ -59,7 +59,7 @@ class news_info : Fragment() {
             imageButton?.setOnClickListener {
                 requireActivity().supportFragmentManager.beginTransaction().replace(
                     R.id.frameLayout,
-                    HomeFragment()
+                    NewsFragment()
                 ).commit()
                 (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
             }
