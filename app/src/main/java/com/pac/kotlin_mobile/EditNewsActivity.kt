@@ -70,7 +70,7 @@ class EditNewsActivity : AppCompatActivity() {
 
         binding.edtNewsname.setText(title)
         binding.imageSelected.setImageURI(null)
-        Glide.with(applicationContext).load(URL_API+image).into(binding.imageSelected)
+//        Glide.with(applicationContext).load(URL_API+image).into(binding.imageSelected)
         binding.newsText.setText(detail)
 
         binding.imageSelected.setOnClickListener {
