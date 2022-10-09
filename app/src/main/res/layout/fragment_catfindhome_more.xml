@@ -27,9 +27,10 @@
 
             <!--  กล่องแมวหาบ้าน   -->
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerView"
+                android:id="@+id/morefindhouse_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
                 android:paddingBottom="10dp"
                 android:scrollbars="vertical" />
         </LinearLayout>

@@ -7,12 +7,13 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="295dp"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
+        android:paddingRight="20dp"
         card_view:cardCornerRadius="30dp">
 
         <LinearLayout
@@ -33,9 +34,16 @@
                 android:id="@+id/card"
                 android:layout_width="230dp"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:layout_marginLeft="15dp"
-                >
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/post_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="15dp"
+                    android:paddingRight="10dp"
+                    android:text="ประเภท :" />
 
                 <TextView
                     android:id="@+id/cat_name"
@@ -75,7 +83,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="5dp"
                     android:paddingRight="20dp"
-                    android:text="ข้อมูลสัตว์ : sssssssssssssssssssssssssssssssssssssss" />
+                    android:text="ข้อมูลสัตว์ :" />
 
                 <TextView
                     android:id="@+id/cat_contact"
@@ -92,35 +100,32 @@
                     android:layout_marginTop="5dp"
                     android:paddingRight="10dp"
                     android:text="เบอร์โทร :" />
-
             </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="258dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center">
-
+            android:layout_gravity="bottom|center"
+            >
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/delete_post"
+                android:id="@+id/deny_post"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
+
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/round_outline"
-                android:onClick="delete"
-                android:text="ลบโพสต์"
+                android:text="ปฏิเสธ"
                 android:textColor="@color/white" />
-
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/edit_post"
+                android:id="@+id/accept_post"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_marginLeft="30dp"
-                android:layout_toRightOf="@+id/delete_post"
+                android:layout_toRightOf="@+id/deny_post"
                 android:background="@drawable/round_green"
-                android:onClick="edit"
-                android:text="แก้ไข"
+                android:text="อนุมัติ"
                 android:textColor="@color/white" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>

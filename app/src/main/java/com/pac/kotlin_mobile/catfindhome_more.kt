@@ -43,18 +43,18 @@ class catfindhome_more : Fragment() {
 
         val imageButton = view?.findViewById<View>(R.id.action_bar_back)
         imageButton?.setOnClickListener {
-           requireActivity().supportFragmentManager.beginTransaction().add(
+            requireActivity().supportFragmentManager.beginTransaction().add(
                 R.id.frameLayout,
                 HomeFragment()
             ).commit()
             (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
         }
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
-        binding.recyclerView.addItemDecoration(
+        binding.morefindhouseView.layoutManager = LinearLayoutManager(requireActivity().applicationContext)
+        binding.morefindhouseView.addItemDecoration(
             DividerItemDecoration(
-            binding.recyclerView.getContext(), DividerItemDecoration.HORIZONTAL
-        )
+                binding.morefindhouseView.getContext(), DividerItemDecoration.HORIZONTAL
+            )
         )
         callData()
 //        binding.catFind.setOnClickListener {
@@ -108,12 +108,12 @@ class catfindhome_more : Fragment() {
                                     it.type,
                                     it.status,
                                     it.user_id
-                                    ))
+                                ))
                             }
 
                         }
-                        binding.recyclerView.adapter = FindHomeMoreAdapter(PostList,requireContext(), requireActivity() as MainActivity,layoutInflater)
-                        binding.recyclerView.adapter?.notifyDataSetChanged()
+                        binding.morefindhouseView.adapter = FindHomeMoreAdapter(PostList,requireContext(), requireActivity() as MainActivity,layoutInflater)
+                        binding.morefindhouseView.adapter?.notifyDataSetChanged()
                     }
                     else{
                         Toast.makeText(requireActivity().applicationContext,"error", Toast.LENGTH_SHORT).show()

@@ -20,15 +20,22 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
 
+
+        <activity
+            android:name=".LostCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCatFindhouseActivity"
+            android:exported="false" />
         <activity
             android:name=".EditNewsActivity"
             android:exported="false" />
         <activity
             android:name=".AddNewsActivity"
             android:exported="false" />
-        <activity
-            android:name=".EditPost"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".EditPost"-->
+<!--            android:exported="false" />-->
         <activity
             android:name=".DetailLostCatActivity"
             android:exported="false" />
@@ -38,12 +45,17 @@
         <activity
             android:name=".SearchDetailActivity"
             android:exported="false" />
-        <activity
-            android:name=".LostCatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".AddCatFindhouseActivity"
-            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".LostCatActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".AddCatFindhouseActivity"-->
+<!--            android:exported="false" />-->
+
+<!--        <activity-->
+<!--            android:name=".AddCatFindhouseMainActivity"-->
+<!--            android:exported="false" />-->
+
         <activity
             android:name=".EditProfileActivity"
             android:exported="false" />
@@ -54,6 +66,15 @@
             android:name=".SearchActivity"
             android:exported="false" />
 
+<!--        <activity-->
+<!--            android:name=".RegisterActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".LoginActivity"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".EditPostActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">

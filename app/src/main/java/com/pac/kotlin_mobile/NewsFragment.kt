@@ -3,6 +3,7 @@ package com.pac.kotlin_mobile
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -38,13 +39,9 @@ class NewsFragment : Fragment() {
         binding.recyclerView.addItemDecoration(DividerItemDecoration(
             binding.recyclerView.getContext(),DividerItemDecoration.HORIZONTAL
         ))
-
+        callNewsData()
         binding.fab.setOnClickListener() {
             val intent = Intent(requireActivity().applicationContext, AddNewsActivity::class.java)
-            startActivity(intent)
-        }
-        bindingnews.editNews.setOnClickListener() {
-            val intent = Intent(requireActivity().applicationContext, EditNewsActivity::class.java)
             startActivity(intent)
         }
 
@@ -52,6 +49,7 @@ class NewsFragment : Fragment() {
     }
 
     fun callNewsData(){
+        NewsList.clear();
         val api: NewsAPI = Retrofit.Builder()
             .baseUrl(URL_API)
             .addConverterFactory(GsonConverterFactory.create())
@@ -62,15 +60,12 @@ class NewsFragment : Fragment() {
                 override fun onResponse(call: Call<List<News>>, response:
                 Response<List<News>>
                 ) {
-                    NewsList.clear();
-                    if(response.isSuccessful){
-                        response.body()?.forEach {
-                            NewsList.add(News(it.id,it.title,it.image,it.detail,it.user_id))
-                        }
-
-                        binding.recyclerView.adapter = NewsAdapter(NewsList,requireContext(), requireActivity() as MainActivity,layoutInflater)
-                        binding.recyclerView.adapter?.notifyDataSetChanged()
+                    response.body()?.forEach {
+                        NewsList.add(News(it.id,it.title,it.image,it.detail,it.user_id))
                     }
+//// Set Data to RecyclerRecyclerView
+
+                    binding. recyclerView.adapter = NewsAdapter(NewsList,requireActivity().applicationContext, requireActivity() as MainActivity,layoutInflater)
 
                 }
                 override fun onFailure(call: Call<List<News>>, t: Throwable) {

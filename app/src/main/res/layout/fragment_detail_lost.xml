@@ -58,6 +58,7 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -66,6 +67,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/color"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -74,6 +76,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -83,6 +86,7 @@
 
 
                     <TextView
+                        android:id="@+id/vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -91,6 +95,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/date_vaccine"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -99,6 +104,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/species"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -114,6 +120,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/detail"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -123,6 +130,7 @@
                         android:textSize="15sp" />
 
                     <TextView
+                        android:id="@+id/date"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -131,6 +139,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/notice_point"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -139,6 +148,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/place_to_found"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
@@ -147,6 +157,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/address"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
@@ -163,6 +174,7 @@
                         android:textStyle="bold" />
 
                     <TextView
+                        android:id="@+id/contact"
                         android:layout_width="300dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"

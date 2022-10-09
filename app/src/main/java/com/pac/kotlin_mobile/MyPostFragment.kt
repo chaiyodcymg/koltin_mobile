@@ -1,5 +1,7 @@
 package com.pac.kotlin_mobile
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -20,14 +22,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-
 class MyPostFragment : Fragment() {
     private lateinit var binding: FragmentMyPostBinding
     private lateinit var bindingRV: MypostLayoutBinding
     val postlist = arrayListOf<Postlist>()
     var URL_API = URL.URL_API
-
-
+    val api: Cat_API = Retrofit.Builder()
+        .baseUrl(URL_API)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(Cat_API::class.java)
+    lateinit var AUTH : SharedPreferences
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,36 +48,11 @@ class MyPostFragment : Fragment() {
             replaceFragment(fragment)
         }
 
-            callpostData()
 
 
-//        bindingRV.deletePost.setOnClickListener {
-//           val myBuilder = AlertDialog.Builder(requireActivity())
-//            myBuilder.apply {
-//                setMessage("ลบ")
-//                setNegativeButton("Yes") {dialog, which ->
-//                    api.deletePost(id)
-//                        .enqueue(object : Callback<Cat> {
-//                            override fun onResponse(call: Call<Cat>, response: Response<Cat>) {
-//                                if(response.isSuccessful) {
-//                                    Toast.makeText(requireActivity().applicationContext, "Successfully Deleted", Toast.LENGTH_LONG).show()
-//                                }
-//                            }
-//
-//                            override fun onFailure(call: Call<Cat>, t: Throwable) {
-//                                Toast.makeText(requireActivity().applicationContext, "Faill Deleted", Toast.LENGTH_LONG).show()
-//                            }
-//                        })
-//                }
-//                setPositiveButton("No") {dialog, which -> dialog.cancel()}
-//                show()
-//            }
-//        }
-
-
+        callpostData()
         return binding.root
     }
-
 
 
 
@@ -87,26 +67,21 @@ class MyPostFragment : Fragment() {
 
 
 
-
-
-
     fun callpostData () {
-        val api: Cat_API = Retrofit.Builder()
-            .baseUrl(URL_API)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(Cat_API::class.java)
-        api.getMypost()
+        AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+        var id =  AUTH.getString("id","")
+        api.getMypost(id.toString().toInt())
             .enqueue(object : Callback<List<Cat>> {
                 override fun onResponse(call: Call<List<Cat>>, response:
                 Response<List<Cat>>
                 ) {
                     response.body()?.forEach {
-                        postlist.add(Postlist(it.id,it.name,it.color,it.species,it.vaccine)) }
-//// Set Data to RecyclerRecyclerView
+                        postlist.add(Postlist(it.id,it.name,it.gender,it.color,it.vaccine,it.date_vaccine,it.species,it.more_info,it.image,it.house_no,it.street,it.sub_district,it.district,it.province,it.post_address,it.date,it.notice_point,it.place_to_found,it.firstname,it.lastname,it.phone,it.email,it.line_id,it.facebook))
+                    }
+
+                    // Set Data to RecyclerRecyclerView
 
                     binding.recyclerView.adapter = MyPostAdapter(postlist,requireContext())
-                    binding.recyclerView.adapter?.notifyDataSetChanged()
                 }
 
                 override fun onFailure(call: Call<List<Cat>>, t: Throwable) {
@@ -117,6 +92,8 @@ class MyPostFragment : Fragment() {
     }
 
 
-    }
+
+}
+
 
 

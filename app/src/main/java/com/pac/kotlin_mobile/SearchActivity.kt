@@ -77,7 +77,7 @@ class SearchActivity : AppCompatActivity() {
                             }
 
                             override fun onFailure(call: Call<List<Search>>, t: Throwable) {
-                                Toast.makeText(applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                                Toast.makeText(applicationContext,"ไม่พบการค้นหา ", Toast.LENGTH_LONG).show()
                             }
                         })
                 }

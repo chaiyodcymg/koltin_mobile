@@ -36,10 +36,9 @@ class FragmentDetail : Fragment() {
     private var sub_district : String? = ""
     private var district: String? = ""
     private var province: String? = ""
-
     private var post_address : String? = ""
     private var name_owner : String? = ""
-
+//    private var home : String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -54,14 +53,27 @@ class FragmentDetail : Fragment() {
         val view = (activity as AppCompatActivity).supportActionBar?.customView
 
         val imageButton = view?.findViewById<View>(R.id.action_bar_back)
-        imageButton?.setOnClickListener {
-            requireActivity().supportFragmentManager.beginTransaction()
-                .replace(
-                R.id.frameLayout,
-                catfindhome_more()
-            ).commit()
-            (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+//        home = arguments?.getString("Home")
+        if (arguments?.getString("Home").isNullOrBlank()){
+            imageButton?.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(
+                        R.id.frameLayout,
+                        catfindhome_more()
+                    ).commit()
+                (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+            }
+        }else{
+            imageButton?.setOnClickListener {
+                requireActivity().supportFragmentManager.beginTransaction()
+                    .replace(
+                        R.id.frameLayout,
+                        HomeFragment()
+                    ).commit()
+                (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+            }
         }
+
 
         id = arguments?.getString("id")
         name = arguments?.getString("name")
@@ -86,6 +98,7 @@ class FragmentDetail : Fragment() {
         line_id = arguments?.getString("line_id")
         facebook = arguments?.getString("facebook")
         name_owner = arguments?.getString("name_owner")
+
 
         val outputId = binding.id
         outputId.text = "รหัสแมว : "+id.toString()

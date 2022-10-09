@@ -54,14 +54,23 @@ class news_info : Fragment() {
             (activity as AppCompatActivity).supportActionBar?.setCustomView(R.layout.custom_action_bar_layout)
             (activity as AppCompatActivity).supportActionBar?.elevation = 0.0F
             val view = (activity as AppCompatActivity).supportActionBar?.customView
-
             val imageButton = view?.findViewById<View>(R.id.action_bar_back)
-            imageButton?.setOnClickListener {
-                requireActivity().supportFragmentManager.beginTransaction().add(
-                    R.id.frameLayout,
-                    HomeFragment()
-                ).commit()
-                (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+            if(arguments?.getString("Home").isNullOrBlank()){
+                imageButton?.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        NewsFragment()
+                    ).commit()
+                    (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+                }
+            }else{
+                imageButton?.setOnClickListener {
+                    requireActivity().supportFragmentManager.beginTransaction().replace(
+                        R.id.frameLayout,
+                        HomeFragment()
+                    ).commit()
+                    (activity as AppCompatActivity).supportActionBar?.setCustomView(null)
+                }
             }
 
             binding = FragmentNewsInfoBinding.inflate(layoutInflater)

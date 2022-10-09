@@ -54,7 +54,7 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsAdapter.ViewHolder {
-     val   bindingnews = NewsLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val   bindingnews = NewsLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(bindingnews.root,bindingnews)
     }
 
@@ -68,11 +68,12 @@ class NewsAdapter(val items: ArrayList<News>, val context: Context,val requireAc
 
         binding_holder.cardView.setOnClickListener{
             val bundle = Bundle()
+
             bundle.putString("title", items[position].title)
             bundle.putString("image",items[position].image)
             bundle.putString("detail",items[position].detail)
             var  binding : FragmentNewsBinding
-             binding = FragmentNewsBinding.inflate(inflater)
+            binding = FragmentNewsBinding.inflate(inflater)
             val new = news_info()
             new.arguments = bundle
 

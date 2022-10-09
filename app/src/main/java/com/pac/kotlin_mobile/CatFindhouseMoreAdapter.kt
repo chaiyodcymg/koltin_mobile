@@ -19,8 +19,8 @@ import com.pac.kotlin_mobile.databinding.NewsLayoutBinding
 import com.pac.kotlin_mobile.databinding.NewsLayoutBinding.inflate
 
 
-class FindHomeMoreAdapter(val items: ArrayList<Findhouse>, val context: Context, val requireActivity: MainActivity, val inflater: LayoutInflater) :
-    RecyclerView.Adapter<FindHomeMoreAdapter.ViewHolder>() {
+class CatFindhouseMoreAdapter(val items: ArrayList<Findhouse>, val context: Context, val requireActivity: MainActivity, val inflater: LayoutInflater) :
+    RecyclerView.Adapter<CatFindhouseMoreAdapter.ViewHolder>() {
     class ViewHolder (view: View, val binding: CatfindhomeMoreLayoutBinding) :
         RecyclerView.ViewHolder(view) {
         init {
@@ -40,7 +40,10 @@ class FindHomeMoreAdapter(val items: ArrayList<Findhouse>, val context: Context,
 //                intent.putExtra("detail",item.detail)
 //                contextView.startActivity(intent)
 //            }
-
+            binding.catFind.setOnClickListener {
+                val intent = Intent(view.context, DetailFindhouseActivity::class.java)
+                view.context.startActivity(intent)
+            }
 //            binding.btnHome.setOnClickListener {
 //                var detailfragment: Fragment =  FragmentDetail()
 //
@@ -62,44 +65,34 @@ class FindHomeMoreAdapter(val items: ArrayList<Findhouse>, val context: Context,
         binding_holder.colorCat?.text ="สี " + items[position].color
         binding_holder.speciesCat?.text ="สายพันธ์ " + items[position].species
         Glide.with(context).load(URL_API +items[position].image).into( binding_holder.catImg)
-        val bundle = Bundle()
-        bundle.putString("id", items[position].id.toString())
-        bundle.putString("name",items[position].name)
-        bundle.putString("gender",items[position].gender)
-        bundle.putString("species",items[position].species)
-        bundle.putString("vaccine",items[position].vaccine)
-        bundle.putString("date_vaccine",items[position].date_vaccine)
-        bundle.putString("more_info",items[position].more_info)
-        bundle.putString("image",items[position].image)
-        bundle.putString("house_no",items[position].house_no)
-        bundle.putString("street",items[position].street)
-        bundle.putString("sub_district",items[position].sub_district)
-        bundle.putString("district",items[position].district)
-        bundle.putString("province",items[position].province)
-        bundle.putString("post_address",items[position].post_address)
-        bundle.putString("firstname",items[position].firstname)
-        bundle.putString("lastname",items[position].lastname)
-        bundle.putString("phone",items[position].phone)
-        bundle.putString("email",items[position].email)
-        bundle.putString("line_id",items[position].line_id)
-        bundle.putString("facebook",items[position].facebook)
-
         binding_holder.catFind.setOnClickListener{
+            val bundle = Bundle()
+            bundle.putString("id", items[position].id.toString())
+            bundle.putString("name",items[position].name)
+            bundle.putString("gender",items[position].gender)
+            bundle.putString("species",items[position].species)
+            bundle.putString("vaccine",items[position].vaccine)
+            bundle.putString("date_vaccine",items[position].date_vaccine)
+            bundle.putString("more_info",items[position].more_info)
+            bundle.putString("image",items[position].image)
+            bundle.putString("house_no",items[position].house_no)
+            bundle.putString("street",items[position].street)
+            bundle.putString("sub_district",items[position].sub_district)
+            bundle.putString("district",items[position].district)
+            bundle.putString("province",items[position].province)
+            bundle.putString("post_address",items[position].post_address)
+            bundle.putString("firstname",items[position].firstname)
+            bundle.putString("lastname",items[position].lastname)
+            bundle.putString("phone",items[position].phone)
+            bundle.putString("email",items[position].email)
+            bundle.putString("line_id",items[position].line_id)
+            bundle.putString("facebook",items[position].facebook)
+
             var  binding : FragmentCatfindhomeMoreBinding
             binding = FragmentCatfindhomeMoreBinding.inflate(inflater)
             val new = FragmentDetail()
             new.arguments = bundle
-            val transaction = requireActivity.supportFragmentManager.beginTransaction()
-            transaction.replace(binding.frameLayout.id, new)
-            transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            transaction.addToBackStack(null)
-            transaction.commit()
-        }
-        binding_holder.btnHome.setOnClickListener{
-            var  binding : FragmentCatfindhomeMoreBinding
-            binding = FragmentCatfindhomeMoreBinding.inflate(inflater)
-            val new = FragmentDetail()
-            new.arguments = bundle
+
             val transaction = requireActivity.supportFragmentManager.beginTransaction()
             transaction.replace(binding.frameLayout.id, new)
             transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
