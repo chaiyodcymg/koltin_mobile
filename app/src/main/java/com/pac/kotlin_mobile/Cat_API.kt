@@ -1,5 +1,7 @@
 package com.pac.kotlin_mobile
 
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 
 import retrofit2.http.*
@@ -43,29 +45,29 @@ interface Cat_API {
         @Path("id") id: Int): Call<Cat>
 
     @FormUrlEncoded /// Update
-    @PUT("updatePost/{id}")
+    @PUT("updatePost")
     fun updatePost(
-        @Path("id") id: Int,
-        @Field("name") name: String,
-        @Field("gender") gender: String,
-        @Field("color") color: String,
-        @Field("vaccine") vaccine: String,
-        @Field("date_vaccine") date: String,
-        @Field("species") species: String,
-        @Field("more_info") more_info: String,
-//        @Field("image") image: String,
-        @Field("house_no") house_no: String,
-        @Field("street") street: String,
-        @Field("sub_district") sub_district: String,
-        @Field("district") district: String,
-        @Field("province") province: String,
-        @Field("post_address") post_address: String,
-        @Field("firstname") firstname: String,
-        @Field("lastname") lastname: String,
-        @Field("phone") phone: String,
-        @Field("email") email: String,
-        @Field("line_id") line_id: String,
-        @Field("facebook") facebook: String,
+        @Part("id") id: RequestBody,
+        @Part("name") name: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("color") color: RequestBody,
+        @Part("vaccine") vaccine: RequestBody,
+        @Part("date_vaccine") date: RequestBody,
+        @Part("species") species: RequestBody,
+        @Part("more_info") more_info: RequestBody,
+        @Part image: MultipartBody.Part,
+        @Part("house_no") house_no: RequestBody,
+        @Part("street") street: RequestBody,
+        @Part("sub_district") sub_district: RequestBody,
+        @Part("district") district: RequestBody,
+        @Part("province") province: RequestBody,
+        @Part("post_address") post_address: RequestBody,
+        @Part("firstname") firstname: RequestBody,
+        @Part("lastname") lastname: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("line_id") line_id: RequestBody,
+        @Part("facebook") facebook: RequestBody,
     ): Call<Cat>
 
 
