@@ -1,0 +1,99 @@
+package com.pac.kotlin_mobile
+
+import android.app.Activity
+import android.content.SharedPreferences
+import android.os.Bundle
+import android.util.Log
+import android.view.View
+import android.widget.SearchView
+import android.widget.Toast
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.pac.kotlin_mobile.databinding.ActivitySearchBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+
+class SearchActivity : AppCompatActivity() {
+    lateinit var binding : ActivitySearchBinding
+    lateinit var AUTH : SharedPreferences
+    var Select_Page : Int = R.id.page_1
+    var data_search_List = arrayListOf<Search>()
+    var URL_API = URL.URL_API
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivitySearchBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        // แก้ไขปุ่มย้อนกลับ
+        supportActionBar!!.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        supportActionBar!!.setDisplayShowCustomEnabled(true)
+        supportActionBar!!.setCustomView(R.layout.action_bar_search)
+        supportActionBar!!.elevation = 0.0F
+        val view = supportActionBar!!.customView
+
+        val imageButton = view.findViewById<View>(R.id.action_bar_back)
+        imageButton.setOnClickListener {
+            val intent = intent.putExtra("Select_Page",Select_Page)
+            setResult( Activity.RESULT_OK,intent)
+            finish()
+        }
+        Select_Page = intent.getIntExtra("Select_Page",0)
+
+        binding.recyclerView.adapter = SearchAdapter(this.data_search_List,applicationContext,this@SearchActivity,layoutInflater )
+        binding.recyclerView.layoutManager = LinearLayoutManager(applicationContext)
+
+
+        var binding_actionbar = findViewById(R.id.action_bar_searchView) as SearchView
+
+        binding_actionbar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(search: String): Boolean {
+                Log.i("Events",search)
+                if(search.trim().isNotEmpty() && search.isNotEmpty()){
+
+
+                    val api: Cat_API = Retrofit.Builder()
+                        .baseUrl(URL_API)
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
+                        .create(Cat_API::class.java)
+                    api.search(search)
+                        .enqueue(object : Callback<List<Search>> {
+                            override fun onResponse(call: Call<List<Search>>, response: Response<List<Search>>) {
+                                if (response.isSuccessful()) {
+                                    data_search_List.clear()
+                                    Log.i("Events" ,"${response.body()}")
+
+                                    data_search_List.addAll(response.body()!!)
+
+                                    binding.recyclerView.adapter?.notifyDataSetChanged()
+                                    binding.recyclerView.adapter = SearchAdapter(data_search_List,applicationContext,  this@SearchActivity,layoutInflater )
+                                }
+                            }
+
+                            override fun onFailure(call: Call<List<Search>>, t: Throwable) {
+                                Toast.makeText(applicationContext,"ไม่พบการค้นหา ", Toast.LENGTH_LONG).show()
+                            }
+                        })
+                }
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+
+                return false
+            }
+
+        })
+
+    }
+
+
+
+
+}

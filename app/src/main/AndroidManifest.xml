@@ -3,16 +3,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.pac.kotlin_mobile">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
+        android:label="CAT CARE"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Kotlin_mobile"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+
+        <activity
+            android:name=".LostCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddCatFindhouseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditNewsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddNewsActivity"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".EditPost"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".DetailLostCatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DetailFindhouseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchDetailActivity"
+            android:exported="false" />
+<!--        <activity-->
+<!--            android:name=".LostCatActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".AddCatFindhouseActivity"-->
+<!--            android:exported="false" />-->
+
+<!--        <activity-->
+<!--            android:name=".AddCatFindhouseMainActivity"-->
+<!--            android:exported="false" />-->
+
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SearchActivity"
+            android:exported="false" />
+
+<!--        <activity-->
+<!--            android:name=".RegisterActivity"-->
+<!--            android:exported="false" />-->
+<!--        <activity-->
+<!--            android:name=".LoginActivity"-->
+<!--            android:exported="false" />-->
+        <activity
+            android:name=".EditPostActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
