@@ -32,8 +32,16 @@ class CheckPostAdapter(val items: ArrayList<Postlist>, val context: Context):
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
         val binding = holder.binding
+            var type = ""
+        if (items[position]?.type == 0){
+            type = "น้องเหมียวหาบ้าน"
+        }else if(items[position]?.type == 1){
+            type = "น้องเหมียวหาย"
+        }else{
+            type =  "พบน้องเหมียว"
+        }
 
-        binding.postType.text = "เรื่องที่แจ้ง : "+if (items[position]?.type == 1) "น้องเหมียวหาย" else "พบน้องเหมียว"
+        binding.postType.text = "เรื่องที่แจ้ง : ${type}"
         binding.catName?.text = "ชื่อ : ${items[position].name}"
         binding.catColor?.text = "สี : ${items[position].color}"
         binding.catSpecies?.text = "สายพันธุ์ : ${items[position].species}"

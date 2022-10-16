@@ -57,7 +57,7 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
             var URL_API = URL.URL_API
             val myBuilder = AlertDialog.Builder(context)
             myBuilder.apply {
-                setMessage("${items[position].id}")
+                setMessage("ต้องการลบโพสต์รหัส ${items[position].id} , ชื่อ ${items[position].name}")
                 setNegativeButton("Yes") {dialog, which ->
                     val api: Cat_API = Retrofit.Builder()
                         .baseUrl(URL_API)
@@ -88,17 +88,26 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
         binding.editPost.setOnClickListener {
             Toast.makeText(context,"Click : ${items[position].id}",
                 Toast.LENGTH_LONG).show()
-            val post_id = items[position].id
-            val intent = Intent(context, EditPostActivity::class.java)
+            val post_id = items[position].post_id
+            val intent : Intent
+
+            if(items[position].date != null && items[position].notice_point != null &&  items[position].place_to_found != null ){
+                intent = Intent(context, EditPostLostCatActivity::class.java)
+            }else{
+                intent = Intent(context, EditPostActivity::class.java)
+            }
+
+
+            intent.putExtra("type", items[position].type.toString())
             intent.putExtra("id", post_id.toString())
             intent.putExtra("namecat", items[position].name)
             intent.putExtra("gender", items[position].gender)
             intent.putExtra("color", items[position].color)
             intent.putExtra("vaccine", items[position].vaccine)
-            intent.putExtra("date", items[position].date)
+            intent.putExtra("date", items[position].date_vaccine)
             intent.putExtra("species", items[position].species)
             intent.putExtra("more_info", items[position].more_info)
-//            intent.putExtra("image", items[position].image)
+            intent.putExtra("image", items[position].image)
             intent.putExtra("house_no", items[position].house_no)
             intent.putExtra("street", items[position].street)
             intent.putExtra("sub_district", items[position].sub_district)
@@ -111,6 +120,9 @@ class MyPostAdapter(val items: ArrayList<Postlist>, val context: Context):
             intent.putExtra("email", items[position].email)
             intent.putExtra("line_id", items[position].line_id)
             intent.putExtra("facebook", items[position].facebook)
+            intent.putExtra("dateplace", items[position].date)
+            intent.putExtra("notice_point", items[position].notice_point)
+            intent.putExtra("place_to_found", items[position].place_to_found)
             context.startActivity(intent)
         }
 

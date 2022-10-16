@@ -49,64 +49,71 @@ class RegisterFragment : Fragment() {
         binding.btnRegister.setOnClickListener {
             var email =  binding.email.text.toString()
             var pass = binding.password.text.toString()
+            var cfpass = binding.cfPassword.text.toString()
             var fname = binding.firstname.text.toString()
             var lname = binding.lastname.text.toString()
 
-            if(email.isNotEmpty() && pass.isNotEmpty() && fname.isNotEmpty() && lname.isNotEmpty() ){
-                val api: UserAPI = Retrofit.Builder()
-                    .baseUrl(URL_API )
-                    .addConverterFactory(GsonConverterFactory.create())
-                    .build()
-                    .create(UserAPI::class.java)
+            if(email.isNotEmpty() && pass.isNotEmpty() && fname.isNotEmpty() && lname.isNotEmpty() && cfpass.isNotEmpty() ){
+
+                if( pass == cfpass){
+                    val api: UserAPI = Retrofit.Builder()
+                        .baseUrl(URL_API )
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build()
+                        .create(UserAPI::class.java)
 
 
-                api.Register(
-                    email,
-                    pass,
-                    fname,
-                    lname
+                    api.Register(
+                        email,
+                        pass,
+                        fname,
+                        lname
 
-                ).enqueue(object : Callback<Register> {
-                    override fun onResponse(call: Call<Register>, response: retrofit2.Response<Register>) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(activity?.applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
-
-
-
-                            AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
-
-                            AUTH.edit {
-                                putString("id", response.body()?.AUTH.toString())
-                                putString("role",response.body()?.role.toString())
-                            }
+                    ).enqueue(object : Callback<Register> {
+                        override fun onResponse(call: Call<Register>, response: retrofit2.Response<Register>) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(activity?.applicationContext,"Successfully Inserted", Toast.LENGTH_SHORT).show()
 
 
-                            var binding: ActivityProfileBinding
-                            binding = ActivityProfileBinding.inflate(layoutInflater)
-                            val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                            transaction.replace(binding.frameLayout.id, ProfileFragment())
-                            transaction.addToBackStack(null)
-                            transaction.commit()
-                        } else {
 
-                            val myBuilder = AlertDialog.Builder(activity?.applicationContext)
-                            myBuilder.apply {
-                                setTitle("ข้อผิดพลาดในการเข้าสู่ระบบ")
-                                setMessage("อีเมลหรือรหัสผ่านไม่ถูกต้องกรุณากรอกข้อมูลใหม่อีกรั้ง")
-                                setPositiveButton("ตกลง") { dialog, which ->
-//                            Toast.makeText(applicationContext, "Click on Yes", Toast.LENGTH_SHORT)
-//                                .show()
+                                AUTH = requireActivity().getSharedPreferences("AUTH", Context.MODE_PRIVATE)
+
+                                AUTH.edit {
+                                    putString("id", response.body()?.AUTH.toString())
+                                    putString("role",response.body()?.role.toString())
                                 }
 
-                                show()
+
+                                var binding: ActivityProfileBinding
+                                binding = ActivityProfileBinding.inflate(layoutInflater)
+                                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                                transaction.replace(binding.frameLayout.id, ProfileFragment())
+                                transaction.addToBackStack(null)
+                                transaction.commit()
+                            } else {
+
+                                val myBuilder = AlertDialog.Builder(activity?.applicationContext)
+                                myBuilder.apply {
+                                    setTitle("ข้อผิดพลาดในการเข้าสู่ระบบ")
+                                    setMessage("อีเมลหรือรหัสผ่านไม่ถูกต้องกรุณากรอกข้อมูลใหม่อีกรั้ง")
+                                    setPositiveButton("ตกลง") { dialog, which ->
+//                            Toast.makeText(applicationContext, "Click on Yes", Toast.LENGTH_SHORT)
+//                                .show()
+                                    }
+
+                                    show()
+                                }
                             }
                         }
-                    }
 
-                    override fun onFailure(call: Call<Register>, t: Throwable) {
-                        Toast.makeText(activity?.applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
-                    }
-                })
+                        override fun onFailure(call: Call<Register>, t: Throwable) {
+                            Toast.makeText(activity?.applicationContext,"Error onFailure " + t.message, Toast.LENGTH_LONG).show()
+                        }
+                    })
+                }else{
+                    Toast.makeText( requireActivity().applicationContext,"รหัสผ่านไม่ตรงกัน", Toast.LENGTH_SHORT).show()
+                }
+
             }else{
                 Toast.makeText( requireActivity().applicationContext,"กรุณาใส่ข้อมูลให้ครบ", Toast.LENGTH_SHORT).show()
             }

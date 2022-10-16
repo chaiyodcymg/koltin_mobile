@@ -7,14 +7,15 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.util.Log
 import android.view.View
 import android.widget.RadioButton
 import android.widget.Toast
 import androidx.appcompat.app.ActionBar
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.pac.kotlin_mobile.databinding.ActivityEditPostBinding
+import com.pac.kotlin_mobile.databinding.ActivityEditPostLostCatBinding
 import com.pac.kotlin_mobile.databinding.ActivityMainBinding
 import okhttp3.MediaType
 import okhttp3.MultipartBody
@@ -28,8 +29,8 @@ import java.io.File
 import java.io.FileInputStream
 import java.io.FileOutputStream
 
-class EditPostActivity : AppCompatActivity() {
-    private lateinit var binding : ActivityEditPostBinding
+class EditPostLostCatActivity : AppCompatActivity() {
+    private lateinit var binding : ActivityEditPostLostCatBinding
     var selectedImageUri : Uri? = null
     var REQUEST_CODE_PICK_IMAGE = 100
     lateinit var AUTH : SharedPreferences
@@ -38,7 +39,7 @@ class EditPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var Select_Page : Int = R.id.page_1
         val actionBar : ActionBar? = supportActionBar
-        binding = ActivityEditPostBinding.inflate(layoutInflater)
+        binding = ActivityEditPostLostCatBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         // แก้ไขปุ่มย้อนกลับ
@@ -61,17 +62,24 @@ class EditPostActivity : AppCompatActivity() {
                 newDateFragment.show(supportFragmentManager, "Date Picker")
             }
         }
+        val type = intent.getStringExtra("type")?.toInt()
 
+        Log.i("Types","${type}")
+       if(type == 1){
+            binding.catlost.isChecked = true
+        }else if(type == 2){
+           binding.foundcat.isChecked = true
+        }
 
         val id = intent.getStringExtra("id").toString()
         val namecat = intent.getStringExtra("namecat")
         val gender = intent.getStringExtra("gender")
         val color = intent.getStringExtra("color")
         val vaccine = intent.getStringExtra("vaccine")
-        val date = intent.getStringExtra("date")
+        val date= intent.getStringExtra("date")
         val species = intent.getStringExtra("species")
         val more_info = intent.getStringExtra("more_info")
-          val image = intent.getStringExtra("image")
+        val image = intent.getStringExtra("image")
         val house_no = intent.getStringExtra("house_no")
         val street = intent.getStringExtra("street")
         val sub_district = intent.getStringExtra("sub_district")
@@ -84,21 +92,22 @@ class EditPostActivity : AppCompatActivity() {
         val email = intent.getStringExtra("email")
         val line_id = intent.getStringExtra("line_id")
         val facebook = intent.getStringExtra("facebook")
+        val dateplace = intent.getStringExtra("dateplace")
+        val notice_point = intent.getStringExtra("notice_point")
+        val place_to_found = intent.getStringExtra("place_to_found")
         Glide.with(applicationContext).load(URL_API+image).into(binding.imageSelected)
-
 
         binding.edtName.setText(namecat)
         if(gender == "ผู้") {
-            binding.male.setChecked(true)
+            binding.male.isChecked = true
         }else{
-            binding.famale.setChecked(true)
+            binding.female.isChecked = true
         }
         binding.edtColor.setText(color)
         binding.edtVacine.setText(vaccine)
         binding.date.text = date
         binding.edtSpecies.setText(species)
         binding.edtMore.setText(more_info)
-//        binding.imageSelected.setText(image)
         binding.edtPlace.setText(house_no)
         binding.edtStreet.setText(street)
         binding.edtTown.setText(sub_district)
@@ -111,18 +120,30 @@ class EditPostActivity : AppCompatActivity() {
         binding.edtEmail.setText(email)
         binding.edtLineid.setText(line_id)
         binding.edtFacebook.setText(facebook)
-
+        binding.dateplace.text = dateplace
+        binding.edtSpot.setText(notice_point )
+        binding.edtLostplace.setText(place_to_found)
         binding.imageSelected.setOnClickListener {
             openImageChooser()
         }
 
-        binding.submitUpdate.setOnClickListener{
+        binding.submit.setOnClickListener{
 
 
 
             var status = "0"
-            var type  = "0"
 
+
+            var selectID: Int = binding.gender.checkedRadioButtonId
+            var radioButtonChecked: RadioButton = findViewById(selectID)
+            var selectID2: Int = binding.radiogroup.checkedRadioButtonId
+            var radioButtonChecked2: RadioButton = findViewById(selectID2)
+            var type = "0"
+            if(radioButtonChecked2.text.toString() == "แจ้งน้องแมวหาย"){
+                type = "1"
+            }else{
+                type = "2"
+            }
             if (binding.edtName.text.toString().isEmpty() || binding.gender.getCheckedRadioButtonId() == -1
                 || binding.edtColor.text.toString().isEmpty() || selectedImageUri == null
                 || binding.edtVacine.text.toString().isEmpty()|| binding.date.text.toString().isEmpty()
@@ -157,14 +178,13 @@ class EditPostActivity : AppCompatActivity() {
                 val body = UploadRequestBody(file, "image")
                 var selectID: Int? = binding.gender.checkedRadioButtonId
                 var radioButtonChecked: RadioButton = findViewById(selectID!!)
-
-                val api: FindhouseAPI = Retrofit.Builder()
+                val api: LostcatAPI = Retrofit.Builder()
                     .baseUrl(URL_API)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
-                    .create(FindhouseAPI::class.java)
+                    .create(LostcatAPI::class.java)
 
-                api.updatePostFindhouse(
+                api.updateLostCat(
                     MultipartBody.Part.createFormData("image", file.name, body),
                     RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtName.text.toString()),
                     RequestBody.create(MediaType.parse("multipart/form-data"),radioButtonChecked.text.toString()),
@@ -179,6 +199,9 @@ class EditPostActivity : AppCompatActivity() {
                     RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtDistrict.text.toString()),
                     RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtProvince.text.toString()),
                     RequestBody.create(MediaType.parse("multipart/form-data"),  binding.edtPostcode.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"),  binding.dateplace.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtSpot.text.toString()),
+                    RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtLostplace.text.toString()),
                     RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtNameperson.text.toString()),
                     RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtLastnameperson.text.toString()),
                     RequestBody.create(MediaType.parse("multipart/form-data"),binding.edtPhone.text.toString()),
@@ -192,11 +215,11 @@ class EditPostActivity : AppCompatActivity() {
                 ).enqueue(object : Callback<UploadResponse> {
                     override fun onResponse(call: Call<UploadResponse>, response: Response<UploadResponse>) {
                         if (response.isSuccessful) {
-                            Toast.makeText(applicationContext, "Seccessfully Inserted",
+                            Toast.makeText(applicationContext, "Seccessfully Edited",
                                 Toast.LENGTH_LONG).show()
-                        finish()
+                         finish()
                         } else {
-                            Toast.makeText(applicationContext, " Insert Failure",
+                            Toast.makeText(applicationContext, "Edited Failure",
                                 Toast.LENGTH_LONG)
                                 .show()
                         }

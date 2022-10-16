@@ -121,6 +121,7 @@ data class Postlist(
     @Expose
     @SerializedName("type") val type: Int,
 
-
+    @Expose
+    @SerializedName("post_id") val post_id: Int,
 
     )

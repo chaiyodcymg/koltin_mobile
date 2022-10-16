@@ -33,8 +33,16 @@ class DetailLostCatActivity : AppCompatActivity() {
 
         var data = intent.extras
         var search:SearchPacelable? = data?.getParcelable("search")
+        var type = ""
+        if (search?.type == 0){
+            type = "น้องเหมียวหาบ้าน"
+        }else if(search?.type == 1){
+            type = "น้องเหมียวหาย"
+        }else{
+            type = "พบน้องเหมียว"
+        }
         binding.id.text = "รหัสแมว : ${search?.id}"
-        binding.type.text= "เรื่องที่แจ้ง : " +if (search?.type == 1) "น้องเหมียวหาย" else "พบน้องเหมียว"
+        binding.type.text= "เรื่องที่แจ้ง : ${type}"
         binding.name.text = "ชื่อ : ${search?.name}"
         binding.color.text ="สี : ${search?.color}"
         binding.species.text="สายพันธุ์ : ${search?.species}"

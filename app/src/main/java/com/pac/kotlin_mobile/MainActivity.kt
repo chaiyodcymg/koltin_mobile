@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -34,6 +35,7 @@ class MainActivity : AppCompatActivity() {
     var URL_API = URL.URL_API
     var image_profile  = "@drawable/user"
     private var menu: Menu? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -45,27 +47,20 @@ class MainActivity : AppCompatActivity() {
         if(id?.isNotEmpty()==true){
             getData()
         }
-
-
         supportActionBar!!.setDisplayShowTitleEnabled(false)
         supportActionBar!!.elevation = 0.0F
-
-
         supportActionBar!!.setCustomView(null)
-
-
         binding.bottomNavigation.setOnItemSelectedListener { item ->
             when(item.itemId) {
                 R.id.page_1-> {
 
+                        Select_Page = R.id.page_1
+                        supportFragmentManager.beginTransaction().replace(
+                            R.id.frameLayout,
+                            HomeFragment()
+                        ).commit()
 
-                    Select_Page = R.id.page_1
 
-
-                    supportFragmentManager.beginTransaction().replace(
-                        R.id.frameLayout,
-                        HomeFragment()
-                    ).commit()
                     true
                 }
                 R.id.page_2 -> {
@@ -123,10 +118,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-
-//        Glide.with(requireActivity().applicationContext).load(URL_API +response.body()?.image_profile.toString()).into(binding.imageSelected)
-
     }
+
     fun getData(){
         var api : UserAPI =   Retrofit.Builder()
             .baseUrl(URL_API)

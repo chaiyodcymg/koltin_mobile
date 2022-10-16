@@ -54,7 +54,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="หาบ้านให้น้องเหมียว"
+                    android:text="หาบ้านให้น้องแมว"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
 
@@ -93,7 +93,7 @@
                     android:layout_centerHorizontal="true"
                     android:gravity="center_vertical"
                     android:paddingLeft="15dp"
-                    android:text="น้องเหมียวหาย/พบน้องเหมียว"
+                    android:text="น้องแมวหาย/พบน้องแมว"
                     android:textColor="@color/white"
                     android:textSize="18dp" />
                 <androidx.appcompat.widget.AppCompatImageView

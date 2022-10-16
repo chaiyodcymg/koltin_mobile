@@ -36,18 +36,34 @@ interface FindhouseAPI {
     ): Call<UploadResponse>
 
 
-    @FormUrlEncoded /// Update
-    @PUT("updatePost/{id}")
-    fun updatePost(
-        @Path("id") id: Int,
-        @Field("name") name: String,
-        @Field("gender") gender: Int,
-        @Field("color") color: String,
-        @Field("vaccine") vaccine: String,
-        @Field("date_vaccine") date_vaccine: String,
-        @Field("species") species: String,
+    @Multipart /// Update
+    @PUT("updatepostfindhouse")
+    fun updatePostFindhouse(
+        @Part image: MultipartBody.Part,
+        @Part("name") name: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("color") color: RequestBody,
+        @Part("vaccine") vaccine: RequestBody,
+        @Part("date_vaccine") date_vaccine: RequestBody,
+        @Part("species") species: RequestBody,
+        @Part("more_info") more_info: RequestBody,
+        @Part("house_no") house_no: RequestBody,
+        @Part("street") street: RequestBody,
+        @Part("sub_district") sub_district: RequestBody,
+        @Part("district") district: RequestBody,
+        @Part("province") province: RequestBody,
+        @Part("post_address") post_address: RequestBody,
+        @Part("firstname") firstname: RequestBody,
+        @Part("lastname") lastname: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("line_id") line_id: RequestBody,
+        @Part("facebook") facebook: RequestBody,
+        @Part("type") type: RequestBody,
+        @Part("status") status: RequestBody,
+        @Part("post_id") post_id: RequestBody,
 
-    ): Call<Cat>
+    ): Call<UploadResponse>
 
 
     @GET("home_find")
